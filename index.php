@@ -32,7 +32,7 @@
 
 			CREATE TABLE OwnsPet
  			(OwnerID 	INTEGER, 
-			 PetID 		CHAR(20), 
+			 PetID 		INTEGER, 
 			 PetName 	CHAR(20) NOT NULL,
 			 Size 		CHAR(20) NOT NULL,
 			 Species	CHAR(20) NOT NULL,
