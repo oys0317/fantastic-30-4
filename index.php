@@ -107,6 +107,9 @@
 		$stmt = $db->prepare("INSERT INTO AccommodationRequest(OwnerID,PetID,RequestID,WithinDistance,StartDate,EndDate,SitterID,AvailabilityID,Compensation) VALUES(:OwnerID,:PetID,:RequestID,:WithinDistance,:StartDate,:EndDate,:SitterID,:AvailabilityID,:Compensation)");
 		$stmt->execute(array(':OwnerID' => 1, ':PetID' => 1, ':RequestID' => 111, ':WithinDistance' => 10.0, ':StartDate' => '15/06/1', ':EndDate' => '15/06/30', ':SitterID' => 4, ':AvailabilityID' => 192, ':Compensation' => 40));
 		$stmt->execute(array(':OwnerID' => 1, ':PetID' => 2, ':RequestID' => 112, ':WithinDistance' => 10.0, ':StartDate' => '15/07/1', ':EndDate' => '15/07/31', ':SitterID' => 4, ':AvailabilityID' => 193, ':Compensation' => 40));
+		$stmt->execute(array(':OwnerID' => 2, ':PetID' => 3, ':RequestID' => 113, ':WithinDistance' => 10.0, ':StartDate' => '15/06/03', ':EndDate' => '15/06/10', ':SitterID' => 5, ':AvailabilityID' => 194, ':Compensation' => 40));
+		$stmt->execute(array(':OwnerID' => 2, ':PetID' => 4, ':RequestID' => 114, ':WithinDistance' => 10.0, ':StartDate' => '15/06/15', ':EndDate' => '15/08/01', ':SitterID' => 5, ':AvailabilityID' => 195, ':Compensation' => 40));
+		$stmt->execute(array(':OwnerID' => 3, ':PetID' => 5, ':RequestID' => 115, ':WithinDistance' => 10.0, ':StartDate' => '15/07/20', ':EndDate' => '15/08/10', ':SitterID' => 6, ':AvailabilityID' => 196, ':Compensation' => 40));
 		
 
 
