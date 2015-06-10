@@ -1,18 +1,21 @@
 <?php
 include 'database.php';
-
 ?>
-<html>
-<head>
-	<title>Fantastic 30{4}</title>
-</head>
+
+<?php
+	include 'include/header.php';
+?>
+
 <body>
 
 	<?php 
-	
+	echo "hi!!!!!!";
 	echo "<p>Current date and time: " . date("r") . "</p>";
 
 	?>
 
 </body>
-</html>
+
+<?php
+	include 'include/footer.php';
+?>
