@@ -1,8 +1,8 @@
 <?php echo 'Hello World'; ?> 	
 	<?php 
 	try{
-		$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-		
+		//$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+		$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=80","root"); //for jenny 
 		$db->query('
 			DROP TABLE IF EXISTS CanTakeCareOf;
 			DROP TABLE IF EXISTS AccommodationRequest;
