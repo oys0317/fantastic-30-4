@@ -33,9 +33,11 @@
 			echo "End date";
 			echo '</th>';
 
-			echo '<th>';
-			echo "Contract";
-			echo '</th>';
+			if (isset($_COOKIE['userID'])) {
+				echo '<th>';
+				echo "Contract";
+				echo '</th>';
+			}
 
 
 			foreach($db->query($sql) as $row){
@@ -65,11 +67,13 @@
 				echo $row['EndDate'];
 				echo '</td>';
 				
-				echo '<td>';
-				echo'<form action="contractToSitter.php">
-						<input type="submit" value="Contract">
-					</form>';
-				echo '</td>';
+				if (isset($_COOKIE['userID'])) {
+					echo '<td>';
+					echo'<form action="contractToSitter.php">
+							<input type="submit" value="Contract">
+						</form>';
+					echo '</td>';
+				}	
 
 				echo '</tr>';
 			}
@@ -93,12 +97,10 @@
   		</div>
 	</div>
 	<div class="container">
-		<?php 
-			getSitterAvailability();
-		?>
-		<form action="sitterAddAvailabilities.php">
-			<input type="submit" value="Add Availability">
-		</form>
+		<?php getSitterAvailability(); ?>
+		<?php if(isset($_COOKIE['userID'])): ?>
+			<a href="accomodationRequest.php" class="btn btn-primary active" role="button">Add Accomodation Request</a>
+		<?php endif; ?>
 	</div>
 
 </body>

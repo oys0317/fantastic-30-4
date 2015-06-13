@@ -39,9 +39,11 @@
 			echo "End date";
 			echo '</th>';
 
-			echo '<th>';
-			echo "Contract";
-			echo '</th>';
+			if (isset($_COOKIE['userID'])) {
+				echo '<th>';
+				echo "Contract";
+				echo '</th>';
+			}
 
 			foreach($db->query($sql) as $row){
 				echo '<tr>';
@@ -78,13 +80,15 @@
 				echo $row['EndDate'];
 				echo '</td>';
 				
-				echo '<td>';
-				echo'<form action="contractToOwner.php">
-						<input type="submit" value="Contract">
-					</form>';
-				echo '</td>';
+				if (isset($_COOKIE['userID'])) {
+					echo '<td>';
+					echo'<form action="contractToOwner.php">
+							<input type="submit" value="Contract">
+						</form>';
+					echo '</td>';
 
-				echo '</tr>';
+					echo '</tr>';
+				}
 			}
 			echo '</table>';
 		} catch(Exception $e){
@@ -106,11 +110,9 @@
   		</div>
 	</div>
 	<div class="container">
-		<?php
-			getAccommodationRequest();
-		?>
-		<form action="accomodationRequest.php">
-			<input type="submit" value="Add Accomodation Request">
-		</form>
+		<?php getAccommodationRequest(); ?>
+		<?php if(isset($_COOKIE['userID'])): ?>
+			<a href="accomodationRequest.php" class="btn btn-primary active" role="button">Add Accomodation Request</a>
+		<?php endif; ?>
 	</div>
 </body>
