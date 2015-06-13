@@ -6,11 +6,10 @@
 			$sql = 'SELECT Name, PetName, Species, Size, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID 
 			FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
 			WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID';
+			
 			echo '<table class="table table-striped">';
 
-			echo '<th>';
-			echo "name";
-			echo '</th>';
+			echo '<th>name</th>';
 
 			echo '<th>';
 			echo "Pet Name";
