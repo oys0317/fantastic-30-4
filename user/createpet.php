@@ -1,5 +1,4 @@
 <?php
-
 	//create new pet
 	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 	$stmt = $db->prepare("INSERT INTO ownspet (OwnerID,PetID,PetName,Size,Species) 
@@ -20,13 +19,13 @@
 	//if successfully created, then login
 	if ($_POST["password"] == $row[0]) {
 		setcookie('userID', $_POST["userid"], time() + 3600);
-		header('Location: ./index.php');
+		header('Location: ./owner.php');
 		die();
 	}
 	//if not created, don't login. go back to register page.
 	//TODO: make alert that something is wrong. none of them can be null
 	else {
-		header('Location: ./register.php');
+		header('Location: ./owner.php');
 		die();
 	}
 	
