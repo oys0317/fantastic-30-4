@@ -11,28 +11,28 @@
   		</div>
 	</div>
 	<div class="container">
-		<form>
+		<form action="createuser.php" method="post">
 		  	<div class="form-group">
 			    <label for="userid">User ID</label>
-			    <input type="text" class="form-control" id="userid" placeholder="Enter user ID">
+			    <input type="text" class="form-control" name="userid" placeholder="Enter user ID">
 		 	</div>
 		  	<div class="form-group">
 			    <label for="password">Password</label>
-			    <input type="password" class="form-control" id="password" placeholder="Password">
+			    <input type="password" class="form-control" name="password" placeholder="Enter Password">
 		  	</div>
 		  	<div class="form-group">
 			    <label for="username">Name</label>
-			    <input type="text" class="form-control" id="username" placeholder="Enter user ID">
+			    <input type="text" class="form-control" name="username" placeholder="Enter Name">
 		 	</div>
 		  	<div class="form-group">
 			    <label for="address">Address</label>
-			    <input type="text" class="form-control" id="address" placeholder="Enter user ID">
+			    <input type="text" class="form-control" name="address" placeholder="Enter Address">
 		 	</div>
 		  	<div class="form-group">
 			    <label for="phone">Phone Number</label>
-			    <input type="text" class="form-control" id="phone" placeholder="Enter user ID">
+			    <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number">
 		 	</div>		 		
-		  	<button type="submit" class="btn btn-default">Submit</button>
+		  	<button type="submit" class="btn btn-warning">Submit</button>
 		</form>
 	</div>
 </body>
