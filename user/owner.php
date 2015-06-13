@@ -3,14 +3,13 @@
 	function getAccommodationRequest() {
 		try{
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = 'SELECT Name, PetName, Species, Size, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID 
+			$sql = 'SELECT Name, PetName, Species, Size, Address, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID 
 			FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
-			WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID';
+			WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and SitterID is Null and AvailabilityID is Null';
+
 			echo '<table class="table table-striped">';
 
-			echo '<th>';
-			echo "name";
-			echo '</th>';
+			echo '<th>name</th>';
 
 			echo '<th>';
 			echo "Pet Name";
@@ -22,6 +21,10 @@
 
 			echo '<th>';
 			echo "Size";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Address";
 			echo '</th>';
 
 			echo '<th>';
@@ -37,11 +40,7 @@
 			echo '</th>';
 
 			echo '<th>';
-			echo "SitterID";
-			echo '</th>';
-
-			echo '<th>';
-			echo "AvailabilityID";
+			echo "Contract";
 			echo '</th>';
 
 			foreach($db->query($sql) as $row){
@@ -49,7 +48,7 @@
 
 				echo '<td>';
 				echo $row['Name'];
-				echo '</td';
+				echo '</td>';
 
 				echo '<td>';
 				echo $row['PetName'];
@@ -64,6 +63,10 @@
 				echo '</td>';
 
 				echo '<td>';
+				echo $row['Address'];
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['WithinDistance'];
 				echo '</td>';
 
@@ -74,13 +77,11 @@
 				echo '<td>';
 				echo $row['EndDate'];
 				echo '</td>';
-
+				
 				echo '<td>';
-				echo $row['SitterID'];
-				echo '</td>';
-
-				echo '<td>';
-				echo $row['AvailabilityID'];
+				echo'<form action="contractToOwner.php">
+						<input type="submit" value="Contract">
+					</form>';
 				echo '</td>';
 
 				echo '</tr>';
@@ -108,5 +109,8 @@
 		<?php
 			getAccommodationRequest();
 		?>
+		<form action="accomodationRequest.php">
+			<input type="submit" value="Add Accomodation Request">
+		</form>
 	</div>
 </body>

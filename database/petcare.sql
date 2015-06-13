@@ -12,11 +12,11 @@ DROP TABLE IF EXISTS PetOwner;
 DROP TABLE IF EXISTS User;
 -- CREATE TABLES
 CREATE TABLE User
-(UserID 	CHAR(20),
+(UserID 	CHAR(20) NOT NULL,
  Password 	CHAR(20) NOT NULL, 
- Name 		CHAR(20), 
- Address 	CHAR(20) NOT NULL,
- PhoneNum 	CHAR(10),
+ Name 		CHAR(20) NOT NULL, 
+ Address 	CHAR(50) NOT NULL,
+ PhoneNum 	CHAR(10) NOT NULL,
  primary key (UserID));
 
 CREATE TABLE PetOwner
@@ -69,6 +69,7 @@ CREATE TABLE AccommodationRequest
  foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID, AvailabilityID));
 
 -- Insert to User
+INSERT INTO User VALUES('admin','admin','Administor','Fantastic 30-4','304-304-304');
 INSERT INTO User VALUES('jennysong','jen123','Jenny Song','2573 West Mall, Vancouver','778-123-3413');
 INSERT INTO User VALUES('younoh','you123','Youn Oh','3920 Wesbrook Mall, Vancouver','778-492-2832');
 INSERT INTO User VALUES('magnushvidsten','mag123','Magnus Hvidsten','12304 10ave, Vancouver','778-391-3829');
@@ -94,18 +95,28 @@ INSERT INTO OwnsPet VALUES('younoh',4,'Mickey','medium','dog');
 INSERT INTO OwnsPet VALUES('magnushvidsten',5,'Minnie','medium','dog');
 
 -- Insert to SitterAvailability
-INSERT INTO SitterAvailability() VALUES('alyssalerner',192,'15/06/01','15/06/30');
+INSERT INTO SitterAvailability VALUES('alyssalerner',192,'15/06/01','15/06/30');
 INSERT INTO SitterAvailability VALUES('alyssalerner',193,'15/07/01','15/07/31');
 INSERT INTO SitterAvailability VALUES('harrisonf',194,'15/06/03','15/06/10');
 INSERT INTO SitterAvailability VALUES('harrisonf',195,'15/06/15','15/08/01');
 INSERT INTO SitterAvailability VALUES('luciaa',196,'15/07/20','15/08/10');
+INSERT INTO SitterAvailability VALUES('alyssalerner',197,'15/07/01','15/07/30');
+INSERT INTO SitterAvailability VALUES('alyssalerner',198,'15/08/01','15/08/31');
+INSERT INTO SitterAvailability VALUES('harrisonf',199,'15/07/03','15/07/10');
+INSERT INTO SitterAvailability VALUES('harrisonf',200,'15/07/15','15/09/01');
+INSERT INTO SitterAvailability VALUES('luciaa',201,'15/08/20','15/09/10');
 
 -- Insert to AccommodationRequest
 INSERT INTO AccommodationRequest VALUES('jennysong',1,111,10.0,'15/06/1','15/06/30','alyssalerner',192,40);
-INSERT INTO AccommodationRequest VALUES('jennysong',2,112,10.0,'15/06/1','15/06/30','alyssalerner',193,40);
-INSERT INTO AccommodationRequest VALUES('younoh',3,113,10.0,'15/06/1','15/06/30','harrisonf',194,40);
-INSERT INTO AccommodationRequest VALUES('younoh',4,114,10.0,'15/06/1','15/06/30','harrisonf',195,40);
-INSERT INTO AccommodationRequest VALUES('magnushvidsten',5,115,10.0,'15/06/1','15/06/30','luciaa',196,40);
+INSERT INTO AccommodationRequest VALUES('jennysong',2,112,10.0,'15/07/01','15/07/31','alyssalerner',193,40);
+INSERT INTO AccommodationRequest VALUES('younoh',3,113,10.0,'15/06/03','15/06/10','harrisonf',194,40);
+INSERT INTO AccommodationRequest VALUES('younoh',4,114,10.0,'15/06/15','15/08/01','harrisonf',195,40);
+INSERT INTO AccommodationRequest VALUES('magnushvidsten',5,115,10.0,'15/07/20','15/08/10','luciaa',196,40);
+INSERT INTO AccommodationRequest VALUES('jennysong',1,116,10.0,'15/07/1','15/07/30',Null,Null,Null);
+INSERT INTO AccommodationRequest VALUES('jennysong',2,117,10.0,'15/08/1','15/08/31',Null,Null,Null);
+INSERT INTO AccommodationRequest VALUES('younoh',3,118,10.0,'15/07/03','15/07/10',Null,Null,Null);
+INSERT INTO AccommodationRequest VALUES('younoh',4,119,10.0,'15/07/15','15/09/01',Null,Null,Null);
+INSERT INTO AccommodationRequest VALUES('magnushvidsten',5,120,10.0,'15/08/20','15/09/10',Null,Null,Null);
 
 -- Insert to CanTakeCareOf
 INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',192);
@@ -113,3 +124,8 @@ INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',193);
 INSERT INTO CanTakeCareOf VALUES('big','dog','harrisonf',194);
 INSERT INTO CanTakeCareOf VALUES('medium','dog','harrisonf',195);
 INSERT INTO CanTakeCareOf VALUES('medium','dog','luciaa',196);
+INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',197);
+INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',198);
+INSERT INTO CanTakeCareOf VALUES('big','dog','harrisonf',199);
+INSERT INTO CanTakeCareOf VALUES('medium','dog','harrisonf',200);
+INSERT INTO CanTakeCareOf VALUES('medium','dog','luciaa',201);
