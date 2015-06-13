@@ -1,3 +1,27 @@
+<?php 	
+	
+	function getSitterAvailability() {
+		try{
+			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+			$sql = 'Select Name, Species, Size, StartDate, EndDate from SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c where sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID';
+			foreach($db->query($sql) as $row){
+				echo $row['Name'];
+				echo " ";
+				echo $row['Species'];
+				echo " ";
+				echo $row['Size'];
+				echo " ";
+				echo $row['StartDate'];
+				echo " ";
+				echo $row['EndDate'];
+				echo '</br>';
+			}
+		} catch(Exception $e){
+		echo "Could not connect to the database";
+		exit;
+		}
+	}
+?>
 <head>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<title>PetSitter</title>
@@ -22,6 +46,8 @@
   		</div>
 	</div>
 	<div class="container">
-		list goes here
+		<?php 
+			getSitterAvailability();
+		?>
 	</div>
 </body>

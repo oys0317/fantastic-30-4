@@ -53,7 +53,7 @@
 			 Species 	CHAR(20) NOT NULL,
 			 SitterID 	Char(20),
 			 AvailabilityID 	INTEGER,
-			 primary key (Size, Species,SitterID,AvailabilityID),
+			 primary key (SitterID,AvailabilityID),
 			 foreign key (SitterID,AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
 
 			CREATE TABLE AccommodationRequest
