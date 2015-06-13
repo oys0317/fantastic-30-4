@@ -1,12 +1,6 @@
 <?php
 	//include 'database.php';
-	//TODO: check if id and password is correct. $_POST["id"]
-	if (($_POST["id"] == TRUE) && ($_POST["password"] == TRUE)) {
-		$cookie_id = $_POST["id"];
-		setcookie($cookie_id);
-		unset($_POST["id"]);
-		unset($_POST["password"]);
-	}
+
 ?>
 
 <head>
@@ -17,19 +11,13 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 	    	<a class="navbar-brand" href="#">Fantastic304</a>
-			<?php if(!isset($_COOKIE[$cookie_id])) : ?>
-				<form class="navbar-form navbar-right" action="index.php" method="post">
-	        		<div class="form-group">
-	         			<input type="text" class="form-control" name="id"placeholder="id">
-	         			<input type="text" class="form-control" name="password"placeholder="password">
-	        		</div>
-	        		<button type="submit" class="btn btn-default">Submit</button>
-	      		</form>
-	      	<?php else : ?>
-	      		<ul class="nav navbar-nav navbar-right">
-        			<li><a href="#"><?php echo $_COOKIE[$cookie_id] ?></a></li>
-        			<li><a href="#">Logout</a></li>
-			<?php endif; ?>
+			<form class="navbar-form navbar-right" action="login.php" method="post">
+        		<div class="form-group">
+         			<input type="text" class="form-control" name="id"placeholder="id">
+         			<input type="password" class="form-control" name="password"placeholder="password">
+        		</div>
+        		<button type="submit" class="btn btn-default">Submit</button>
+      		</form>		
       	</div>
 	</nav>
 	<div class="jumbotron" style="padding: 80px 0">
