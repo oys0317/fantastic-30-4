@@ -1,3 +1,35 @@
+<?php 	
+	
+	function getAccommodationRequest() {
+		try{
+			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+			$sql = 'SELECT Name, PetName, Species, Size, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID';
+			foreach($db->query($sql) as $row){
+				echo $row['Name'];
+				echo " ";
+				echo $row['PetName'];
+				echo " ";
+				echo $row['Species'];
+				echo " ";
+				echo $row['Size'];
+				echo " ";
+				echo $row['WithinDistance'];
+				echo " ";
+				echo $row['StartDate'];
+				echo " ";
+				echo $row['EndDate'];
+				echo " ";
+				echo $row['SitterID'];
+				echo " ";
+				echo $row['AvailabilityID'];
+				echo '</br>';
+			}
+		} catch(Exception $e){
+		echo "Could not connect to the database";
+		exit;
+		}
+	}
+?>
 <head>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<title>PetSitter</title>
@@ -22,6 +54,8 @@
   		</div>
 	</div>
 	<div class="container">
-		list goes here
+		<?php
+			getAccommodationRequest();
+		?>
 	</div>
 </body>
