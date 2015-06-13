@@ -4,18 +4,55 @@
 		try{
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = 'Select Name, Species, Size, StartDate, EndDate from SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c where sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID';
+			echo '<table class="table table-striped">';
+			echo '<th>';
+			echo "name";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Pet Type";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Size";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Start date";
+			echo '</th>';
+
+			echo '<th>';
+			echo "End date";
+			echo '</th>';
+
+
 			foreach($db->query($sql) as $row){
+				echo '<tr>';
+
+				echo '<td>';
 				echo $row['Name'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['Species'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['Size'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['StartDate'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['EndDate'];
+				echo '</td>';
+
 				echo '</br>';
+				echo '</tr>';
 			}
+			echo '</table>';
 		} catch(Exception $e){
 		echo "Could not connect to the database";
 		exit;

@@ -3,27 +3,89 @@
 	function getAccommodationRequest() {
 		try{
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = 'SELECT Name, PetName, Species, Size, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID';
+			$sql = 'SELECT Name, PetName, Species, Size, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID 
+			FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
+			WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID';
+			echo '<table class="table table-striped">';
+
+			echo '<th>';
+			echo "name";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Pet Name";
+			echo '</th>';
+
+			echo '<th>';
+			echo "species";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Size";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Within Distance";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Start date";
+			echo '</th>';
+
+			echo '<th>';
+			echo "End date";
+			echo '</th>';
+
+			echo '<th>';
+			echo "SitterID";
+			echo '</th>';
+
+			echo '<th>';
+			echo "AvailabilityID";
+			echo '</th>';
+
 			foreach($db->query($sql) as $row){
+				echo '<tr>';
+
+				echo '<td>';
 				echo $row['Name'];
-				echo " ";
+				echo '</td';
+
+				echo '<td>';
 				echo $row['PetName'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['Species'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['Size'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['WithinDistance'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['StartDate'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['EndDate'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['SitterID'];
-				echo " ";
+				echo '</td>';
+
+				echo '<td>';
 				echo $row['AvailabilityID'];
-				echo '</br>';
+				echo '</td>';
+
+				echo '</tr>';
 			}
+			echo '</table>';
 		} catch(Exception $e){
 		echo "Could not connect to the database";
 		exit;
