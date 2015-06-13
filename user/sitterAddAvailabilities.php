@@ -3,7 +3,7 @@
 	<title>PetCare</title>
 </head>
 <body>
-	<?php include './include/header.php'; ?>
+	<?php include '../include/header.php'; ?>
 	<div style="padding: 80px 0; background-color:60c0dc; !important" class="jumbotron">
   		<div class="container">
   			<h1 style="color:white">REGISTER</h1>
