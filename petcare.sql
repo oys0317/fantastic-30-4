@@ -82,9 +82,9 @@ INSERT INTO PetOwner VALUES('younoh');
 INSERT INTO PetOwner VALUES('magnushvidsten');
 
 --Insert to PetSitter
-INSERT INTO PetOwner VALUES('alyssalerner');
-INSERT INTO PetOwner VALUES('harrisonf');
-INSERT INTO PetOwner VALUES('luciaa');
+INSERT INTO PetSitter VALUES('alyssalerner');
+INSERT INTO PetSitter VALUES('harrisonf');
+INSERT INTO PetSitter VALUES('luciaa');
 
 -- Insert to OwnsPet
 INSERT INTO OwnsPet VALUES('jennysong',1,'Rupy','small','cat');
@@ -94,3 +94,22 @@ INSERT INTO OwnsPet VALUES('younoh',4,'Mickey','medium','dog');
 INSERT INTO OwnsPet VALUES('magnushvidsten',5,'Minnie','medium','dog');
 
 -- Insert to SitterAvailability
+INSERT INTO SitterAvailability() VALUES('alyssalerner',192,'15/06/01','15/06/30');
+INSERT INTO SitterAvailability VALUES('alyssalerner',193,'15/07/01','15/07/31');
+INSERT INTO SitterAvailability VALUES('harrisonf',194,'15/06/03','15/06/10');
+INSERT INTO SitterAvailability VALUES('harrisonf',195,'15/06/15','15/08/01');
+INSERT INTO SitterAvailability VALUES('luciaa',196,'15/07/20','15/08/10');
+
+-- Insert to AccommodationRequest
+INSERT INTO AccommodationRequest VALUES('jennysong',1,111,10.0,'15/06/1','15/06/30','alyssalerner',192,40);
+INSERT INTO AccommodationRequest VALUES('jennysong',2,112,10.0,'15/06/1','15/06/30','alyssalerner',193,40);
+INSERT INTO AccommodationRequest VALUES('younoh',3,113,10.0,'15/06/1','15/06/30','harrisonf',194,40);
+INSERT INTO AccommodationRequest VALUES('younoh',4,114,10.0,'15/06/1','15/06/30','harrisonf',195,40);
+INSERT INTO AccommodationRequest VALUES('magnushvidsten',5,115,10.0,'15/06/1','15/06/30','luciaa',196,40);
+
+-- Insert to CanTakeCareOf
+INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',192);
+INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',193);
+INSERT INTO CanTakeCareOf VALUES('big','dog','harrisonf',194);
+INSERT INTO CanTakeCareOf VALUES('medium','dog','harrisonf',195);
+INSERT INTO CanTakeCareOf VALUES('medium','dog','luciaa',196);
