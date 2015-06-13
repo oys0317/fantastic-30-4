@@ -7,7 +7,7 @@
 
 
 	if ($_POST["password"] == $row[0]) {
-		setcookie($_POST["id"]);
+		setcookie('userID', $_POST["id"], time() + 3600);
 		header('Location: ./index.php');
 		die();
 	}
