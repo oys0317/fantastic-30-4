@@ -77,9 +77,11 @@
 				echo '<td>';
 				echo $row['EndDate'];
 				echo '</td>';
-
+				
 				echo '<td>';
-				echo 'Button';
+				echo'<form action="contractToOwner.php">
+						<input type="submit" value="Contract">
+					</form>';
 				echo '</td>';
 
 				echo '</tr>';
@@ -108,7 +110,7 @@
 			getAccommodationRequest();
 		?>
 		<form action="accomodationRequest.php">
-			<input type="submit" value="Add Accomodaion Request">
+			<input type="submit" value="Add Accomodation Request">
 		</form>
 	</div>
 </body>

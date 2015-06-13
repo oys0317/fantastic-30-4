@@ -95,11 +95,16 @@ INSERT INTO OwnsPet VALUES('younoh',4,'Mickey','medium','dog');
 INSERT INTO OwnsPet VALUES('magnushvidsten',5,'Minnie','medium','dog');
 
 -- Insert to SitterAvailability
-INSERT INTO SitterAvailability() VALUES('alyssalerner',192,'15/06/01','15/06/30');
+INSERT INTO SitterAvailability VALUES('alyssalerner',192,'15/06/01','15/06/30');
 INSERT INTO SitterAvailability VALUES('alyssalerner',193,'15/07/01','15/07/31');
 INSERT INTO SitterAvailability VALUES('harrisonf',194,'15/06/03','15/06/10');
 INSERT INTO SitterAvailability VALUES('harrisonf',195,'15/06/15','15/08/01');
 INSERT INTO SitterAvailability VALUES('luciaa',196,'15/07/20','15/08/10');
+INSERT INTO SitterAvailability VALUES('alyssalerner',197,'15/07/01','15/07/30');
+INSERT INTO SitterAvailability VALUES('alyssalerner',198,'15/08/01','15/08/31');
+INSERT INTO SitterAvailability VALUES('harrisonf',199,'15/07/03','15/07/10');
+INSERT INTO SitterAvailability VALUES('harrisonf',200,'15/07/15','15/09/01');
+INSERT INTO SitterAvailability VALUES('luciaa',201,'15/08/20','15/09/10');
 
 -- Insert to AccommodationRequest
 INSERT INTO AccommodationRequest VALUES('jennysong',1,111,10.0,'15/06/1','15/06/30','alyssalerner',192,40);
@@ -119,3 +124,8 @@ INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',193);
 INSERT INTO CanTakeCareOf VALUES('big','dog','harrisonf',194);
 INSERT INTO CanTakeCareOf VALUES('medium','dog','harrisonf',195);
 INSERT INTO CanTakeCareOf VALUES('medium','dog','luciaa',196);
+INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',197);
+INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',198);
+INSERT INTO CanTakeCareOf VALUES('big','dog','harrisonf',199);
+INSERT INTO CanTakeCareOf VALUES('medium','dog','harrisonf',200);
+INSERT INTO CanTakeCareOf VALUES('medium','dog','luciaa',201);
