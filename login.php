@@ -1,6 +1,6 @@
 <?php
-	//$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root","root"); //for jenny
+	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+	//$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root","root"); //for jenny
 	$stmt = $db->prepare("select Password from User where UserID=:UserID");
 	$stmt->execute(array(':UserID' => $_POST["id"]));
 	$row = $stmt->fetch();
@@ -17,4 +17,3 @@
 	}
 
 ?>
-
