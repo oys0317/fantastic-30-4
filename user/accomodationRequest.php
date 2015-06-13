@@ -11,14 +11,15 @@
   		</div>
 	</div>
 	<div class="container">
-		<form>
+		<form action="createpet.php" method="post">
+			<legend>Enter your pet information here:</legend>
 		  	<div class="form-group">
 			    <label for="PetID">Pet ID</label>
-			    <input type="text" class="form-control" id="PetID" placeholder="Enter Pet ID">
+			    <input type="number" class="form-control" id="PetID" placeholder="Enter Pet ID">
 		 	</div>
 		  	<div class="form-group">
-			    <label for="password">Pet Name</label>
-			    <input type="password" class="form-control" id="PetName" placeholder="Enter Pet Name">
+			    <label for="PetName">Pet Name</label>
+			    <input type="text" class="form-control" id="PetName" placeholder="Enter Pet Name">
 		  	</div>
 		  	<div class="form-group">
 			    <label for="Size">Size</label>
