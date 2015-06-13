@@ -53,7 +53,7 @@
 			 Species 	CHAR(20) NOT NULL,
 			 SitterID 	Char(20),
 			 AvailabilityID 	INTEGER,
-			 primary key (Size, Species),
+			 primary key (Size, Species,SitterID,AvailabilityID),
 			 foreign key (SitterID,AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
 
 			CREATE TABLE AccommodationRequest
@@ -112,7 +112,14 @@
 		$stmt->execute(array(':OwnerID' => 'younoh', ':PetID' => 4, ':RequestID' => 114, ':WithinDistance' => 10.0, ':StartDate' => '15/06/15', ':EndDate' => '15/08/01', ':SitterID' => 'harrisonf', ':AvailabilityID' => 195, ':Compensation' => 40));
 		$stmt->execute(array(':OwnerID' => 'magnushvidsten', ':PetID' => 5, ':RequestID' => 115, ':WithinDistance' => 10.0, ':StartDate' => '15/07/20', ':EndDate' => '15/08/10', ':SitterID' => 'luciaa', ':AvailabilityID' => 196, ':Compensation' => 40));
 		
+		$stmt = $db->prepare("INSERT INTO CanTakeCareOf(Size,Species,SitterID,AvailabilityID) VALUES(:Size,:Species,:SitterID,:AvailabilityID)");
+		$stmt->execute(array(':Size' => 'small', ':Species' => 'cat', ':SitterID' => 'alyssalerner', ':AvailabilityID' => 192));
+		$stmt->execute(array(':Size' => 'small', ':Species' => 'cat', ':SitterID' => 'alyssalerner', ':AvailabilityID' => 193));
+		$stmt->execute(array(':Size' => 'big', ':Species' => 'dog', ':SitterID' => 'harrisonf', ':AvailabilityID' => 194));
+		$stmt->execute(array(':Size' => 'medium', ':Species' => 'dog', ':SitterID' => 'harrisonf', ':AvailabilityID' => 195));
+		$stmt->execute(array(':Size' => 'medium', ':Species' => 'dog', ':SitterID' => 'luciaa', ':AvailabilityID' => 196));
 
+		
 
 		$affected_rows = $stmt->rowCount();		
 
