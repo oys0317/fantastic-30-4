@@ -3,14 +3,10 @@
 	function getAccommodationRequest() {
 		try{
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = 'SELECT Name, PetName, Species, Size, Address, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID 
+			$sql = 'SELECT Name, PetName, Species, Size, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID 
 			FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
-<<<<<<< HEAD
 			WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID';
 			
-=======
-			WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and SitterID is Null and AvailabilityID is Null';
->>>>>>> de7349f29ca287084882d8f7bb662b8285c10c72
 			echo '<table class="table table-striped">';
 
 			echo '<th>name</th>';
@@ -28,10 +24,6 @@
 			echo '</th>';
 
 			echo '<th>';
-			echo "Address";
-			echo '</th>';
-
-			echo '<th>';
 			echo "Within Distance";
 			echo '</th>';
 
@@ -44,7 +36,11 @@
 			echo '</th>';
 
 			echo '<th>';
-			echo "Contract";
+			echo "SitterID";
+			echo '</th>';
+
+			echo '<th>';
+			echo "AvailabilityID";
 			echo '</th>';
 
 			foreach($db->query($sql) as $row){
@@ -67,10 +63,6 @@
 				echo '</td>';
 
 				echo '<td>';
-				echo $row['Address'];
-				echo '</td>';
-
-				echo '<td>';
 				echo $row['WithinDistance'];
 				echo '</td>';
 
@@ -83,7 +75,11 @@
 				echo '</td>';
 
 				echo '<td>';
-				echo 'Button';
+				echo $row['SitterID'];
+				echo '</td>';
+
+				echo '<td>';
+				echo $row['AvailabilityID'];
 				echo '</td>';
 
 				echo '</tr>';
