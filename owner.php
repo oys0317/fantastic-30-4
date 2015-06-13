@@ -49,7 +49,7 @@
 
 				echo '<td>';
 				echo $row['Name'];
-				echo '</td';
+				echo '</td>';
 
 				echo '<td>';
 				echo $row['PetName'];
