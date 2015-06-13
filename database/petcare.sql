@@ -12,11 +12,11 @@ DROP TABLE IF EXISTS PetOwner;
 DROP TABLE IF EXISTS User;
 -- CREATE TABLES
 CREATE TABLE User
-(UserID 	CHAR(20),
+(UserID 	CHAR(20) NOT NULL,
  Password 	CHAR(20) NOT NULL, 
- Name 		CHAR(20), 
+ Name 		CHAR(20) NOT NULL, 
  Address 	CHAR(50) NOT NULL,
- PhoneNum 	CHAR(10),
+ PhoneNum 	CHAR(10) NOT NULL,
  primary key (UserID));
 
 CREATE TABLE PetOwner
