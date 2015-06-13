@@ -13,25 +13,21 @@
 	<div class="container">
 		<form>
 		  	<div class="form-group">
-			    <label for="userid">User ID</label>
-			    <input type="text" class="form-control" id="userid" placeholder="Enter user ID">
+			    <label for="PetID">Pet ID</label>
+			    <input type="text" class="form-control" id="PetID" placeholder="Enter Pet ID">
 		 	</div>
 		  	<div class="form-group">
-			    <label for="password">Password</label>
-			    <input type="password" class="form-control" id="password" placeholder="Password">
+			    <label for="password">Pet Name</label>
+			    <input type="password" class="form-control" id="PetName" placeholder="Enter Pet Name">
 		  	</div>
 		  	<div class="form-group">
-			    <label for="username">Name</label>
-			    <input type="text" class="form-control" id="username" placeholder="Enter user ID">
+			    <label for="Size">Size</label>
+			    <input type="text" class="form-control" id="Size" placeholder="Enter Pet Size (small, medium or large)">
 		 	</div>
 		  	<div class="form-group">
-			    <label for="address">Address</label>
-			    <input type="text" class="form-control" id="address" placeholder="Enter user ID">
+			    <label for="Species">Species</label>
+			    <input type="text" class="form-control" id="Species" placeholder="Enter Pet Species">
 		 	</div>
-		  	<div class="form-group">
-			    <label for="phone">Phone Number</label>
-			    <input type="text" class="form-control" id="phone" placeholder="Enter user ID">
-		 	</div>		 		
 		  	<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>

@@ -7,8 +7,7 @@ $mysql_host = 'localhost';
 // MySQL username
 $mysql_username = 'root';
 // MySQL password
-//$mysql_password = '';
-$mysql_password = 'root';  //this is for Jenny
+$mysql_password = '';
 // Database name
 $mysql_database = 'fantastic304';
 
