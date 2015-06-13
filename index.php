@@ -8,18 +8,7 @@
 	<title>PetCare</title>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-	    	<a class="navbar-brand" href="#">Fantastic304</a>
-			<form class="navbar-form navbar-right" action="login.php" method="post">
-        		<div class="form-group">
-         			<input type="text" class="form-control" name="id"placeholder="id">
-         			<input type="password" class="form-control" name="password"placeholder="password">
-        		</div>
-        		<button type="submit" class="btn btn-default">Submit</button>
-      		</form>		
-      	</div>
-	</nav>
+	<?php include './include/header.php'; ?>
 	<div class="jumbotron" style="padding: 80px 0">
   		<div class="container">
   			<h1>PETCARE</h1>
