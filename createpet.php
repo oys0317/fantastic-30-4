@@ -19,13 +19,13 @@
 	//if successfully created, then login
 	if ($_POST["password"] == $row[0]) {
 		setcookie('userID', $_POST["userid"], time() + 3600);
-		header('Location: ./owner.php');
+		header('Location: ./accomodationrequest.php');
 		die();
 	}
 	//if not created, don't login. go back to register page.
 	//TODO: make alert that something is wrong. none of them can be null
 	else {
-		header('Location: ./owner.php');
+		header('Location: ./accomodationrequest.php');
 		die();
 	}
 	
