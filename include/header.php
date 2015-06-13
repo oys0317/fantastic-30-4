@@ -7,7 +7,7 @@
 	         			<input type="text" class="form-control" name="id"placeholder="id">
 	         			<input type="password" class="form-control" name="password"placeholder="password">
 	        		</div>
-	        		<button type="submit" class="btn btn-inverse">Submit</button>
+	        		<button type="submit" class="btn btn-warning">Submit</button>
 	        		<a href="./register.php">Register</a>
 	      		</form>
 	      	<?php else : ?>
