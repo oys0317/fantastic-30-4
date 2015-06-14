@@ -1,7 +1,12 @@
 <?php
-	//TODO need to check if this user is already sitter or not
 	//create new user
 	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+	
+	$sql = 'INSERT INTO petSitter
+			VALUES("'.$_COOKIE['userID'].'")
+			';
+	$db->query($sql);
+
 	$sql = 'SELECT MAX(AvailabilityID)
 			FROM SitterAvailability
 			WHERE SitterID ="'.$_COOKIE['userID'].'"';

@@ -3,6 +3,7 @@
 	<title>Pet Owners</title>
 </head>
 <body>
+	<?php $db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root"); ?>
 	<?php include '../include/header.php'; ?>
 	<div style="padding: 80px 0; background-color:60c0dc; !important" class="jumbotron">
   		<div class="container">
@@ -14,26 +15,36 @@
 		<form action="createAccomodationRequest.php" method="post">
 		  	<div class="form-group">
 			    <label for="SelectYourPet">Select Your Pet</label>
-			    <select type="number" class="form-control" name="PetID">
+			    <div>
 			    <?php
-			    	try{
-						$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-						$sql = 'SELECT PetID, PetName 
-						FROM OwnsPet
-						WHERE OwnerID = "'.$_COOKIE['userID'].'"';
-						foreach($db->query($sql) as $row){
-							echo'<option value=';
-							echo $row['PetID'];
-							echo '>';
-							echo $row['PetName'];
-							echo '</option>';
+			    	$stmt = $db->prepare('SELECT count(PetID) FROM OwnsPet WHERE OwnerID=:OwnerID');
+			    	$stmt->execute(array(':OwnerID' => $_COOKIE['userID']));
+			    	$row = $stmt->fetch();
+			    	if ($row[0] == 0){
+			    		echo '<a href="../newpet.php" class="btn btn-primary" role="button">Add Pet</a>';
+			    	} else {
+				   		echo '<select type="number" class="form-control" name="PetID">';
+				    	try{
+							
+							$sql = 'SELECT PetID, PetName 
+							FROM OwnsPet
+							WHERE OwnerID = "'.$_COOKIE['userID'].'"';
+							foreach($db->query($sql) as $row){
+								echo"<option value=";
+								echo $row["PetID"];
+								echo ">";
+								echo $row["PetName"];
+								echo "</option>";
+							}
+						} catch(Exception $e){
+						echo "Could not connect to the database";
+						exit;
 						}
-					} catch(Exception $e){
-					echo "Could not connect to the database";
-					exit;
+				    	echo '</select>';
 					}
-			    ?>
-			    </select>
+
+				?>
+				</div>
 		 	</div>
 		  	<div class="form-group">
 			    <label for="WithInDistance">With In Distance</label>

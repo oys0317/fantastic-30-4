@@ -1,7 +1,15 @@
 <?php
-	//TODO need to check if this user is already owner or not
+	
+
 	//create new user
 	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+	
+	$sql = 'INSERT INTO petOwner
+			VALUES("'.$_COOKIE['userID'].'")
+			';
+	$db->query($sql);
+
+
 	$sql = 'SELECT MAX(RequestID)
 			FROM AccommodationRequest
 			WHERE OwnerID ="'.$_COOKIE['userID'].'"';
