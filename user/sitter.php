@@ -67,7 +67,9 @@
 				
 				if (isset($_COOKIE['userID'])) {
 					echo '<td>';
-					echo '<a href="contractToSitter.php?AvailabilityID='.$row['AvailabilityID'].'&SitterID='.$row['SitterID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
+					if($row['SitterID']!=$_COOKIE['userID']){
+						echo '<a href="contractToSitter.php?AvailabilityID='.$row['AvailabilityID'].'&SitterID='.$row['SitterID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
+					}
 					echo '</td>';
 				}	
 
