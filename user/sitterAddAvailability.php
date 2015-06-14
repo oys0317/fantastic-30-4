@@ -13,25 +13,29 @@
 	<div class="container">
 		<form>
 		  	<div class="form-group">
-			    <label for="userid">User ID</label>
-			    <input type="text" class="form-control" id="userid" placeholder="Enter user ID">
+			    <label for="petSpecies">Select Species</label>
+			    <select type="text" class="form-control" name="petSpecies">
+			    <option value="cat">Cat</option>
+			    <option value="dog">Dog</option>
+			    <option value="others">Others</option>
+			    </select>
 		 	</div>
 		  	<div class="form-group">
-			    <label for="password">Password</label>
-			    <input type="password" class="form-control" id="password" placeholder="Password">
-		  	</div>
-		  	<div class="form-group">
-			    <label for="username">Name</label>
-			    <input type="text" class="form-control" id="username" placeholder="Enter user ID">
+			    <label for="petSize">Select Size</label>
+			    <select type="text" class="form-control" name="petSize">
+			    <option value="small">Small</option>
+			    <option value="medium">Medium</option>
+			    <option value="large">Large</option>
+			    </select>
 		 	</div>
 		  	<div class="form-group">
-			    <label for="address">Address</label>
-			    <input type="text" class="form-control" id="address" placeholder="Enter user ID">
+			    <label for="StartDate">Start Date</label>
+			    <input type="date" class="form-control" name="StartDate">
 		 	</div>
 		  	<div class="form-group">
-			    <label for="phone">Phone Number</label>
-			    <input type="text" class="form-control" id="phone" placeholder="Enter user ID">
-		 	</div>		 		
+			    <label for="EndDate">End Date</label>
+			    <input type="date" class="form-control" name="EndDate">
+		 	</div>	 		
 		  	<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>
