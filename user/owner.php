@@ -3,9 +3,9 @@
 	function getAccommodationRequest() {
 		try{
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = 'SELECT Name, PetName, Species, Size, Address, WithinDistance, StartDate, EndDate, a.OwnerID 
+			$sql = 'SELECT Name, PetName, Species, Size, Address, WithinDistance, StartDate, EndDate, a.RequestID as RequestID, a.PetID as PetID
 			FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
-			WHERE a.OwnerID = op.OwnerID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and a.PetID = op.PetID and a.RequestID NOT IN (SELECT RequestID FROM Contract WHERE RequestID IS NOT NULL and Status=1)';
+			WHERE a.OwnerID = op.OwnerID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and a.PetID = op.PetID and NOT EXISTS (SELECT * FROM Contract c WHERE c.RequestID IS NOT NULL and Status=1 and c.RequestID = a.RequestID and c.PetID = a.PetID)';
 
 			echo '<table class="table table-striped">';
 
@@ -82,9 +82,7 @@
 				
 				if (isset($_COOKIE['userID'])) {
 					echo '<td>';
-					echo'<form action="contractToOwner.php" get="">
-							<input type="submit" value="Contract">
-						</form>';
+					echo '<a href="contractToOwner.php?RequestID='.$row['RequestID'].'&PetID='.$row['PetID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
 					echo '</td>';
 
 					echo '</tr>';
