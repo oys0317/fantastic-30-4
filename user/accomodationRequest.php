@@ -14,13 +14,13 @@
 		<form action="createAccomodationRequest.php" method="post">
 		  	<div class="form-group">
 			    <label for="SelectYourPet">Select Your Pet</label>
-			    <select type="number" class="form-control" id="PetID">
+			    <select type="number" class="form-control" name="PetID">
 			    <?php
 			    	try{
 						$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 						$sql = 'SELECT PetID, PetName 
 						FROM OwnsPet
-						WHERE OwnerID = "jennysong"';
+						WHERE OwnerID = "'.$_COOKIE['userID'].'"';
 						foreach($db->query($sql) as $row){
 							echo'<option value=';
 							echo $row['PetID'];
@@ -36,16 +36,16 @@
 			    </select>
 		 	</div>
 		  	<div class="form-group">
-			    <label for="PetName">Pet Name</label>
-			    <input type="text" class="form-control" id="PetName" placeholder="Enter Pet Name">
+			    <label for="WithInDistance">With In Distance</label>
+			    <input type="text" class="form-control" name="WithInDistance" placeholder="Enter Distance that you can bring your pet in km">
 		  	</div>
 		  	<div class="form-group">
-			    <label for="Size">Size</label>
-			    <input type="text" class="form-control" id="Size" placeholder="Enter Pet Size (small, medium or large)">
+			    <label for="StartDate">Start Date</label>
+			    <input type="date" class="form-control" name="StartDate">
 		 	</div>
 		  	<div class="form-group">
-			    <label for="Species">Species</label>
-			    <input type="text" class="form-control" id="Species" placeholder="Enter Pet Species">
+			    <label for="EndDate">End Date</label>
+			    <input type="date" class="form-control" name="EndDate">
 		 	</div>
 		  	<button type="submit" class="btn btn-default">Submit</button>
 		</form>
