@@ -13,9 +13,11 @@
 			}
 
 			// Only 1 iteration should happen
+
+			echo '<table class="table table-striped">';
 			foreach($db->query($userSQL) as $row) {
 
-				echo "<table id='personalInfo'><tr><th>Username</th><td>";
+				echo "<th>Username</th><td>";
 				echo $row['UserID'];
 				echo "</td></tr><tr><th>Name</th><td>";
 				echo $row['Name'];
@@ -34,7 +36,6 @@
 
 	function displayPetInfo() {
 
-		echo "<table id='petInfo'><tr><th>Name</th><th>Size</th><th>Species</th><th>ID</th></tr>";
 		try {
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$userID = $_COOKIE['userID'];
@@ -48,17 +49,17 @@
 			}
 
 			// Display each pet's information
+			echo '<table class="table table-striped">';
+			echo "<th>Name</th><th>Size</th><th>Species</th><th>ID</th></tr>";
 			foreach($db->query($petSQL) as $row) {
+				echo '<tr>';
 
-				echo "<tr><td>";
-				echo $row['PetName'];
-				echo "</td><td>";
-				echo $row['Size'];
-				echo "</td><td>";
-				echo $row['Species'];
-				echo "</td><td>";
-				echo $row['PetID'];
-				echo "</td></tr>";
+				echo '<td>'; echo $row['PetName']; echo'</td>';
+				echo '<td>'; echo $row['Size']; echo'</td>';
+				echo '<td>'; echo $row['Species']; echo'</td>';
+				echo '<td>'; echo $row['PetID']; echo'</td>';
+
+				echo '</tr>';
 			}
 		}
 		catch(Exception $e) {
@@ -70,12 +71,11 @@
 
 	function displayAvailInfo() {
 
-		echo "<table id='availInfo'><tr><th>Start Date</th><th>End Date</th><th>Pet Type</th></tr>";
 		try {
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$userID = $_COOKIE['userID'];
 
-			$availSQL = "SELECT StartDate, EndDate, Size, Species
+			$availSQL = "SELECT s.StartDate, s.EndDate, c.Size, c.Species
 						FROM SitterAvailability s, CanTakeCareOf c
 						WHERE s.SitterID = '$userID'
 						AND s.AvailabilityID = c.AvailabilityID";
@@ -85,17 +85,22 @@
 			}
 
 			// Display each availability
+			echo '<table class="table table-striped">';
+			echo '<tr><th>Pet Type</th><th>Size</th><th>Start Date</th><th>End Date</th></tr>';
 			foreach($db->query($availSQL) as $row) {
+				echo '<tr>';
 
-				echo "<tr><td>";
+				echo '<td>';
 				echo $row['StartDate'];
-				echo "</td><td>";
+				echo '</td><td>';
 				echo $row['EndDate'];
-				echo "</td><td>";
+				echo '</td><td>';
 				echo $row['Size'];
-				echo " ";
+				echo '</td><td>' ;
 				echo $row['Species'];
-				echo "</td><td>";
+				echo '</td>';
+
+				echo '</tr>';
 			}
 		}
 		catch(Exception $e) {
@@ -134,12 +139,13 @@
 		<?php if(isset($_COOKIE['userID'])): ?>
 			<div style="height:110px">
 				<div style="margin-left:10%;float:left;width:55%;overflow:hidden">
+					<h2>Personal Information</h2>
 					<?php 
 						displayAccountInfo();
-					?>
+					?>					
+					<a href="editPersonalInfo.php" class="btn btn-primary" role="button">Edit</a>
 				</div>
 				<div id="editinfo" style="overflow:hidden">
-					<a href="editPersonalInfo.php">Edit Info</a>
 				</div>
 			</div>
 			<div>
@@ -148,18 +154,20 @@
 					<?php
 						displayPetInfo();
 					?>
+					<a href="newpet.php" class="btn btn-primary" role="button">Add Pet</a>
 				</div>
 				<div style="overflow:hidden">
 					<h2>My Availabilities</h2>
 					<?php
 						displayAvailInfo();
 					?>
+					<a href="user/sitterAddAvailability.php" class="btn btn-primary" role="button">Add Availability</a>
 				</div>
 			</div>
 		<?php else : ?>
 				<p>Please login to view your account.</p>
 		<?php endif; ?>
-			<a href="newpet.php" class="btn btn-primary" role="button">Add Pet</a>
+			
 		
 	</div>
 			

@@ -2,6 +2,13 @@
 
 	//create new pet
 	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+	
+	$sql = 'INSERT INTO petOwner
+			VALUES("'.$_COOKIE['userID'].'")
+			';
+	$db->query($sql);
+
+
 	$stmt = $db->prepare("INSERT INTO ownspet (OwnerID,PetID,PetName,Size,Species) 
 						  VALUES(:OwnerID,:PetID,:PetName,:Size,:Species);");
 	$stmt->bindParam(':OwnerID', $_COOKIE['userID']);
