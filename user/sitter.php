@@ -6,8 +6,7 @@
 			$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate 
 					FROM SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c 
 					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID
-					and sa.AvailabilityID NOT IN (Select AvailabilityID FROM AccommodationRequest WHERE AvailabilityID IS NOT Null )
-					';
+					and sa.AvailabilityID';
 			echo '<table class="table table-striped">';
 			echo '<th>';
 			echo "name";
@@ -86,7 +85,7 @@
 ?>
 <head>
 	<link rel="stylesheet" href="../bootstrap.min.css">
-	<title>PetSitter</title>
+	<title>PetCare</title>
 </head>
 <body>
 	<?php include '../include/header.php' ?>

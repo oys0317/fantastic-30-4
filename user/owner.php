@@ -3,9 +3,9 @@
 	function getAccommodationRequest() {
 		try{
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = 'SELECT Name, PetName, Species, Size, Address, WithinDistance, StartDate, EndDate, SitterID, AvailabilityID 
+			$sql = 'SELECT Name, PetName, Species, Size, Address, WithinDistance, StartDate, EndDate, a.OwnerID 
 			FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
-			WHERE a.OwnerID = op.OwnerID and a.PetID = op.PetID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and SitterID is Null and AvailabilityID is Null';
+			WHERE a.OwnerID = op.OwnerID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and a.PetID = op.PetID';
 
 			echo '<table class="table table-striped">';
 
@@ -82,7 +82,7 @@
 				
 				if (isset($_COOKIE['userID'])) {
 					echo '<td>';
-					echo'<form action="contractToOwner.php">
+					echo'<form action="contractToOwner.php" get="">
 							<input type="submit" value="Contract">
 						</form>';
 					echo '</td>';
@@ -99,7 +99,7 @@
 ?>
 <head>
 	<link rel="stylesheet" href="../bootstrap.min.css">
-	<title>PetSitter</title>
+	<title>PetCare</title>
 </head>
 <body>
 	<?php include '../include/header.php' ?>
