@@ -11,9 +11,9 @@
   		</div>
 	</div>
 	<div class="container">
-		<form>
+		<form action="createSitterAvailability.php" method="post">
 		  	<div class="form-group">
-			    <label for="petSpecies">Select Species</label>
+			    <label for="petSpecies">Select Pet Species You Prefer</label>
 			    <select type="text" class="form-control" name="petSpecies">
 			    <option value="cat">Cat</option>
 			    <option value="dog">Dog</option>
@@ -21,7 +21,7 @@
 			    </select>
 		 	</div>
 		  	<div class="form-group">
-			    <label for="petSize">Select Size</label>
+			    <label for="petSize">Select Pet Size You Prefer</label>
 			    <select type="text" class="form-control" name="petSize">
 			    <option value="small">Small</option>
 			    <option value="medium">Medium</option>

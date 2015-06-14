@@ -1,4 +1,5 @@
 <?php
+	//TODO need to check if this user is already owner or not
 	//create new user
 	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 	$sql = 'SELECT MAX(RequestID)
@@ -20,23 +21,12 @@
 	$stmt->execute();
 
 
-	//check if the new user is successfully created
-	$stmt = $db->prepare("select Password from User where UserID=:UserID");
-	$stmt->execute(array(':UserID' => $_POST["userid"]));
-	$row = $stmt->fetch();
 
-	//if successfully created, then login
-	if ($_POST["password"] == $row[0]) {
 		setcookie('userID', $_POST["userid"], time() + 3600);
 		header('Location: ./owner.php');
 		die();
-	}
-	//if not created, don't login. go back to register page.
-	//TODO: make alert that something is wrong. none of them can be null
-	else {
-		header('Location: ./accomodationRequest.php');
-		die();
-	}
+
+	
 
 ?>
 
