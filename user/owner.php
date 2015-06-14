@@ -112,7 +112,7 @@
 	<div class="container">
 		<?php getAccommodationRequest(); ?>
 		<?php if(isset($_COOKIE['userID'])): ?>
-			<a href="accomodationRequest.php" class="btn btn-primary active" role="button">Add Accomodation Request</a>
+			<a href="accomodationRequest.php" class="btn btn-primary" role="button">Add Accomodation Request</a>
 		<?php endif; ?>
 	</div>
 </body>

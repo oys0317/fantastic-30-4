@@ -99,7 +99,7 @@
 	<div class="container">
 		<?php getSitterAvailability(); ?>
 		<?php if(isset($_COOKIE['userID'])): ?>
-			<a href="accomodationRequest.php" class="btn btn-primary active" role="button">Add Accomodation Request</a>
+			<a href="accomodationRequest.php" class="btn btn-success" role="button">Add Availability</a>
 		<?php endif; ?>
 	</div>
 
