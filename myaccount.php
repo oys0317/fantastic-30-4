@@ -158,7 +158,7 @@
 					<?php
 						displayAvailInfo();
 					?>
-					<a href="accomodationrequest.php" class="btn btn-primary" role="button">Add Accomodation Request</a>
+					
 				</div>
 			</div>
 		<?php else : ?>
