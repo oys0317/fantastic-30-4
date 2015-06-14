@@ -13,9 +13,11 @@
 			}
 
 			// Only 1 iteration should happen
+
+			echo '<table class="table table-striped">';
 			foreach($db->query($userSQL) as $row) {
 
-				echo "<table id='personalInfo'><tr><th>Username</th><td>";
+				echo "<th>Username</th><td>";
 				echo $row['UserID'];
 				echo "</td></tr><tr><th>Name</th><td>";
 				echo $row['Name'];
@@ -73,7 +75,7 @@
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$userID = $_COOKIE['userID'];
 
-			$availSQL = "SELECT StartDate, EndDate, Size, Species
+			$availSQL = "SELECT s.StartDate, s.EndDate, c.Size, c.Species
 						FROM SitterAvailability s, CanTakeCareOf c
 						WHERE s.SitterID = '$userID'
 						AND s.AvailabilityID = c.AvailabilityID";
@@ -137,12 +139,13 @@
 		<?php if(isset($_COOKIE['userID'])): ?>
 			<div style="height:110px">
 				<div style="margin-left:10%;float:left;width:55%;overflow:hidden">
+					<h2>Personal Information</h2>
 					<?php 
 						displayAccountInfo();
-					?>
+					?>					
+					<a href="editPersonalInfo.php" class="btn btn-primary" role="button">Edit</a>
 				</div>
 				<div id="editinfo" style="overflow:hidden">
-					<a href="editPersonalInfo.php">Edit Info</a>
 				</div>
 			</div>
 			<div>
@@ -158,7 +161,7 @@
 					<?php
 						displayAvailInfo();
 					?>
-					<a href="sitterAddAvailability.php" class="btn btn-primary" role="button">Add Availability</a>
+					<a href="user/sitterAddAvailability.php" class="btn btn-primary" role="button">Add Availability</a>
 				</div>
 			</div>
 		<?php else : ?>
