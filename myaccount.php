@@ -48,17 +48,16 @@
 			}
 
 			// Display each pet's information
+			echo '<table class="table table-striped">';
 			foreach($db->query($petSQL) as $row) {
+				echo '<tr>';
 
-				echo "<tr><td>";
-				echo $row['PetName'];
-				echo "</td><td>";
-				echo $row['Size'];
-				echo "</td><td>";
-				echo $row['Species'];
-				echo "</td><td>";
-				echo $row['PetID'];
-				echo "</td></tr>";
+				echo '<td>'; echo $row['PetName']; echo'</td>';
+				echo '<td>'; echo $row['Size']; echo'</td>';
+				echo '<td>'; echo $row['Species']; echo'</td>';
+				echo '<td>'; echo $row['PetID']; echo'</td>';
+
+				echo '</tr>';
 			}
 		}
 		catch(Exception $e) {
@@ -148,6 +147,7 @@
 					<?php
 						displayPetInfo();
 					?>
+					<a href="newpet.php" class="btn btn-primary" role="button">Add Pet</a>
 				</div>
 				<div style="overflow:hidden">
 					<h2>My Availabilities</h2>
@@ -159,7 +159,7 @@
 		<?php else : ?>
 				<p>Please login to view your account.</p>
 		<?php endif; ?>
-			<a href="newpet.php" class="btn btn-primary" role="button">Add Pet</a>
+			
 		
 	</div>
 			
