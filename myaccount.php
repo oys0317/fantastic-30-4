@@ -19,7 +19,6 @@
 
 
 <body>
-	<?php include './include/header.php'; ?>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 	    	<a class="navbar-brand" href="index.php">PETCARE</a>
