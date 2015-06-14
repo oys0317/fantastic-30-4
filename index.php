@@ -5,7 +5,7 @@
 
 <head>
 	<link rel="stylesheet" href="bootstrap.min.css">
-	<title>PetCare</title>
+	<title>Pet Care</title>
 </head>
 <body>
 	<?php include './include/header.php'; ?>
