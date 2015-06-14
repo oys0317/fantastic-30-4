@@ -161,7 +161,7 @@
 					<?php
 						displayAvailInfo();
 					?>
-					<a href="sitterAddAvailability.php" class="btn btn-primary" role="button">Add Availability</a>
+					<a href="user/sitterAddAvailability.php" class="btn btn-primary" role="button">Add Availability</a>
 				</div>
 			</div>
 		<?php else : ?>
