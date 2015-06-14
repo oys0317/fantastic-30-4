@@ -6,8 +6,7 @@
 			$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate 
 					FROM SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c 
 					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID
-					and sa.AvailabilityID NOT IN (Select AvailabilityID FROM AccommodationRequest WHERE AvailabilityID IS NOT Null )
-					';
+					and sa.AvailabilityID and sa.AvailabilityID NOT IN (SELECT AvailabilityID FROM Contract WHERE AvailabilityID IS NOT NULL and Status=1)';
 			echo '<table class="table table-striped">';
 			echo '<th>';
 			echo "name";
@@ -33,9 +32,11 @@
 			echo "End date";
 			echo '</th>';
 
-			echo '<th>';
-			echo "Contract";
-			echo '</th>';
+			if (isset($_COOKIE['userID'])) {
+				echo '<th>';
+				echo "Contract";
+				echo '</th>';
+			}
 
 
 			foreach($db->query($sql) as $row){
@@ -65,11 +66,13 @@
 				echo $row['EndDate'];
 				echo '</td>';
 				
-				echo '<td>';
-				echo'<form action="contractToSitter.php">
-						<input type="submit" value="Contract">
-					</form>';
-				echo '</td>';
+				if (isset($_COOKIE['userID'])) {
+					echo '<td>';
+					echo'<form action="contractToSitter.php">
+							<input type="submit" value="Contract">
+						</form>';
+					echo '</td>';
+				}	
 
 				echo '</tr>';
 			}
@@ -82,7 +85,7 @@
 ?>
 <head>
 	<link rel="stylesheet" href="../bootstrap.min.css">
-	<title>PetSitter</title>
+	<title>PetCare</title>
 </head>
 <body>
 	<?php include '../include/header.php' ?>
@@ -93,12 +96,10 @@
   		</div>
 	</div>
 	<div class="container">
-		<?php 
-			getSitterAvailability();
-		?>
-		<form action="sitterAddAvailabilities.php">
-			<input type="submit" value="Add Availability">
-		</form>
+		<?php getSitterAvailability(); ?>
+		<?php if(isset($_COOKIE['userID'])): ?>
+			<a href="accomodationRequest.php" class="btn btn-success" role="button">Add Availability</a>
+		<?php endif; ?>
 	</div>
 
 </body>

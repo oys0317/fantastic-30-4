@@ -1,24 +1,43 @@
 <head>
 	<link rel="stylesheet" href="../bootstrap.min.css">
-	<title>PetCare</title>
+	<title>Pet Owners</title>
 </head>
 <body>
 	<?php include '../include/header.php'; ?>
 	<div style="padding: 80px 0; background-color:60c0dc; !important" class="jumbotron">
   		<div class="container">
-  			<h1 style="color:white">REGISTER</h1>
-  			<p style="color:white">Cras venenatis ullamcorper diam vel accumsan. Morbi elit ipsum, semper vitae erat at, semper finibus risus. In vitae rhoncus ipsum. Aliquam sit amet finibus massa. Morbi non risus eu nibh ullamcorper hendrerit vel vitae mauris. Suspendisse ut felis placerat ante vehicula euismod. Nunc ornare ipsum urna, eget finibus lacus efficitur id. Vivamus dapibus tempor augue at hendrerit. Integer tincidunt, turpis sit amet interdum pellentesque, eros est mollis libero, tempus ullamcorper dui sem a arcu. Maecenas fermentum pellentesque egestas. Aliquam euismod, lectus non elementum posuere, mi turpis interdum velit, quis bibendum ipsum enim vel lacus.</p>
+  			<h1 style="color:white">Add Accomodation Request</h1>
+  			<p style="color:white">Please add your infomation</p>
   		</div>
 	</div>
 	<div class="container">
-		<form>
+		<form action="createAccomodationRequest.php" method="post">
 		  	<div class="form-group">
-			    <label for="PetID">Pet ID</label>
-			    <input type="text" class="form-control" id="PetID" placeholder="Enter Pet ID">
+			    <label for="SelectYourPet">Select Your Pet</label>
+			    <select type="number" class="form-control" id="PetID">
+			    <?php
+			    	try{
+						$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+						$sql = 'SELECT PetID, PetName 
+						FROM OwnsPet
+						WHERE OwnerID = "jennysong"';
+						foreach($db->query($sql) as $row){
+							echo'<option value=';
+							echo $row['PetID'];
+							echo '>';
+							echo $row['PetName'];
+							echo '</option>';
+						}
+					} catch(Exception $e){
+					echo "Could not connect to the database";
+					exit;
+					}
+			    ?>
+			    </select>
 		 	</div>
 		  	<div class="form-group">
-			    <label for="password">Pet Name</label>
-			    <input type="password" class="form-control" id="PetName" placeholder="Enter Pet Name">
+			    <label for="PetName">Pet Name</label>
+			    <input type="text" class="form-control" id="PetName" placeholder="Enter Pet Name">
 		  	</div>
 		  	<div class="form-group">
 			    <label for="Size">Size</label>
