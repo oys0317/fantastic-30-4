@@ -16,17 +16,17 @@
 			foreach($db->query($userSQL) as $row) {
 				
 				// Most info here
-				echo "<form>";
+				echo "<form action='savePersonalInfo.php' method='post'>";
 				echo "<table id='editPersonalInfo'><caption>Change Information</caption><tr><th>Username</th><td>";
 				echo $row['UserID'];
 				echo "</td></tr><tr><th>Name</th><td>";
-				echo "<input type='text' class='form-control' id='editName' placeholder='";
+				echo "<input type='text' class='form-control' name='editName' placeholder='";
 				echo $row['Name'];
 				echo "'></td></tr><tr><th>Address</th><td>";
-				echo "<input type='text' class='form-control' 'id=editAddress' placeholder='";
+				echo "<input type='text' class='form-control' name='editAddress' placeholder='";
 				echo $row['Address'];
 				echo "'></td></tr><tr><th>Phone Number</th><td>";
-				echo "<input type='text' class='form-control' id='editPhoneNum' placeholder='";
+				echo "<input type='text' class='form-control' name='editPhoneNum' placeholder='";
 				echo $row['PhoneNum'];
 				echo "'></td></tr></table>";
 				echo "<input type='submit' class='btn btn-default' value='Save Changes'>";
@@ -86,23 +86,24 @@
 		<?php
 			displayInfoForm();
 		?>
-		<form>
+		<form action='saveNewPassword.php' method='post'>
 			<table id='changePassword'>
 				<caption>Change Password</caption>
 				<tr>
 					<th>Enter your current password</th>
-					<td><input type='password' class='form-control' id='currentPasswordBox'></td>
+					<td><input type='password' class='form-control' name='currentPasswordBox'></td>
 				</tr>
 				<tr>
 					<th>Enter your new password</th>
-					<td><input type='password' class='form-control' id='newPasswordBox'></td>
+					<td><input type='password' class='form-control' name='newPasswordBox'></td>
 				</tr>
 				<tr>
 					<th>Re-enter your new password</th>
-					<td><input type='password' class='form-control' id='reNewPasswordBox'></td>
+					<td><input type='password' class='form-control' name='otherNewPasswordBox'></td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-default">Save Password</button>
 		</form>
+		<a href="../myaccount.php">Back to account</button>
 	</div>
 </body>
