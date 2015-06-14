@@ -13,20 +13,19 @@
 
 
 	//check if the new pet is successfully created
-	$stmt = $db->prepare("select PetID from ownspet where OwnerID=:OwnerID");
-	$stmt->execute(array(':OwnerID' => $_COOKIE["userid"]));
+	$stmt = $db->prepare("select PetID from ownspet where PetID=:PetID");
+	$stmt ->execute();
 	$row = $stmt->fetch();
 
 	//if successfully created, then login
-	if ($_POST["password"] == $row[0]) {
-		setcookie('userID', $_POST["userid"], time() + 3600);
-		header('Location: ./owner.php');
+	if ($_POST["petID"] == $row) {
+		header('Location: ./myaccount.php');
 		die();
 	}
 	//if not created, don't login. go back to register page.
 	//TODO: make alert that something is wrong. none of them can be null
 	else {
-		header('Location: ./owner.php');
+		header('Location: ./index.php');
 		die();
 	}
 	
