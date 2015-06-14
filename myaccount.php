@@ -50,14 +50,14 @@
 
 			// Display each pet's information
 			echo '<table class="table table-striped">';
-			echo "<th>Name</th><th>Size</th><th>Species</th><th>ID</th></tr>";
+			echo "<th>Name</th><th>Size</th><th>Species</th></tr>";
 			foreach($db->query($petSQL) as $row) {
 				echo '<tr>';
 
-				echo '<td>'; echo $row['PetName']; echo'</td>';
-				echo '<td>'; echo $row['Size']; echo'</td>';
-				echo '<td>'; echo $row['Species']; echo'</td>';
-				echo '<td>'; echo $row['PetID']; echo'</td>';
+				echo '<td>'.$row['PetName'].'</td>';
+				echo '<td>'.$row['Size'].'</td>';
+				echo '<td>'.$row['Species'].'</td>';
+			
 
 				echo '</tr>';
 			}
