@@ -1,5 +1,44 @@
 <?php
+	function displayInfoForm() {
+		try {
+			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+			$userID = $_COOKIE['userID'];
 
+			$userSQL = "SELECT UserID, Name, Address, PhoneNum, password
+						FROM User
+						WHERE UserID = '$userID'";
+
+			if(!$userSQL) {
+				echo "An error has happened!";
+			}
+
+			// Only 1 iteration should happen
+			foreach($db->query($userSQL) as $row) {
+				
+				// Most info here
+				echo "<form>";
+				echo "<table id='editPersonalInfo'><caption>Change Information</caption><tr><th>Username</th><td>";
+				echo $row['UserID'];
+				echo "</td></tr><tr><th>Name</th><td>";
+				echo "<input type='text' class='form-control' id='editName' placeholder='";
+				echo $row['Name'];
+				echo "'></td></tr><tr><th>Address</th><td>";
+				echo "<input type='text' class='form-control' 'id=editAddress' placeholder='";
+				echo $row['Address'];
+				echo "'></td></tr><tr><th>Phone Number</th><td>";
+				echo "<input type='text' class='form-control' id='editPhoneNum' placeholder='";
+				echo $row['PhoneNum'];
+				echo "'></td></tr></table>";
+				echo "<input type='submit' class='btn btn-default' value='Save Changes'>";
+				echo "</form>";
+
+			}
+		}
+		catch(Exception $e) {
+			echo "Could not connect to the database to display account info";
+			exit;
+		}
+	}
 ?>
 
 <head>
@@ -35,7 +74,7 @@
          			<input type="text" class="form-control" placeholder="id">
          			<input type="text" class="form-control" placeholder="password">
         		</div>
-        		<button type="submit" class="btn btn-default">Submit</button>
+        		<button type="submit" class="btn btn-default">Login</button>
       		</form>
       	</div>
 	</nav>
@@ -43,38 +82,27 @@
   		<h1 style="color:white">My Account</h1>
 	</div>
 	<div class="container">
-	<div style="height:110px">
-		<div id="personalInfoDiv">
-			<table id="personalInfo">
-			<tr>
-				<th>Username</th>
-				<td>alyssalerner</td>
-			</tr>
-			<tr>
-				<th>Name</th>
-				<td><input type="text" class="form-control" id="editName" placeholder="Alyssa Lerner"></td>
-			<tr>
-				<th>Street</th>
-				<td><input type="text" class="form-control" id="editStreet" placeholder="1234 uncreative address"></td>
-			</tr>
-			<tr>
-				<th>Address Line 2</th>
-				<td><input type="text" class="form-control" name="editAddressLine2"placeholder=""></td>
-			</tr>
-			<tr>
-				<th>City</th>
-				<td><input type="text" class="form-control" name="editCity"placeholder="Vancouver"></td>
-			</tr>
-			<tr>
-				<th>Province</th>
-				<td><input type="text" class="form-control" name="editProvince"placeholder="BC"></td>
-			</tr>
+	<div id="personalInfoDiv" style="height:110px">
+		<?php
+			displayInfoForm();
+		?>
+		<form>
+			<table id='changePassword'>
+				<caption>Change Password</caption>
+				<tr>
+					<th>Enter your current password</th>
+					<td><input type='password' class='form-control' id='currentPasswordBox'></td>
+				</tr>
+				<tr>
+					<th>Enter your new password</th>
+					<td><input type='password' class='form-control' id='newPasswordBox'></td>
+				</tr>
+				<tr>
+					<th>Re-enter your new password</th>
+					<td><input type='password' class='form-control' id='reNewPasswordBox'></td>
+				</tr>
 			</table>
-		</div>
-		<div id="submitInfoDiv">
-			<form action="myaccount.php">
-				<input type="submit" class="btn btn-default" value="Save Info">
-			</form>
-		</div>
+			<button type="submit" class="btn btn-default">Save Password</button>
+		</form>
 	</div>
 </body>
