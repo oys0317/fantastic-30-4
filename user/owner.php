@@ -5,7 +5,7 @@
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = 'SELECT Name, PetName, Species, Size, Address, WithinDistance, StartDate, EndDate, a.OwnerID 
 			FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
-			WHERE a.OwnerID = op.OwnerID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and a.PetID = op.PetID';
+			WHERE a.OwnerID = op.OwnerID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and a.PetID = op.PetID and a.RequestID NOT IN (SELECT RequestID FROM Contract WHERE RequestID IS NOT NULL and Status=1)';
 
 			echo '<table class="table table-striped">';
 
@@ -70,7 +70,7 @@
 
 				echo '<td>';
 				echo $row['WithinDistance'];
-				echo '</td>';
+				echo ' km</td>';
 
 				echo '<td>';
 				echo $row['StartDate'];

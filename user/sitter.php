@@ -6,7 +6,7 @@
 			$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate 
 					FROM SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c 
 					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID
-					and sa.AvailabilityID';
+					and sa.AvailabilityID and sa.AvailabilityID NOT IN (SELECT AvailabilityID FROM Contract WHERE AvailabilityID IS NOT NULL and Status=1)';
 			echo '<table class="table table-striped">';
 			echo '<th>';
 			echo "name";
