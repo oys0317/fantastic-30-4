@@ -10,7 +10,7 @@
 
 <head>
 	<link rel="stylesheet" href="../bootstrap.min.css">
-	<title>Pet Owners</title>
+	<title>PetCare</title>
 </head>
 <body>
 	<?php include '../include/header.php'; ?>

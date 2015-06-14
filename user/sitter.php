@@ -3,10 +3,9 @@
 	function getSitterAvailability() {
 		try{
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate 
+			$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate, sa.AvailabilityID as AvailabilityID, sa.SitterID as SitterID
 					FROM SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c 
-					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID
-					and sa.AvailabilityID and sa.AvailabilityID NOT IN (SELECT AvailabilityID FROM Contract WHERE AvailabilityID IS NOT NULL and Status=1)';
+					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID and NOT EXISTS (SELECT * FROM Contract cn WHERE cn.AvailabilityID IS NOT NULL and Status=1 and cn.AvailabilityID = sa.AvailabilityID and cn.SitterID = sa.SitterID)';
 			echo '<table class="table table-striped">';
 			echo '<th>';
 			echo "name";
@@ -68,9 +67,7 @@
 				
 				if (isset($_COOKIE['userID'])) {
 					echo '<td>';
-					echo'<form action="contractToSitter.php">
-							<input type="submit" value="Contract">
-						</form>';
+					echo '<a href="contractToSitter.php?AvailabilityID='.$row['AvailabilityID'].'&SitterID='.$row['SitterID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
 					echo '</td>';
 				}	
 

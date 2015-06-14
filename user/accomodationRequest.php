@@ -5,7 +5,7 @@
 <body>
 	<?php $db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root"); ?>
 	<?php include '../include/header.php'; ?>
-	<div style="padding: 80px 0; background-color:60c0dc; !important" class="jumbotron">
+	<div style="padding: 80px 0; background-color:337ab7; !important" class="jumbotron">
   		<div class="container">
   			<h1 style="color:white">Add Accomodation Request</h1>
   			<p style="color:white">Please add your infomation</p>
