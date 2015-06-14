@@ -38,5 +38,5 @@ if (substr(trim($line), -1, 1) == ';')
     $templine = '';
 }
 }
- echo "Tables imported successfully";
+ echo "Tables imported successfully!";
 ?>

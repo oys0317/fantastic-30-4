@@ -64,6 +64,7 @@
 			<li>Pet 2</li>
 			<li>Pet 3</li>
 			</ul>
+			<a href="newpet.php" class="btn btn-primary" role="button">Add Pet</a>
 		</div>
 		<div style="overflow:hidden">
 			<h2>My Availabilities</h2>
