@@ -142,10 +142,10 @@
 					<h2>Personal Information</h2>
 					<?php 
 						displayAccountInfo();
-					?>
+					?>					
+					<a href="editPersonalInfo.php" class="btn btn-primary" role="button">Edit</a>
 				</div>
 				<div id="editinfo" style="overflow:hidden">
-					<a href="editPersonalInfo.php">Edit Info</a>
 				</div>
 			</div>
 			<div>
