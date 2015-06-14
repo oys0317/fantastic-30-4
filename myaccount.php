@@ -129,7 +129,7 @@
   		<h1 style="color:white">My Account</h1>
 	</div>
 	<div class="container">
-<<<<<<< HEAD
+
 
 		<?php if(isset($_COOKIE['userID'])): ?>
 			<div style="height:110px">
@@ -159,46 +159,8 @@
 		<?php else : ?>
 				<p>Please login to view your account.</p>
 		<?php endif; ?>
-=======
-	<div style="height:110px">
-		<div style="margin-left:10%;float:left;width:55%;overflow:hidden">
-			<table id="personalInfo">
-			<tr>
-				<th>Username</th>
-				<td>alyssalerner</th>
-			</tr>
-			<tr>
-				<th>Name</th>
-				<td>Alyssa Lerner</td>
-			<tr>
-				<th>Address</th>
-				<td>1234 uncreative address, Vancouver BC</td>
-			</tr>
-
-			</table>
-		</div>
-		<div id="editinfo" style="overflow:hidden">
-			<a href="editPersonalInfo.php">Edit Info</a>
-		</div>
-	</div>
-	<div>
-		<div style="margin-left:10%;float:left;width:55%;overflow:hidden">
-			<h2>My Pets</h2>
-			<ul>
-			<li>Pet 1</li>
-			<li>Pet 2</li>
-			<li>Pet 3</li>
-			</ul>
 			<a href="newpet.php" class="btn btn-primary" role="button">Add Pet</a>
-		</div>
-		<div style="overflow:hidden">
-			<h2>My Availabilities</h2>
-			<ul>
-			<li>Avail 1</li>
-			<li>Avail 2</li>
-			<li>Avail 3</li>
-			</ul>
-		</div>
->>>>>>> 69728001c679542ed7deef7c06e61080cf889b51
+		
 	</div>
+			
 </body>
