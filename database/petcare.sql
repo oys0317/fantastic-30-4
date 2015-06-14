@@ -61,13 +61,25 @@ CREATE TABLE AccommodationRequest
  WithinDistance 		REAL NOT NULL, 
  StartDate 		DATE NOT NULL, 
  EndDate 		DATE NOT NULL, 
- SitterID 		Char(20),
- AvailabilityID 		INTEGER,
- Compensation 		REAL,
  primary key(PetID, RequestID),
- foreign key(OwnerID, PetID) references OwnsPet(OwnerID, PetID),
- foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID, AvailabilityID));
+ foreign key(OwnerID, PetID) references OwnsPet(OwnerID, PetID));
 
+CREATE TABLE Contract
+(ContractID		INTEGER,
+ OwnerID       	Char(20),
+ PetID 			INTEGER, 
+ RequestID 		INTEGER,
+ SitterID	Char(20),
+ AvailabilityID 	INTEGER,
+ StartDate  	DATE,
+ EndDate 		DATE,
+ Compensation 	REAL,
+ Status 		BOOL,
+ primary key(ContractID),
+ foreign key(PetID, RequestID) references AccommodationRequest(PetID, RequestID),
+ foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
+
+ 
 -- Insert to User
 INSERT INTO User VALUES('admin','admin','Administor','Fantastic 30-4','304-304-304');
 INSERT INTO User VALUES('jennysong','jen123','Jenny Song','2573 West Mall, Vancouver','778-123-3413');
@@ -107,16 +119,16 @@ INSERT INTO SitterAvailability VALUES('harrisonf',200,'15/07/15','15/09/01');
 INSERT INTO SitterAvailability VALUES('luciaa',201,'15/08/20','15/09/10');
 
 -- Insert to AccommodationRequest
-INSERT INTO AccommodationRequest VALUES('jennysong',1,111,10.0,'15/06/1','15/06/30','alyssalerner',192,40);
-INSERT INTO AccommodationRequest VALUES('jennysong',2,112,10.0,'15/07/01','15/07/31','alyssalerner',193,40);
-INSERT INTO AccommodationRequest VALUES('younoh',3,113,10.0,'15/06/03','15/06/10','harrisonf',194,40);
-INSERT INTO AccommodationRequest VALUES('younoh',4,114,10.0,'15/06/15','15/08/01','harrisonf',195,40);
-INSERT INTO AccommodationRequest VALUES('magnushvidsten',5,115,10.0,'15/07/20','15/08/10','luciaa',196,40);
-INSERT INTO AccommodationRequest VALUES('jennysong',1,116,10.0,'15/07/1','15/07/30',Null,Null,Null);
-INSERT INTO AccommodationRequest VALUES('jennysong',2,117,10.0,'15/08/1','15/08/31',Null,Null,Null);
-INSERT INTO AccommodationRequest VALUES('younoh',3,118,10.0,'15/07/03','15/07/10',Null,Null,Null);
-INSERT INTO AccommodationRequest VALUES('younoh',4,119,10.0,'15/07/15','15/09/01',Null,Null,Null);
-INSERT INTO AccommodationRequest VALUES('magnushvidsten',5,120,10.0,'15/08/20','15/09/10',Null,Null,Null);
+INSERT INTO AccommodationRequest VALUES('jennysong',1,111,10.0,'15/06/1','15/06/30');
+INSERT INTO AccommodationRequest VALUES('jennysong',2,112,10.0,'15/07/01','15/07/31');
+INSERT INTO AccommodationRequest VALUES('younoh',3,113,10.0,'15/06/03','15/06/10');
+INSERT INTO AccommodationRequest VALUES('younoh',4,114,10.0,'15/06/15','15/08/01');
+INSERT INTO AccommodationRequest VALUES('magnushvidsten',5,115,10.0,'15/07/20','15/08/10');
+INSERT INTO AccommodationRequest VALUES('jennysong',1,116,10.0,'15/07/1','15/07/30');
+INSERT INTO AccommodationRequest VALUES('jennysong',2,117,10.0,'15/08/1','15/08/31');
+INSERT INTO AccommodationRequest VALUES('younoh',3,118,10.0,'15/07/03','15/07/10');
+INSERT INTO AccommodationRequest VALUES('younoh',4,119,10.0,'15/07/15','15/09/01');
+INSERT INTO AccommodationRequest VALUES('magnushvidsten',5,120,10.0,'15/08/20','15/09/10');
 
 -- Insert to CanTakeCareOf
 INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',192);
@@ -129,3 +141,9 @@ INSERT INTO CanTakeCareOf VALUES('small','cat','alyssalerner',198);
 INSERT INTO CanTakeCareOf VALUES('big','dog','harrisonf',199);
 INSERT INTO CanTakeCareOf VALUES('medium','dog','harrisonf',200);
 INSERT INTO CanTakeCareOf VALUES('medium','dog','luciaa',201);
+
+INSERT INTO Contract VALUES(1,'jennysong',1,111,'alyssalerner',192,'15/06/1','15/06/30',40,1);
+INSERT INTO Contract VALUES(2,'jennysong',2,112,'alyssalerner',193,'15/07/01','15/07/31',40,1);
+INSERT INTO Contract VALUES(3,'younoh',3,113,'harrisonf',194,'15/06/03','15/06/10',40,1);
+INSERT INTO Contract VALUES(4,'younoh',4,114,'harrisonf',195,'15/06/15','15/08/01',40,1);
+INSERT INTO Contract VALUES(5,'magnushvidsten',5,115,'luciaa',196,'15/07/20','15/08/10',40,1);

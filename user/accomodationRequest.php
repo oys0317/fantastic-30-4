@@ -11,7 +11,7 @@
   		</div>
 	</div>
 	<div class="container">
-		<form action="createpet.php" method="post">
+		<form action="createAccomodationRequest.php" method="post">
 			<legend>Enter your pet information here:</legend>
 		  	<div class="form-group">
 			    <label for="PetID">Pet ID</label>
