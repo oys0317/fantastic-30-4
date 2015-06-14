@@ -84,7 +84,7 @@
 
 			// Display each availability
 			echo '<table class="table table-striped">';
-			echo '<tr><th>Start Date</th><th>End Date</th><th>Pet Type</th></tr>';
+			echo '<tr><th>Pet Type</th><th>Size</th><th>Start Date</th><th>End Date</th></tr>';
 			foreach($db->query($availSQL) as $row) {
 				echo '<tr>';
 
@@ -158,7 +158,7 @@
 					<?php
 						displayAvailInfo();
 					?>
-					
+					<a href="sitterAddAvailability.php" class="btn btn-primary" role="button">Add Availability</a>
 				</div>
 			</div>
 		<?php else : ?>
