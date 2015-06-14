@@ -1,6 +1,6 @@
 <head>
 	<link rel="stylesheet" href="../bootstrap.min.css">
-	<title>Pet Owners</title>
+	<title>Add Your Availability</title>
 </head>
 <body>
 	<?php $db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root"); ?>
