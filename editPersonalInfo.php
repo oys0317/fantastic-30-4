@@ -17,7 +17,7 @@
 				
 				// Most info here
 				echo "<form action='savePersonalInfo.php' method='post'>";
-				echo "<table id='editPersonalInfo'><caption>Change Information</caption><tr><th>Username</th><td>";
+				echo "<table id='editPersonalInfo' class='table'><h2>Change Information</h2><tr><th>Username</th><td>";
 				echo $row['UserID'];
 				echo "</td></tr><tr><th>Name</th><td>";
 				echo "<input type='text' class='form-control' name='editName' placeholder='";
@@ -29,7 +29,7 @@
 				echo "<input type='text' class='form-control' name='editPhoneNum' placeholder='";
 				echo $row['PhoneNum'];
 				echo "'></td></tr></table>";
-				echo "<input type='submit' class='btn btn-default' value='Save Changes'>";
+				echo "<input type='submit' class='btn btn-warning' value='Save Changes'>";
 				echo "</form>";
 
 			}
@@ -42,53 +42,27 @@
 ?>
 
 <head>
-
-<link rel="stylesheet" href="bootstrap.min.css">
-<style type="text/css">
-
-#personalInfo td,th {
-	padding-right: 20px;
-	padding-top: 8px;
-	margin-left: 0px;
-}
-#submitInfoDiv {
-	
-}
-
-#personalInfoDiv {
-	
-}
-
-</style>
-<title>Edit Information</title>
-
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<title>PetCare</title>
 </head>
 
 
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-	    	<a class="navbar-brand" href="index.php">PETCARE</a>
-			<form class="navbar-form navbar-right">
-        		<div class="form-group">
-         			<input type="text" class="form-control" placeholder="id">
-         			<input type="text" class="form-control" placeholder="password">
-        		</div>
-        		<button type="submit" class="btn btn-default">Login</button>
-      		</form>
-      	</div>
-	</nav>
-	<div style="padding: 25px 0; background-color:a5d1ff; !important" class="jumbotron">
-  		<h1 style="color:white">My Account</h1>
+	<?php include './include/header.php'; ?>
+	<div style="padding: 80px 0; background-color:951152; !important" class="jumbotron">
+  		<div class="container">
+  			<h1 style="color:white">Edit My Account</h1>
+  		</div>
 	</div>
 	<div class="container">
-	<div id="personalInfoDiv" style="height:110px">
 		<?php
 			displayInfoForm();
 		?>
+	</div>
+	<div class="container" style="margin-top:40px;">
 		<form action='saveNewPassword.php' method='post'>
-			<table id='changePassword'>
-				<caption>Change Password</caption>
+			<table id='changePassword' class="table">
+				<h2>Change Password</h2>
 				<tr>
 					<th>Enter your current password</th>
 					<td><input type='password' class='form-control' name='currentPasswordBox'></td>
@@ -102,7 +76,7 @@
 					<td><input type='password' class='form-control' name='otherNewPasswordBox'></td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-default">Save Password</button>
+			<button type="submit" class="btn btn-warning">Save Password</button>
 		</form>
 		<a href="../myaccount.php">Back to account</button>
 	</div>

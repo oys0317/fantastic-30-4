@@ -2,9 +2,9 @@
 		$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root"); 
 		echo $_GET[RequestID];
 
-		$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate, PhoneNum
+		$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate, PhoneNum, sa.SitterID as SitterID
 					FROM SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c 
-					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID and sa.AvailabilityID = '.$_GET[AvailabilityID].' and sa.SitterID = '.$_GET[SitterID];
+					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID and sa.SitterID = "'.$_GET[SitterID].'"and sa.AvailabilityID = '.$_GET[AvailabilityID];
 
 ?>
 
@@ -17,16 +17,11 @@
 	<div style="padding: 80px 0; background-color:5cb85c; !important" class="jumbotron">
   		<div class="container">
   			<h1 style="color:white">Send Contract</h1>
-  			<p style="color:white">to <?php echo $_GET[SitterID]; ?></p>
+  			<p style="color:white">to <?php foreach ($db->query($sql) as $row) { echo $row['Name'];} ?></p>
   		</div>
 	</div>
 	<div class="container">
-	<?php 
-		foreach ($db->query($sql) as $row) { 
-			echo $row['Name'];
-		}
-	?>
-		<!--table class="table">
+		<table class="table">
 			<tr>
 				<td>Sitter's Name:</td>
 				<td><?php foreach ($db->query($sql) as $row) { echo $row['Name'];} ?></td>
@@ -51,7 +46,7 @@
 				<td>Available Until:</td>
 				<td><?php foreach ($db->query($sql) as $row) { echo $row['EndDate'];} ?></td>
 			</tr>
-		</table-->
+		</table>
 	</div>
 	<div class="container">
 		<form action="createuser.php" method="post">

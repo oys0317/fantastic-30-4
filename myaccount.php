@@ -112,61 +112,40 @@
 ?>
 
 <head>
-
-<link rel="stylesheet" href="bootstrap.min.css">
-<style type="text/css">
-
-#personalInfo td,th {
-	padding-left: 20px;
-	padding-top: 8px;
-}
-
-</style>
-<title>My Account</title>
-
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<title>PetCare</title>
 </head>
 
 
 <body>
 	<?php include './include/header.php'; ?>
 
-	<div style="padding: 25px 0; background-color:951152; !important" class="jumbotron">
-  		<h1 style="color:white">My Account</h1>
+	<div style="padding: 80px 0; background-color:951152; !important" class="jumbotron">
+  		<div class="container">
+  			<h1 style="color:white">My Account</h1>
+  		</div>
 	</div>
-	<div class="container">
-
-
-		<?php if(isset($_COOKIE['userID'])): ?>
-			<div style="height:110px">
-				<div style="margin-left:10%;float:left;width:55%;overflow:hidden">
-					<h2>Personal Information</h2>
-					<?php 
-						displayAccountInfo();
-					?>					
-					<a href="editPersonalInfo.php" class="btn btn-primary" role="button">Edit</a>
-				</div>
-				<div id="editinfo" style="overflow:hidden">
-				</div>
-			</div>
-			<div>
-				<div style="margin-left:10%;float:left;width:55%;overflow:hidden">
-					<h2>My Pets</h2>
-					<?php
-						displayPetInfo();
-					?>
-					<a href="newpet.php" class="btn btn-primary" role="button">Add Pet</a>
-				</div>
-				<div style="overflow:hidden">
-					<h2>My Availabilities</h2>
-					<?php
-						displayAvailInfo();
-					?>
-					<a href="user/sitterAddAvailability.php" class="btn btn-primary" role="button">Add Availability</a>
-				</div>
-			</div>
-		<?php else : ?>
-				<p>Please login to view your account.</p>
-		<?php endif; ?>
+	<?php if(isset($_COOKIE['userID'])): ?>
+		<div class="container" style="margin-top:40px;">
+			<h2>Personal Information</h2>
+			<?php displayAccountInfo(); ?>					
+			<a href="editPersonalInfo.php" class="btn btn-warning" role="button">Edit</a>
+		</div>
+		<div class="container" style="margin-top:40px; margin-bottom:40px;">
+			<h2>My Pets</h2>
+			<?php displayPetInfo(); ?>
+			<a href="newpet.php" class="btn btn-warning" role="button">Add Pet</a>
+		</div>
+		<div style="overflow:hidden" class="container">
+			<h2>My Availabilities</h2>
+			<?php displayAvailInfo();?>
+			<a href="user/sitterAddAvailability.php" class="btn btn-warning" role="button">Add Availability</a>
+		</div>
+	<?php else : ?>
+		<div class="container">
+			<p>Please login to view your account.</p>
+		</div>
+	<?php endif; ?>
 			
 		
 	</div>
