@@ -15,10 +15,10 @@
 	//check if the new pet is successfully created
 	$stmt = $db->prepare("select PetID from ownspet where PetID=:PetID");
 	$stmt ->execute();
-	$row = $stmt->fetch();
+	$petid = $stmt->fetch();
 
 	//if successfully created, then login
-	if ($_POST["petID"] == $row) {
+	if ($_POST["petID"] == $petid) {
 		header('Location: ./myaccount.php');
 		die();
 	}
@@ -28,5 +28,5 @@
 		header('Location: ./index.php');
 		die();
 	}
-	
+
 ?>

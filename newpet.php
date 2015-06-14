@@ -15,19 +15,19 @@
 			<legend>Enter your pet information here:</legend>
 		  	<div class="form-group">
 			    <label for="PetID">Pet ID</label>
-			    <input type="number" class="form-control" id="PetID" placeholder="Enter Pet ID">
+			    <input type="number" class="form-control" name="PetID" placeholder="Enter Pet ID">
 		 	</div>
 		  	<div class="form-group">
 			    <label for="PetName">Pet Name</label>
-			    <input type="text" class="form-control" id="PetName" placeholder="Enter Pet Name">
+			    <input type="text" class="form-control" name="PetName" placeholder="Enter Pet Name">
 		  	</div>
 		  	<div class="form-group">
 			    <label for="Size">Size</label>
-			    <input type="text" class="form-control" id="Size" placeholder="Enter Pet Size (small, medium or large)">
+			    <input type="text" class="form-control" name="Size" placeholder="Enter Pet Size (small, medium or large)">
 		 	</div>
 		  	<div class="form-group">
 			    <label for="Species">Species</label>
-			    <input type="text" class="form-control" id="Species" placeholder="Enter Pet Species">
+			    <input type="text" class="form-control" name="Species" placeholder="Enter Pet Species">
 		 	</div>
 		  	<button type="submit" class="btn btn-default">Submit</button>
 		</form>
