@@ -14,20 +14,23 @@
 		<form action="createpet.php" method="post">
 			<legend>Enter your pet information here:</legend>
 		  	<div class="form-group">
-			    <label for="PetID">Pet ID</label>
-			    <input type="number" class="form-control" name="PetID" placeholder="Enter Pet ID">
-		 	</div>
-		  	<div class="form-group">
 			    <label for="PetName">Pet Name</label>
 			    <input type="text" class="form-control" name="PetName" placeholder="Enter Pet Name">
 		  	</div>
 		  	<div class="form-group">
-			    <label for="Size">Size</label>
-			    <input type="text" class="form-control" name="Size" placeholder="Enter Pet Size (small, medium or large)">
-		 	</div>
+			    <label for="Size">Select Pet Size</label>
+			    <select type="text" class="form-control" name="Size">
+			    <option value="small">Small</option>
+			    <option value="medium">Medium</option>
+			    <option value="large">Large</option>
+			    </select>		 	</div>
 		  	<div class="form-group">
-			    <label for="Species">Species</label>
-			    <input type="text" class="form-control" name="Species" placeholder="Enter Pet Species">
+			    <label for="Species">Select Pet Species</label>
+			    <select type="text" class="form-control" name="Species">
+			    <option value="cat">Cat</option>
+			    <option value="dog">Dog</option>
+			    <option value="others">Others</option>
+			    </select>
 		 	</div>
 		  	<button type="submit" class="btn btn-default">Submit</button>
 		</form>

@@ -2,17 +2,27 @@
 
 	//create new pet
 	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-	
-	$sql = 'INSERT INTO petOwner
+
+	$sql = 'INSERT INTO PetOwner
 			VALUES("'.$_COOKIE['userID'].'")
 			';
 	$db->query($sql);
 
+	$sql = 'SELECT MAX(PetID)
+			FROM OwnsPet
+			WHERE OwnerID ="'.$_COOKIE['userID'].'"';
+	$PetID = 0;
+	foreach($db->query($sql) as $row){
+		$PetID = $row['MAX(PetID)'];
+	}
 
-	$stmt = $db->prepare("INSERT INTO ownspet (OwnerID,PetID,PetName,Size,Species) 
+	$PetID += 1;
+
+
+	$stmt = $db->prepare("INSERT INTO OwnsPet (OwnerID,PetID,PetName,Size,Species) 
 						  VALUES(:OwnerID,:PetID,:PetName,:Size,:Species);");
 	$stmt->bindParam(':OwnerID', $_COOKIE['userID']);
-	$stmt->bindParam(':PetID', $_POST['PetID']);
+	$stmt->bindParam(':PetID', $PetID);
 	$stmt->bindParam(':PetName', $_POST['PetName']);
 	$stmt->bindParam(':Size', $_POST['Size']);
 	$stmt->bindParam(':Species', $_POST['Species']);

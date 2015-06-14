@@ -1,6 +1,6 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-	    	<a class="navbar-brand" href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/index.php">PetCare</a>
+	    	<a class="navbar-brand" href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/index.php">Pet Care</a>
 			<?php if(!isset($_COOKIE['userID'])): ?>
 				<form class="navbar-form navbar-right" action= "<?php $_SERVER['DOCUMENT_ROOT'] ?>/login.php" method="post">
 	        		<div class="form-group">
