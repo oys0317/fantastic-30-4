@@ -34,7 +34,6 @@
 
 	function displayPetInfo() {
 
-		echo "<table id='petInfo'><tr><th>Name</th><th>Size</th><th>Species</th><th>ID</th></tr>";
 		try {
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$userID = $_COOKIE['userID'];
@@ -49,6 +48,7 @@
 
 			// Display each pet's information
 			echo '<table class="table table-striped">';
+			echo "<th>Name</th><th>Size</th><th>Species</th><th>ID</th></tr>";
 			foreach($db->query($petSQL) as $row) {
 				echo '<tr>';
 
@@ -69,7 +69,6 @@
 
 	function displayAvailInfo() {
 
-		echo "<table id='availInfo'><tr><th>Start Date</th><th>End Date</th><th>Pet Type</th></tr>";
 		try {
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$userID = $_COOKIE['userID'];
@@ -84,17 +83,22 @@
 			}
 
 			// Display each availability
+			echo '<table class="table table-striped">';
+			echo '<tr><th>Start Date</th><th>End Date</th><th>Pet Type</th></tr>';
 			foreach($db->query($availSQL) as $row) {
+				echo '<tr>';
 
-				echo "<tr><td>";
+				echo '<td>';
 				echo $row['StartDate'];
-				echo "</td><td>";
+				echo '</td><td>';
 				echo $row['EndDate'];
-				echo "</td><td>";
+				echo '</td><td>';
 				echo $row['Size'];
-				echo " ";
+				echo '</td><td>' ;
 				echo $row['Species'];
-				echo "</td><td>";
+				echo '</td>';
+
+				echo '</tr>';
 			}
 		}
 		catch(Exception $e) {
@@ -154,6 +158,7 @@
 					<?php
 						displayAvailInfo();
 					?>
+					<a href="accomodationrequest.php" class="btn btn-primary" role="button">Add Accomodation Request</a>
 				</div>
 			</div>
 		<?php else : ?>
