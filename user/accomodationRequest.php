@@ -12,10 +12,28 @@
 	</div>
 	<div class="container">
 		<form action="createAccomodationRequest.php" method="post">
-			<legend>Enter your pet information here:</legend>
 		  	<div class="form-group">
-			    <label for="PetID">Pet ID</label>
-			    <input type="number" class="form-control" id="PetID" placeholder="Enter Pet ID">
+			    <label for="SelectYourPet">Select Your Pet</label>
+			    <select type="number" class="form-control" id="PetID">
+			    <?php
+			    	try{
+						$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+						$sql = 'SELECT PetID, PetName 
+						FROM OwnsPet
+						WHERE OwnerID = "jennysong"';
+						foreach($db->query($sql) as $row){
+							echo'<option value=';
+							echo $row['PetID'];
+							echo '>';
+							echo $row['PetName'];
+							echo '</option>';
+						}
+					} catch(Exception $e){
+					echo "Could not connect to the database";
+					exit;
+					}
+			    ?>
+			    </select>
 		 	</div>
 		  	<div class="form-group">
 			    <label for="PetName">Pet Name</label>
