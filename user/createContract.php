@@ -14,7 +14,7 @@
 	$stmt->bindParam(':EndDate', );
 	$stmt->bindParam(':Compensation', );
 	$stmt->bindParam(':Status', );
-	$stmt->execute();
+	$stmt->execute(); 
 
 
 ?>
