@@ -2,7 +2,8 @@
 -- 	Database Table Creation
 --
 --  First drop any existing tables. Any errors are ignored.
-DROP Table IF EXISTS Contract;
+DROP Table IF EXISTS ContractToSitter;
+DROP Table IF EXISTS ContractToOwner;
 DROP TABLE IF EXISTS AccommodationRequest;
 DROP TABLE IF EXISTS CanTakeCareOf;
 DROP TABLE IF EXISTS SitterAvailability;
@@ -64,19 +65,30 @@ CREATE TABLE AccommodationRequest
  primary key(PetID, RequestID),
  foreign key(OwnerID, PetID) references OwnsPet(OwnerID, PetID));
 
-CREATE TABLE Contract
-(ContractID		INTEGER,
- OwnerID       	Char(20),
+CREATE TABLE ContractToOwner
+(OwnerID       	Char(20),
  PetID 			INTEGER, 
  RequestID 		INTEGER,
- SitterID	Char(20),
- AvailabilityID 	INTEGER,
+ SitterID		Char(20),
  StartDate  	DATE,
  EndDate 		DATE,
  Compensation 	REAL,
  Status 		BOOL,
- primary key(ContractID),
+ primary key(OwnerID,RequestID,PetID,SitterID),
  foreign key(PetID, RequestID) references AccommodationRequest(PetID, RequestID),
+ foreign key(SitterID) references User(UserID));
+
+CREATE TABLE ContractToSitter
+(OwnerID       	Char(20),
+ PetID 			INTEGER, 
+ AvailabilityID INTEGER,
+ SitterID		Char(20),
+ StartDate  	DATE,
+ EndDate 		DATE,
+ Compensation 	REAL,
+ Status 		BOOL,
+ primary key(OwnerID,AvailabilityID,PetID,SitterID),
+ foreign key(OwnerID,PetID) references OwnsPet(OwnerID,PetID),
  foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
 
  
@@ -142,12 +154,15 @@ INSERT INTO CanTakeCareOf VALUES('medium','dog','luciaa',201);
 
 -- Insert to Contract
 --Contract To Owner
-INSERT INTO Contract VALUES(1,'jennysong',1,111,'alyssalerner',NULL,'15/06/1','15/06/30',30,1);  
-INSERT INTO Contract VALUES(2,'jennysong',2,112,'alyssalerner',NULL,'15/07/01','15/07/31',40,0); 
+INSERT INTO ContractToOwner VALUES('jennysong',1,111,'alyssalerner','15/06/1','15/06/30',30,1);  
+INSERT INTO ContractToOwner VALUES('jennysong',2,112,'alyssalerner','15/07/01','15/07/31',40,0);
+INSERT INTO ContractToOwner VALUES('younoh',3,118,'luciaa','15/07/03','15/07/10',50,1);
+
+
 --Contract To Sitter
-INSERT INTO Contract VALUES(3,'younoh',3,NULL,'harrisonf',194,'15/06/03','15/06/10',20,1);		 
-INSERT INTO Contract VALUES(4,'younoh',4,NULL,'harrisonf',195,'15/06/15','15/08/01',35,1);		 
-INSERT INTO Contract VALUES(5,'magnushvidsten',5,NULL,'luciaa',196,'15/07/20','15/08/10',40,0);	 
+INSERT INTO ContractToSitter VALUES('younoh',3,194,'harrisonf','15/06/03','15/06/10',20,1);		 
+INSERT INTO ContractToSitter VALUES('younoh',4,195,'harrisonf','15/06/15','15/08/01',35,1);		 
+INSERT INTO ContractToSitter VALUES('magnushvidsten',5,196,'luciaa','15/07/20','15/08/10',40,0);	 
 
 
 

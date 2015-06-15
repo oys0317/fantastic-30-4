@@ -1,7 +1,7 @@
 <?php
 		$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root"); 
 
-		$stmt = $db->prepare('SELECT Name, PetName, Species, Size, Address,PhoneNum, WithinDistance, StartDate, EndDate, a.OwnerID as OwnerID
+		$stmt = $db->prepare('SELECT Name, PetName, Species, Size, Address,PhoneNum, WithinDistance, StartDate, EndDate, a.OwnerID as OwnerID, a.RequestID as RequestID, a.PetID as PetID
 				FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
 				WHERE a.OwnerID = op.OwnerID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and a.PetID = op.PetID and a.RequestID=:RequestID and a.PetID=:PetID');
 		$stmt->execute(array(':RequestID' => $_GET[RequestID], ':PetID' => $_GET[PetID]));
@@ -60,14 +60,13 @@
 		<form action="createContract.php" method="post">
 		  	<div class="form-group">
 			    <label for="Compensation">Compensation Per Day (CAD)</label>
-			    <input type="Integer" class="form-control" name="compensation" placeholder="Enter Compensation">
-			    <!--input type="hidden" name="OwnerID" value= '"<?php $row['EndDate'] ?>}">
-			    <input type="hidden" name="PetID" value="">
-			    <input type="hidden" name="RequestID" value="">
-			    <input type="hidden" name="SitterID" value="">
-			    <input type="hidden" name="AvailabilityID" value="">
-			    <input type="hidden" name="StartDate" value="">
-			    <input type="hidden" name="EndDate" value=""-->
+			    <input type="Number" class="form-control" name="Compensation" placeholder="Enter Compensation">
+			    <input type="hidden" name="OwnerID" value= "<?php echo $row['OwnerID'] ?>">
+			    <input type="hidden" name="PetID" value="<?php echo $row['PetID'] ?>">
+			    <input type="hidden" name="RequestID" value="<?php echo $row['RequestID'] ?>">
+			    <input type="hidden" name="StartDate" value="<?php echo $row['StartDate'] ?>">
+			    <input type="hidden" name="EndDate" value="<?php echo $row['EndDate'] ?>">
+			    <input type="hidden" name="Where" value="ContractToOwner">
 
 		 	</div>	 		
 		  	<button type="submit" class="btn btn-warning">Send Contract</button>
