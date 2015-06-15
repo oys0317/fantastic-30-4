@@ -19,7 +19,7 @@
 				echo "<form action='savePersonalInfo.php' method='post'>";
 				echo "<table id='editPersonalInfo' class='table'><h2>Change Information</h2><tr><th>Username</th><td>";
 				echo $row['UserID'];
-				echo "</td></tr><tr><th>Name</th><td>";
+				echo "</td></tr><tr><th style='width:30%'>Name</th><td>";
 				echo "<input type='text' class='form-control' name='editName' placeholder='";
 				echo $row['Name'];
 				echo "'></td></tr><tr><th>Address</th><td>";
@@ -43,6 +43,13 @@
 
 <head>
 	<link rel="stylesheet" href="bootstrap.min.css">
+	<style type="text/css">
+	
+	input[type=text], input[type=password] {
+		width:	300px;
+	}
+
+	</style>
 	<title>PetCare</title>
 </head>
 
@@ -59,13 +66,13 @@
 			displayInfoForm();
 		?>
 	</div>
-	<div class="container" style="margin-top:40px;">
+	<div class="container" style="margin-top:40px">
 		<form action='saveNewPassword.php' method='post'>
 			<table id='changePassword' class="table">
 				<h2>Change Password</h2>
 				<tr>
-					<th>Enter your current password</th>
-					<td><input type='password' class='form-control' name='currentPasswordBox'></td>
+					<th style='width:30%'>Enter your current password</th>
+					<td style=''><input type='password' class='form-control' name='currentPasswordBox'></td>
 				</tr>
 				<tr>
 					<th>Enter your new password</th>
