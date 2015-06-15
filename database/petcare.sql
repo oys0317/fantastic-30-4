@@ -3,8 +3,8 @@
 --
 --  First drop any existing tables. Any errors are ignored.
 DROP Table IF EXISTS Contract;
-DROP TABLE IF EXISTS CanTakeCareOf;
 DROP TABLE IF EXISTS AccommodationRequest;
+DROP TABLE IF EXISTS CanTakeCareOf;
 DROP TABLE IF EXISTS SitterAvailability;
 DROP TABLE IF EXISTS OwnsPet;
 DROP TABLE IF EXISTS PetSitter;
