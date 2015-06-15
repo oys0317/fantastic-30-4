@@ -1,5 +1,5 @@
 <?php 
-	setcookie('userID', null, time()-3600);
+	setcookie('userID', null, time()-7200);
 	header('Location: ./index.php');
 	die();
 ?>

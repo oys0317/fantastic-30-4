@@ -7,18 +7,17 @@
 	$row = $stmt->fetch();
 
 	//if the password and userid match, login
-	if ($_POST["password"] == $row[0]) {
-		setcookie('userID', $_POST["id"], time() + 3600);
-		header('Location: ./index.php');
-		die();
+	if ($_POST["password"] == $row[0] && $_POST["password"] != null) {
+		setcookie('userID', $_POST["id"], time() + 7200);
+		echo "<script>alert(\"Successfully logged in!\");
+		window.location.href=\"{$_SERVER['HTTP_REFERER']}\";
+		</script>";
 	}
 	//if not matching, return to index page.
 	else {
-		echo '<script>alert("Username or Password was wrong!");
-		window.location.href="./index.php";
-		</script>';
-		//header('Location: ./index.php');
-		die();
+		echo "<script>alert(\"Username or Password was wrong!\");
+		window.location.href=\"{$_SERVER['HTTP_REFERER']}\";
+		</script>";
 	}
 
 ?>
