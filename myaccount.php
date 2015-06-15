@@ -115,7 +115,7 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<title>PetCare</title>
 </head>
-
+<?php if(!isset($_COOKIE['userID'])){header('Location: ./index.php');} ?>
 
 <body>
 	<?php include './include/header.php'; ?>

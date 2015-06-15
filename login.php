@@ -13,9 +13,11 @@
 		die();
 	}
 	//if not matching, return to index page.
-	//TODO: make alert that id or password was wrong
 	else {
-		header('Location: ./index.php');
+		echo '<script>alert("Username or Password was wrong!");
+		window.location.href="./index.php";
+		</script>';
+		//header('Location: ./index.php');
 		die();
 	}
 
