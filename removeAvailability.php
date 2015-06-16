@@ -5,7 +5,7 @@
 		$availID = $_POST['AvailID'];
 
 		if(isset($_POST['AvailID'])) {
-			$sql = "DELETE FROM SitterAvailability s WHERE s.AvailabilityID = :AvailID";
+			$sql = "DELETE FROM SitterAvailability WHERE AvailabilityID = :AvailID";
 			$stmtc = $dbc->prepare($sql);
 			$stmtc->bindParam(':AvailID', $availID);
 			$stmtc->execute();
