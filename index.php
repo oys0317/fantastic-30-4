@@ -25,7 +25,6 @@
   			<div class="btn-group" role="group">
  				<a href="user/sitter.php" class="btn btn-success btn-lg">Pet Sitters</a>
  				<a href="user/owner.php" class="btn btn-primary btn-lg">Pet Owners</a>
-        <a href="user/inbox.php" class="btn btn-success btn-lg">Inbox</a>
 			</div>
   		</div>
 	</div>
