@@ -17,7 +17,7 @@
 
 	//if successfully created, then login
 	if ($_POST["password"] == $row[0]) {
-		setcookie('userID', $_POST["userid"], time() + 3600);
+		setcookie('userID', $_POST["userid"], time() + 7200);
 		header('Location: ./index.php');
 		die();
 	}
