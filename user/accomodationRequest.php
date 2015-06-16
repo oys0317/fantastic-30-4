@@ -47,8 +47,8 @@
 				</div>
 		 	</div>
 		  	<div class="form-group">
-			    <label for="WithInDistance">With In Distance</label>
-			    <input type="text" class="form-control" name="WithInDistance" placeholder="Enter Distance that you can bring your pet in km">
+			    <label for="WithinDistance">With In Distance</label>
+			    <input type="text" class="form-control" name="WithinDistance" placeholder="Enter Distance that you can bring your pet in km">
 		  	</div>
 		  	<div class="form-group">
 			    <label for="StartDate">Start Date</label>
@@ -58,7 +58,7 @@
 			    <label for="EndDate">End Date</label>
 			    <input type="date" class="form-control" name="EndDate">
 		 	</div>
-		  	<button type="submit" class="btn btn-default">Submit</button>
+		  	<button type="submit" class="btn btn-warning">Submit</button>
 		</form>
 	</div>
 </body>
