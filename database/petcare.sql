@@ -23,12 +23,17 @@ CREATE TABLE User
 CREATE TABLE PetOwner
 (OwnerID Char(20),
 primary key (OwnerID),
-foreign key (OwnerID) references User(UserID));
+foreign key (OwnerID) references User(UserID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+	);
 
 CREATE TABLE PetSitter
 (SitterID Char(20),
  primary key (SitterID),
- foreign key (SitterID) references User(UserID));
+ foreign key (SitterID) references User(UserID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE);
 
 CREATE TABLE OwnsPet
 	(OwnerID 	Char(20), 
@@ -37,7 +42,9 @@ CREATE TABLE OwnsPet
  Size 		CHAR(20) NOT NULL,
  Species	CHAR(20) NOT NULL,
  primary key (OwnerID,PetID),
- foreign key(OwnerID) references PetOwner(OwnerID));
+ foreign key(OwnerID) references PetOwner(OwnerID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE);
 
 CREATE TABLE SitterAvailability
 (SitterID	Char(20),
@@ -45,7 +52,9 @@ CREATE TABLE SitterAvailability
  StartDate 	DATE NOT NULL,
  EndDate 	DATE NOT NULL,
  primary key(SitterID, AvailabilityID),
- foreign key(SitterID) references PetSitter(SitterID));
+ foreign key(SitterID) references PetSitter(SitterID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE);
 
 CREATE TABLE CanTakeCareOf
 (Size 		CHAR(20) NOT NULL,
@@ -53,7 +62,9 @@ CREATE TABLE CanTakeCareOf
  SitterID 	Char(20),
  AvailabilityID 	INTEGER,
  primary key (SitterID,AvailabilityID),
- foreign key (SitterID,AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
+ foreign key (SitterID,AvailabilityID) references SitterAvailability(SitterID,AvailabilityID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE);
 
 CREATE TABLE AccommodationRequest
 (OwnerID       	Char(20),
@@ -63,7 +74,9 @@ CREATE TABLE AccommodationRequest
  StartDate 		DATE NOT NULL, 
  EndDate 		DATE NOT NULL, 
  primary key(PetID, RequestID),
- foreign key(OwnerID, PetID) references OwnsPet(OwnerID, PetID));
+ foreign key(OwnerID, PetID) references OwnsPet(OwnerID, PetID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE);
 
 CREATE TABLE ContractToOwner
 (OwnerID       	Char(20),
@@ -75,8 +88,12 @@ CREATE TABLE ContractToOwner
  Compensation 	REAL,
  Status 		BOOL,
  primary key(OwnerID,RequestID,PetID,SitterID),
- foreign key(PetID, RequestID) references AccommodationRequest(PetID, RequestID),
- foreign key(SitterID) references User(UserID));
+ foreign key(PetID, RequestID) references AccommodationRequest(PetID, RequestID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+ foreign key(SitterID) references User(UserID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE);
 
 CREATE TABLE ContractToSitter
 (OwnerID       	Char(20),
@@ -87,8 +104,12 @@ CREATE TABLE ContractToSitter
  Compensation 	REAL,
  Status 		BOOL,
  primary key(OwnerID,AvailabilityID,SitterID),
- foreign key(OwnerID) references User(UserID),
- foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
+ foreign key(OwnerID) references User(UserID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+ foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID,AvailabilityID)
+ 	ON DELETE CASCADE
+	ON UPDATE CASCADE);
 
  
 -- Insert to User
