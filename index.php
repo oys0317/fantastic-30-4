@@ -2,7 +2,9 @@
 	//include 'database.php';
 
 ?>
-
+<iframe src="//giphy.com/embed/NGALQBUgvmVTa?html5=true" width="400" height="336" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="//giphy.com/embed/NGALQBUgvmVTa?html5=true" width="400" height="336" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="//giphy.com/embed/NGALQBUgvmVTa?html5=true" width="400" height="336" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 <head>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<title>Pet Care</title>
