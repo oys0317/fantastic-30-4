@@ -2,6 +2,9 @@
 	function displayAccountInfo() {
 		try {
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+			session_start();
+			$_SESSION['editPwdWrongPwd'] = FALSE;
+			$_SESSION['editPwdNoMatch'] = FALSE;
 			$userID = $_COOKIE['userID'];
 
 			$userSQL = "SELECT UserID, Name, Address, PhoneNum
@@ -115,7 +118,7 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<title>PetCare</title>
 </head>
-<?php if(!isset($_COOKIE['userID'])){header('Location: ./index.php');} ?>
+<?php if(!isset($_COOKIE['userID'])){header('Location: ./index.php');} ;?>
 
 <body>
 	<?php include './include/header.php'; ?>

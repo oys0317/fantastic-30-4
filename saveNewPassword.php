@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 $db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 $userID = $_COOKIE['userID'];
 
@@ -21,10 +22,13 @@ $oldPass = $_POST['currentPasswordBox'];
 $newPass0 = $_POST['newPasswordBox'];
 $newPass1 = $_POST['otherNewPasswordBox'];
 if($realOldPassword != $oldPass) {
+	$_SESSION['editPwdWrongPwd'] = TRUE;	// Tells page to display 'incorrect pwd' text on reload
+	$_SESSION['editPwdNoMatch'] = FALSE;
 	header('Location: ./editPersonalInfo.php');
-	// TODO: Tell user that old password is wrong
 }
 else if($newPass0 != $newPass1) {
+	$_SESSION['editPwdWrongPwd'] = FALSE;
+	$_SESSION['editPwdNoMatch'] = TRUE;		// Tells page to display 'pwds dont match' text on reload
 	header('Location: ./editPersonalInfo.php');
 	// TODO: Tell user that new pwds don't match
 }

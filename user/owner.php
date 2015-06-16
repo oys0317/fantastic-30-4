@@ -8,10 +8,11 @@
 			WHERE a.OwnerID = op.OwnerID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and a.PetID = op.PetID and NOT EXISTS (SELECT * FROM ContractToOwner c WHERE Status=1 and c.RequestID = a.RequestID and c.PetID = a.PetID)';
 
 			// If there are no sitters, display a different message.
-+			if($db->query($sql) == FALSE) {
-+				echo "<p align='center' style='font-size:20'>There are no pets that need sitters right now.<br>Does your pet need a sitter?  Click the button below!</p>";
-+				return;
-+			}
+
+			if($db->query($sql) == FALSE) {
+				echo "<p align='center' style='font-size:20'>There are no pets that need sitters right now.<br>Does your pet need a sitter?  Click the button below!</p>";
+				return;
+			}
 
 			echo '<table class="table table-striped">';
 

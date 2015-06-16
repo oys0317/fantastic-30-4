@@ -12,7 +12,7 @@
 				echo "<p align='center' style='font-size:20'>There are no sitters right now.<br>Click the button below to become one!</p>";
 				return;
 			}
-			
+
 			echo '<table class="table table-striped">';
 			echo '<th>';
 			echo "name";
@@ -43,7 +43,6 @@
 				echo "Contract";
 				echo '</th>';
 			}
-
 
 			foreach($db->query($sql) as $row){
 				echo '<tr>';
