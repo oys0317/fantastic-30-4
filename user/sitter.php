@@ -6,6 +6,13 @@
 			$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate, sa.AvailabilityID as AvailabilityID, sa.SitterID as SitterID
 					FROM SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c 
 					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID and NOT EXISTS (SELECT * FROM Contract cn WHERE cn.AvailabilityID IS NOT NULL and Status=1 and cn.AvailabilityID = sa.AvailabilityID and cn.SitterID = sa.SitterID)';
+
+			// If there are no sitters, display a different message.
+			if($db->query($sql) == FALSE) {
+				echo "<p align='center' style='font-size:20'>There are no sitters right now.<br>Click the button below to become one!</p>";
+				return;
+			}
+
 			echo '<table class="table table-striped">';
 			echo '<th>';
 			echo "name";
@@ -36,7 +43,6 @@
 				echo "Contract";
 				echo '</th>';
 			}
-
 
 			foreach($db->query($sql) as $row){
 				echo '<tr>';
