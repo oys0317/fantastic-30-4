@@ -1,6 +1,14 @@
 <head>
 	<link rel="stylesheet" href="../bootstrap.min.css">
 	<title>Pet Owners</title>
+	<script type="text/javascript">
+	// Disable the checkbox for 'other' species
+	function disableOther(disable) {
+		box = document.getElementById("otherBox");
+		box.disabled = disable;
+	}
+
+	</script>
 </head>
 <body>
 	<?php include './include/header.php'; ?>
@@ -25,12 +33,10 @@
 			    <option value="large">Large</option>
 			    </select>		 	</div>
 		  	<div class="form-group">
-			    <label for="Species">Select Pet Species</label>
-			    <select type="text" class="form-control" name="Species">
-			    <option value="cat">Cat</option>
-			    <option value="dog">Dog</option>
-			    <option value="others">Others</option>
-			    </select>
+			    <input type="radio" name="Species" value="Cat" onclick="disableOther(1)">Cat</input><br>
+			    <input type="radio" name="Species" value="Dog" onclick="disableOther(1)">Dog</input><br>
+			    <input type="radio" name="Species" value="Other" onclick="disableOther(0)">Other (please specify):</input>
+			    <input type="text" name="OtherSpecies" id="otherBox" disabled>
 		 	</div>
 		  	<button type="submit" class="btn btn-warning">Submit</button>
 		</form>

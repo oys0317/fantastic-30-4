@@ -27,18 +27,24 @@
 		$stmt->bindParam(':PetID', $PetID);
 		$stmt->bindParam(':PetName', $_POST['PetName']);
 		$stmt->bindParam(':Size', $_POST['Size']);
-		$stmt->bindParam(':Species', $_POST['Species']);
+
+		$petSpecies = $_POST['Species'];
+		if($petSpecies == "Other") {
+			$petSpecies = $_POST['OtherSpecies'];
+		}
+		$stmt->bindParam(':Species', $petSpecies);
 		$stmt->execute();
 	
-
-
+		header('Location: ./myaccount.php');
+		/*
 		//check if the new pet is successfully created
 		$stmt = $db->prepare("select PetID from ownspet where PetID=:PetID");
-		$stmt ->execute();
-		$petid = $stmt->fetch();
+		$stmt->bindParam(':PetID', $PetID);
+		$stmt->execute();
+		$PetID = $stmt->fetch();
 
 		//if successfully created, then go back
-		if ($_POST["petID"] == $petid) {
+		if ($_POST['petID'] == $PetID) {
 			echo "<script>alert(\"Pet Successfully Added!\");
 			window.location.href=\"./myaccount.php\";
 			</script>";
@@ -48,12 +54,12 @@
 			echo "<script>alert(\"Uhoh Something went wrong. Try Again!\");
 			window.location.href=\"./newpet.php\";
 			</script>";
-		}
+		}*/
 	}
 
 	//when pet name is not entered	
 	else {
-		echo "<script>alert(\"Pet name can't be null.. Try Again!\");
+		echo "<script>alert(\"You must enter a name for your pet!\");
 		window.location.href=\"./newpet.php\";
 		</script>";
 	}
