@@ -16,7 +16,10 @@
   			What?! You worry about your pet!!</br>
   			Don't worry about your pet!!!</br> 
   			Find Pet Sitter Here!!!</br> 
-  			And Get travelling!!!</p>
+  			And Get travelling!!!</br>
+        </br>
+        If you want to view available times for pet sitters, or add your own sitting availabillity, click Pet Sitters! </br>
+        If you want to view accomodation requests, or add your own accomodation request, click Pet Owners! </p>
   			<div class="btn-group" role="group">
  				<a href="user/sitter.php" class="btn btn-success btn-lg">Pet Sitters</a>
  				<a href="user/owner.php" class="btn btn-primary btn-lg">Pet Owners</a>

@@ -116,7 +116,9 @@
 	<div style="padding: 80px 0; background-color:337ab7; !important" class="jumbotron">
   		<div class="container">
   			<h1 style="color:white">Pet Owners</h1>
-  			<p style="color:white">Cras venenatis ullamcorper diam vel accumsan. Morbi elit ipsum, semper vitae erat at, semper finibus risus. In vitae rhoncus ipsum. Aliquam sit amet finibus massa. Morbi non risus eu nibh ullamcorper hendrerit vel vitae mauris. Suspendisse ut felis placerat ante vehicula euismod. Nunc ornare ipsum urna, eget finibus lacus efficitur id. Vivamus dapibus tempor augue at hendrerit. Integer tincidunt, turpis sit amet interdum pellentesque, eros est mollis libero, tempus ullamcorper dui sem a arcu. Maecenas fermentum pellentesque egestas. Aliquam euismod, lectus non elementum posuere, mi turpis interdum velit, quis bibendum ipsum enim vel lacus.</p>
+  			<p style="color:white">This is an overview of current requests for accomodations by pet owners </br>
+  									If you going away for a while and need someone to take care of your pet, add an accomodation request below! </br>
+  									Once an accomodation request is placed, a contract can be made with a potensial pet sitter.</p>
   		</div>
 	</div>
 	<div class="container">
