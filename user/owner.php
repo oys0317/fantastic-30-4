@@ -90,7 +90,7 @@
 				if (isset($_COOKIE['userID'])) {
 					echo '<td>';
 					if ($row['OwnerID']==$_COOKIE['userID']) {
-						echo '<a href="editAccommodationRequest.php?RequestID='.$row['RequestID'].'&PetID='.$row['PetID'].'" class="btn btn-primary btn-sm" role="button">Edit</a>';
+						echo '<a href="editAccommodationRequest.php?RequestID='.$row['RequestID'].'&PetID='.$row['PetID'].'" class="btn btn-primary btn-sm" role="button">Edit/Delete</a>';
 					}
 					else {
 						echo '<a href="contractToOwner.php?RequestID='.$row['RequestID'].'&PetID='.$row['PetID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
