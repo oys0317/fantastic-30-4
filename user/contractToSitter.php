@@ -47,11 +47,16 @@
 			</tr>
 		</table>
 	</div>
-	<div class="container">
+	<div class="container" style="margin-top: 30px;">
 		<form action="createContract.php" method="post">
 		  	<div class="form-group">
 			    <label for="Compensation">Compensation Per Day (CAD)</label>
-			    <input type="Integer" class="form-control" name="compensation" placeholder="Enter Compensation">
+			    <input type="Integer" class="form-control" name="Compensation" placeholder="Enter Compensation">
+			    <input type="hidden" name="AvailabilityID" value="<?= $_GET[AvailabilityID] ?>">
+			    <input type="hidden" name="SitterID" value="<?= $_GET[SitterID] ?>">
+			    <input type="hidden" name="StartDate" value="<?php echo $row['StartDate'] ?>">
+			    <input type="hidden" name="EndDate" value="<?php echo $row['EndDate'] ?>">
+			    <input type="hidden" name="Where" value="ContractToSitter">
 		 	</div>	 		
 		  	<button type="submit" class="btn btn-warning">Send Contract</button>
 		</form>

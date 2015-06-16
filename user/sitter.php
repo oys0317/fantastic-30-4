@@ -5,7 +5,14 @@
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = 'SELECT Name, Address, Species, Size, StartDate, EndDate, sa.AvailabilityID as AvailabilityID, sa.SitterID as SitterID
 					FROM SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c 
-					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID and NOT EXISTS (SELECT * FROM Contract cn WHERE cn.AvailabilityID IS NOT NULL and Status=1 and cn.AvailabilityID = sa.AvailabilityID and cn.SitterID = sa.SitterID)';
+					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID and NOT EXISTS (SELECT * FROM ContractToSitter cs WHERE Status=1 and cs.AvailabilityID = sa.AvailabilityID and cs.SitterID = sa.SitterID)';
+			
+			// If there are no sitters, display a different message.
+			if($db->query($sql) == FALSE) {
+				echo "<p align='center' style='font-size:20'>There are no sitters right now.<br>Click the button below to become one!</p>";
+				return;
+			}
+			
 			echo '<table class="table table-striped">';
 			echo '<th>';
 			echo "name";
@@ -69,6 +76,9 @@
 					echo '<td>';
 					if($row['SitterID']!=$_COOKIE['userID']){
 						echo '<a href="contractToSitter.php?AvailabilityID='.$row['AvailabilityID'].'&SitterID='.$row['SitterID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
+					}
+					else {
+						echo '<a href="editAvailability.php?AvailabilityID='.$row['AvailabilityID'].'" class="btn btn-primary btn-sm" role="button">Edit</a>';
 					}
 					echo '</td>';
 				}	

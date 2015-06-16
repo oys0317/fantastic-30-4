@@ -80,15 +80,14 @@ CREATE TABLE ContractToOwner
 
 CREATE TABLE ContractToSitter
 (OwnerID       	Char(20),
- PetID 			INTEGER, 
  AvailabilityID INTEGER,
  SitterID		Char(20),
  StartDate  	DATE,
  EndDate 		DATE,
  Compensation 	REAL,
  Status 		BOOL,
- primary key(OwnerID,AvailabilityID,PetID,SitterID),
- foreign key(OwnerID,PetID) references OwnsPet(OwnerID,PetID),
+ primary key(OwnerID,AvailabilityID,SitterID),
+ foreign key(OwnerID) references User(UserID),
  foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
 
  
@@ -160,9 +159,9 @@ INSERT INTO ContractToOwner VALUES('younoh',3,118,'luciaa','15/07/03','15/07/10'
 
 
 --Contract To Sitter
-INSERT INTO ContractToSitter VALUES('younoh',3,194,'harrisonf','15/06/03','15/06/10',20,1);		 
-INSERT INTO ContractToSitter VALUES('younoh',4,195,'harrisonf','15/06/15','15/08/01',35,1);		 
-INSERT INTO ContractToSitter VALUES('magnushvidsten',5,196,'luciaa','15/07/20','15/08/10',40,0);	 
+INSERT INTO ContractToSitter VALUES('younoh',194,'harrisonf','15/06/03','15/06/10',20,1);		 
+INSERT INTO ContractToSitter VALUES('younoh',195,'harrisonf','15/06/15','15/08/01',35,1);		 
+INSERT INTO ContractToSitter VALUES('magnushvidsten',196,'luciaa','15/07/20','15/08/10',40,0);	 
 
 
 
