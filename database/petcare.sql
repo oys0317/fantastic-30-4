@@ -2,8 +2,8 @@
 -- 	Database Table Creation
 --
 --  First drop any existing tables. Any errors are ignored.
-DROP Table IF EXISTS ContractToSitter;
 DROP Table IF EXISTS ContractToOwner;
+DROP Table IF EXISTS ContractToSitter;
 DROP TABLE IF EXISTS AccommodationRequest;
 DROP TABLE IF EXISTS CanTakeCareOf;
 DROP TABLE IF EXISTS SitterAvailability;

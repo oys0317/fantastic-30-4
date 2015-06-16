@@ -62,7 +62,7 @@
 
 <body>
 	<?php include './include/header.php'; ?>
-	<div style="padding: 80px 0; background-color:951152; !important" class="jumbotron">
+	<div style="padding: 80px 0 40px 0; background-color:e0a860; !important" class="jumbotron">
   		<div class="container">
   			<h1 style="color:white">Edit My Account</h1>
   		</div>
