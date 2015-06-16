@@ -37,6 +37,7 @@
 		}
 	}
 
+
 	function displayPetInfo() {
 
 		try {
@@ -53,16 +54,16 @@
 
 			// Display each pet's information
 			echo '<table class="table table-striped">';
-			echo "<th>Name</th><th>Size</th><th>Species</th></tr>";
+			echo "<th>Name</th><th>Size</th><th>Species</th><th>Remove</th></tr>";
 			foreach($db->query($petSQL) as $row) {
 				echo '<tr>';
 
 				echo "<td>".$row['PetName']."</td>";
 				echo '<td>'.$row['Size'].'</td>';
 				echo '<td>'.$row['Species'].'</td>';
-			
-
-				echo '</tr>';
+				echo "<td><form action='./removePet.php' method='post'><input type='image' name='petid' alt='Remove pet' src='./remove.png' width='18px' type='submit' value='";
+				echo $row['PetID'];
+				echo "'/></form></td></tr>";
 			}
 		}
 		catch(Exception $e) {
@@ -75,10 +76,10 @@
 	function displayAvailInfo() {
 
 		try {
-			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+			$dbc = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$userID = $_COOKIE['userID'];
 
-			$availSQL = "SELECT s.StartDate, s.EndDate, c.Size, c.Species
+			$availSQL = "SELECT s.StartDate, s.EndDate, c.Size, c.Species, c.AvailabilityID
 						FROM SitterAvailability s, CanTakeCareOf c
 						WHERE s.SitterID = '$userID'
 						AND s.AvailabilityID = c.AvailabilityID";
@@ -89,21 +90,22 @@
 
 			// Display each availability
 			echo '<table class="table table-striped">';
-			echo '<tr><th>Pet Type</th><th>Size</th><th>Start Date</th><th>End Date</th></tr>';
-			foreach($db->query($availSQL) as $row) {
+			echo '<tr><th>Start Date</th><th>End Date</th><th>Size</th><th>Species</th><th>Remove</th></tr>';
+			foreach($dbc->query($availSQL) as $arow) {
 				echo '<tr>';
-
 				echo '<td>';
-				echo $row['StartDate'];
+				echo $arow['StartDate'];
 				echo '</td><td>';
-				echo $row['EndDate'];
+				echo $arow['EndDate'];
 				echo '</td><td>';
-				echo $row['Size'];
+				echo $arow['Size'];
 				echo '</td><td>' ;
-				echo $row['Species'];
-				echo '</td>';
+				echo $arow['Species'];
+				echo "</td><td>";
+				echo "<td><form action='./removeAvailability.php' method='post'><input type='image' name='AvailID' alt='Remove availability' src='./remove.png' width='18px' type='submit' value='";
+				echo $arow['AvailabilityID'];
+				echo "'/></form></td></tr>";
 
-				echo '</tr>';
 			}
 		}
 		catch(Exception $e) {
@@ -112,6 +114,7 @@
 		}
 		echo "</table>";
 	}
+
 ?>
 
 <head>
