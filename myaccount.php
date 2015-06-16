@@ -11,13 +11,10 @@
 						FROM User
 						WHERE UserID = '$userID'";
 
-			if(!$userSQL) {
-				echo "An error has happened!";
-			}
 
 			// Only 1 iteration should happen
 
-			echo '<table class="table table-striped">';
+			echo '<table class="table table-striped"><tr>';
 			foreach($db->query($userSQL) as $row) {
 
 				echo "<th>Username</th><td>";
@@ -52,12 +49,17 @@
 				echo "An error has happened!";
 			}
 
-			// Display each pet's information
-			echo '<table class="table table-striped">';
-			echo "<th>Name</th><th>Size</th><th>Species</th><th>Remove</th></tr>";
-			foreach($db->query($petSQL) as $row) {
-				echo '<tr>';
+			$petExists = FALSE;
 
+			// Display each pet's information
+			foreach($db->query($petSQL) as $row) {
+				if(!$petExists) {
+					echo '<table class="table table-striped">';
+					echo "<th>Name</th><th>Size</th><th>Species</th><th>Remove</th></tr>";
+					$petExists = TRUE;
+				}
+
+				echo '<tr>';
 				echo "<td>".$row['PetName']."</td>";
 				echo '<td>'.$row['Size'].'</td>';
 				echo '<td>'.$row['Species'].'</td>';
@@ -70,7 +72,11 @@
 			echo "Could not connect to the database to display pet info";
 			exit;
 		}
-		echo "</table>";
+
+		if($petExists) 
+			echo "</table>";
+		else
+			echo "<p class='noItemsInList'>You have no pets.</p>";
 	}
 
 	function displayAvailInfo() {
@@ -83,15 +89,20 @@
 						FROM SitterAvailability s, CanTakeCareOf c
 						WHERE s.SitterID = '$userID'
 						AND s.AvailabilityID = c.AvailabilityID";
-	
-			if(!$availSQL) {
-				echo "An error has happened!";
-			}
+
+
+			$availExists = FALSE;
 
 			// Display each availability
-			echo '<table class="table table-striped">';
-			echo '<tr><th>Start Date</th><th>End Date</th><th>Size</th><th>Species</th><th>Remove</th></tr>';
 			foreach($dbc->query($availSQL) as $arow) {
+
+				if(!$availExists) {
+					echo '<table class="table table-striped">';
+					echo '<tr><th>Start Date</th><th>End Date</th><th>Size</th><th>Species</th><th>Remove</th></tr>';
+					$availExists = TRUE;
+				}
+
+				$availExists = TRUE;
 				echo '<tr>';
 				echo '<td>';
 				echo $arow['StartDate'];
@@ -105,14 +116,62 @@
 				echo "<td><form action='./removeAvailability.php' method='post'><input type='image' name='AvailID' alt='Remove availability' src='./remove.png' width='18px' type='submit' value='";
 				echo $arow['AvailabilityID'];
 				echo "'/></form></td></tr>";
-
 			}
+
+			if($availExists) 
+				echo "</table>";
+			else
+				echo "<p class='noItemsInList'>You have no availabilities.</p>";
+
+
 		}
 		catch(Exception $e) {
 			echo "Could not connect to the database to display availability info";
 			exit;
 		}
-		echo "</table>";
+		if($availExists)	echo "</table>";
+	}
+
+	function displayAccommodationRequestInfo() {
+		
+		try {
+			$dbc = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+			$userID = $_COOKIE['userID'];
+
+			$accomSQL = "SELECT p.PetName, r.StartDate, r.EndDate, r.RequestID
+						FROM OwnsPet p INNER JOIN AccommodationRequest r
+						ON p.OwnerID = r.OwnerID
+						WHERE p.PetID = r.PetID";
+
+
+			$requestExists = FALSE;
+			// Display each availability
+			echo '<table class="table table-striped">';
+			foreach($dbc->query($accomSQL) as $row) {
+				if(!$requestExists) {
+					echo '<table class="table table-striped">';
+					$requestExists = TRUE;
+				}
+				
+				echo "<tr><td><text color='green'>";
+				echo $row['PetName'];
+				echo '</text> needs a home from ' . $row['StartDate'] . ' to ' . $row['EndDate'];
+				echo ".</td><td><form action='./removeAccomRequest.php' method='post'>";
+				echo "<input type='image' name='reqID' alt='Remove availability' src='./remove.png' width='18px' type='submit' value='";
+				echo $row['RequestID'];
+				echo "'/></form></td></tr>";
+
+			}
+		
+			if($requestExists)
+				echo "</table>";
+			else
+				echo "<p class='noItemsInList'>You have no accommodation requests.</p>";
+		}
+		catch(Exception $e) {
+			echo "Could not connect to the database to display availability info";
+			exit;
+		}
 	}
 
 ?>
@@ -120,6 +179,13 @@
 <head>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<title>PetCare</title>
+	<style type='text/css'>
+	.noItemsInList {
+		font-size: 20;
+		color: #999999;
+		font-color: #999999;
+	}
+	</style>
 </head>
 <?php if(!isset($_COOKIE['userID'])){header('Location: ./index.php');} ;?>
 
@@ -141,18 +207,24 @@
 		<div class="container" style="margin-top:40px;">
 			<h2>Personal Information</h2>
 			<?php displayAccountInfo(); ?>					
-			<a href="editPersonalInfo.php" class="btn btn-warning" role="button">Edit</a>
+			<a href="editPersonalInfo.php" class="btn btn-warning" role="button" style="margin-bottom: 20px">Edit</a>
 		</div>
-		<div class="container" style="margin-top:40px; margin-bottom:40px;">
+		<div class="container">
 			<h2>My Pets</h2>
 			<?php displayPetInfo(); ?>
-			<a href="newpet.php" class="btn btn-warning" role="button">Add Pet</a>
+			<a href="newpet.php" class="btn btn-warning" role="button" style="margin-bottom: 20px">Add Pet</a>
 		</div>
 		<div style="overflow:hidden" class="container">
 			<h2>My Availabilities</h2>
 			<?php displayAvailInfo();?>
-			<a href="user/sitterAddAvailability.php" class="btn btn-warning" role="button">Add Availability</a>
+			<a href="user/sitterAddAvailability.php" class="btn btn-warning" role="button" style="margin-bottom: 20px">Add Availability</a>
 		</div>
+		<div style="overflow:hidden" class="container">
+			<h2>My Accommodation Requests</h2>
+			<?php displayAccommodationRequestInfo() ?>
+			<a href="user/accomodationRequest.php" class="btn btn-warning" role="button" style="margin-bottom: 20px">Add Accommodation Request</a>
+		</div>
+		<br><br>
 	<?php else : ?>
 		<div class="container">
 			<p>Please login to view your account.</p>
