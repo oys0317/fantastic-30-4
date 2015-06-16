@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	function displayInfoForm() {
 		try {
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
@@ -49,6 +50,11 @@
 		width:	300px;
 	}
 
+	.errormsg {
+		color: #ee3030;
+		font-size: 16;
+	}
+
 	</style>
 	<title>PetCare</title>
 </head>
@@ -73,14 +79,29 @@
 				<tr>
 					<th style='width:30%'>Enter your current password</th>
 					<td style=''><input type='password' class='form-control' name='currentPasswordBox'></td>
+					<td>
+						<?php
+							if($_SESSION['editPwdWrongPwd']) {
+								echo "<p class='errormsg'>You entered the wrong password.</p>";
+							}
+						?>
+					</td>
 				</tr>
 				<tr>
 					<th>Enter your new password</th>
 					<td><input type='password' class='form-control' name='newPasswordBox'></td>
+					<td>
+						<?php
+							if($_SESSION['editPwdNoMatch']) {
+								echo "<p class='errormsg'>The passwords you entered don't match!</p>";
+							}
+						?>
+					</td>
 				</tr>
 				<tr>
 					<th>Re-enter your new password</th>
 					<td><input type='password' class='form-control' name='otherNewPasswordBox'></td>
+					<td>&nbsp;</td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-warning">Save Password</button>
