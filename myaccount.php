@@ -123,9 +123,15 @@
 <body>
 	<?php include './include/header.php'; ?>
 
-	<div style="padding: 80px 0; background-color:951152; !important" class="jumbotron">
+	<div style="padding: 80px 0 40px 0; background-color:23974a; !important" class="jumbotron">
   		<div class="container">
-  			<h1 style="color:white">My Account</h1>
+  			<h1 style="color:white">
+  				<?php
+  					echo $_COOKIE['userID'];
+  					echo "'s account";
+  				?>
+
+  			</h1>
   		</div>
 	</div>
 	<?php if(isset($_COOKIE['userID'])): ?>
