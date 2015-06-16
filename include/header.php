@@ -13,7 +13,6 @@
 	      	<?php else : ?>
 	      		<ul class="nav navbar-nav navbar-right">
 	      			<li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/myaccount.php"><?php echo $_COOKIE['userID'] ?></a></li>
-	      			<li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/user/inbox.php">Inbox</a></li>
 	      			<li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/logout.php">Log Out</a></li>
 	      	<?php endif; ?>	
 

@@ -35,6 +35,11 @@
 			echo "Compensation";
 			echo '</th>';
 
+			// echo '<th>';
+			// echo "Delete";
+			// echo '</th>';
+			
+
 			foreach($db->query($sql) as $row){
 				echo '<tr>';
 
@@ -57,6 +62,11 @@
 				echo '<td>';
 				echo $row['Compensation'];
 				echo '</td>';
+
+				// echo "<td><form action='../removeContractSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='./remove.png' width='18px' type='submit' value='";
+				// echo $row['AvailabilityID'];
+				// echo "'/></form></td></tr>";
+			
 
 				echo '</tr>';
 			}
@@ -101,6 +111,11 @@
 			echo '<th>';
 			echo "Compensation";
 			echo '</th>';
+			
+			// 	echo '<th>';
+			// 	echo "Delete";
+			// 	echo '</th>';
+		
 
 			foreach($db->query($sql) as $row){
 				echo '<tr>';
@@ -124,6 +139,10 @@
 				echo '<td>';
 				echo $row['Compensation'];
 				echo '</td>';
+				
+				// echo "<td><form action='../removeContractSitter.php' method='post'><input type='image' name='petid' alt='Remove pet' src='./remove.png' width='18px' type='submit' value='";
+				// echo $row['AvailabilityID'];
+				// echo "'/></form></td></tr>";
 
 				echo '</tr>';
 			}

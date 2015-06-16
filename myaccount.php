@@ -214,6 +214,10 @@
 			<?php displayPetInfo(); ?>
 			<a href="newpet.php" class="btn btn-warning" role="button" style="margin-bottom: 20px">Add Pet</a>
 		</div>
+		<div class="container">
+			<h2>My Contracts</h2>
+			<a href="user/myContracts.php" class="btn btn-warning" role="button" style="margin-bottom: 20px">View Contracts</a>
+		</div>
 		<div style="overflow:hidden" class="container">
 			<h2>My Availabilities</h2>
 			<?php displayAvailInfo();?>
