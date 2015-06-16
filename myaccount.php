@@ -57,7 +57,7 @@
 			foreach($db->query($petSQL) as $row) {
 				echo '<tr>';
 
-				echo '<td>'.$row['PetName'].'</td>';
+				echo "<td><a href='editpet.php?PetID=".$row['PetID']."'>".$row['PetName']."</a></td>";
 				echo '<td>'.$row['Size'].'</td>';
 				echo '<td>'.$row['Species'].'</td>';
 			

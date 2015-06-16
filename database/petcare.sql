@@ -17,7 +17,7 @@ CREATE TABLE User
  Password 	CHAR(20) NOT NULL, 
  Name 		CHAR(20) NOT NULL, 
  Address 	CHAR(50) NOT NULL,
- PhoneNum 	CHAR(10) NOT NULL,
+ PhoneNum 	CHAR(15) NOT NULL,
  primary key (UserID));
 
 CREATE TABLE PetOwner
