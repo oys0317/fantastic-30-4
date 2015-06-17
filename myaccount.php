@@ -141,7 +141,8 @@
 			$accomSQL = "SELECT p.PetName, r.StartDate, r.EndDate, r.RequestID
 						FROM OwnsPet p INNER JOIN AccommodationRequest r
 						ON p.OwnerID = r.OwnerID
-						WHERE p.PetID = r.PetID";
+						WHERE p.PetID = r.PetID
+						AND p.OwnerID = '$userID'";
 
 
 			$requestExists = FALSE;
