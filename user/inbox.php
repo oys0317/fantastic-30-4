@@ -1,26 +1,21 @@
 <?php 	
-	function CreateSitteeContractTable() {
+	function ContractToSitterTable() {
 		try{
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = "SELECT SitterID, AvailabilityID, StartDate, EndDate, Compensation	
+			$sql = "SELECT OwnerID, AvailabilityID, StartDate, EndDate, Compensation	
 					FROM contracttositter c
-					WHERE '$userID' = c.OwnerID and c.Status = 0";
+					WHERE '$userID' = c.SitterID and c.Status = 0";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
 			if($row->rowCount() < 1) {
-				echo "<p align='center' style='font-size:20'>You have no contracts in this category</p>";
 				return;
 			}
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "SitterID";
-			echo '</th>';
-
-			echo '<th>';
-			echo "Contract ID";
+			echo "Name Of Owner";
 			echo '</th>';
 
 			echo '<th>';
@@ -35,20 +30,16 @@
 			echo "Compensation";
 			echo '</th>';
 
-			// echo '<th>';
-			// echo "Delete";
-			// echo '</th>';
+			echo '<th>';
+			echo "Accept";
+			echo '</th>';
 			
 
 			foreach($db->query($sql) as $row){
 				echo '<tr>';
 
 				echo '<td>';
-				echo $row['SitterID'];
-				echo '</td>';
-
-				echo '<td>';
-				echo $row['AvailabilityID'];
+				echo $row['OwnerID'];
 				echo '</td>';
 
 				echo '<td>';
@@ -63,9 +54,9 @@
 				echo $row['Compensation'];
 				echo '</td>';
 
-				// echo "<td><form action='../removeContractSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='./remove.png' width='18px' type='submit' value='";
-				// echo $row['AvailabilityID'];
-				// echo "'/></form></td></tr>";
+				echo "<td><form action='./acceptContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
+				echo $row['AvailabilityID'];
+				echo "'/></form></td></tr>";
 			
 
 				echo '</tr>';
@@ -76,29 +67,23 @@
 		exit;
 		}
 	}
-	function CreateSitterContractTable() {
+	function ContractToOwnerTable() {
 		try{
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = "SELECT OwnerID, RequestID, StartDate, EndDate, Compensation	
+			$sql = "SELECT SitterID, RequestID, StartDate, EndDate, Compensation	
 					FROM contracttoowner c
-					WHERE '$userID' = c.SitterID and c.Status = 0";
+					WHERE '$userID' = c.OwnerID and c.Status = 0";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
 			if($row->rowCount() < 1) {
-				echo "<br></br>";
-				echo "<p align='center' style='font-size:20'>You have no pending contracts";
 				return;
 			}
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "OwnerID";
-			echo '</th>';
-
-			echo '<th>';
-			echo "Contract ID";
+			echo "Name Of Sitter";
 			echo '</th>';
 
 			echo '<th>';
@@ -113,20 +98,16 @@
 			echo "Compensation";
 			echo '</th>';
 			
-			// 	echo '<th>';
-			// 	echo "Delete";
-			// 	echo '</th>';
+			echo '<th>';
+			echo "Accept";
+			echo '</th>';
 		
 
 			foreach($db->query($sql) as $row){
 				echo '<tr>';
 
 				echo '<td>';
-				echo $row['OwnerID'];
-				echo '</td>';
-
-				echo '<td>';
-				echo $row['RequestID'];
+				echo $row['SitterID'];
 				echo '</td>';
 
 				echo '<td>';
@@ -141,9 +122,9 @@
 				echo $row['Compensation'];
 				echo '</td>';
 				
-				// echo "<td><form action='../removeContractSitter.php' method='post'><input type='image' name='petid' alt='Remove pet' src='./remove.png' width='18px' type='submit' value='";
-				// echo $row['AvailabilityID'];
-				// echo "'/></form></td></tr>";
+				echo "<td><form action='./acceptContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
+				echo $row['RequestID'];
+				echo "'/></form></td></tr>";
 
 				echo '</tr>';
 			}
@@ -170,8 +151,8 @@
 	</div>
 	<div class="container">
 		<font size="4"face="verdana" color="blue">Contracts offered to you. Here you can choose to accept or decline.</font>
-		<?php CreateSitterContractTable();?>
-		<?php CreateSitteeContractTable();?>
+		<?php ContractToOwnerTable();?>
+		<?php ContractToSitterTable();?>
 	</div>
 
 </body>
