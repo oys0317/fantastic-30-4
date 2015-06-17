@@ -52,6 +52,7 @@
 			    <input type="date" class="form-control" name="EndDate" value="<?= $row["EndDate"] ?>">
 			    <input type="hidden" name="RequestID" value="<?= $_GET['RequestID'] ?>">
 			    <input type="hidden" name="PrevPetID" value="<?= $_GET['PetID'] ?>">
+			    <input type="hidden" name="From" value="<?= $_GET['From'] ?>">
 		 	</div>
 		  	<button type="submit" class="btn btn-warning">Submit</button>
 		</form>

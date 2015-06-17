@@ -18,7 +18,7 @@
 		$row = $sql2->fetch();
 
 		if (isset($row["RequestID"])) {
-			echo "<script>alert(\"Cannot Delete Accommodation Request.\");
+			echo "<script>alert(\"You can't delete request if a contract exists.\");
 			window.location.href=\"./owner.php\";
 			</script>";
 		} else {
@@ -50,9 +50,16 @@
 		$row = $sql2->fetch();
 
 		if (($row["PetID"]==$_POST["PetID"]) && ($row["PetID"]!= NULL)) {
-			echo "<script>alert(\"Accommodation Request Updated!\");
-			window.location.href=\"./owner.php\";
-			</script>";
+			if ($_POST['From'] == "owner"){
+				echo "<script>alert(\"Accommodation Request Updated!\");
+				window.location.href=\"./owner.php\";  
+				</script>"; // go to owner
+			}
+			else{
+				echo "<script>alert(\"Accommodation Request Updated!\");
+				window.location.href=\"../myaccount.php\";  
+				</script>"; // go to my account
+			}
 		} else {
 			echo "<script>alert(\"Cannot Update Accommodation Request.\");
 			window.location.href=\"./owner.php\";
@@ -92,9 +99,16 @@
 		$row = $sql2->fetch();
 
 		if (($row["PetID"]==$_POST["PetID"]) && ($row["PetID"]!= NULL)) {
-			echo "<script>alert(\"Accommodation Request Created!\");
-			window.location.href=\"./owner.php\";
-			</script>";
+			if ($_POST['From'] == "owner"){
+				echo "<script>alert(\"Accommodation Request Updated!\");
+				window.location.href=\"./owner.php\";  
+				</script>"; // go to owner
+			}
+			else{
+				echo "<script>alert(\"Accommodation Request Updated!\");
+				window.location.href=\"../myaccount.php\";  
+				</script>"; // go to my account
+			}
 		} else {
 			echo "<script>alert(\"Failed to create new request. Please make sure to fill in all information!\");
 			window.location.href=\"{$_SERVER['HTTP_REFERER']}\";
