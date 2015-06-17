@@ -52,9 +52,7 @@ CREATE TABLE SitterAvailability
  StartDate 	DATE NOT NULL,
  EndDate 	DATE NOT NULL,
  primary key(SitterID, AvailabilityID),
- foreign key(SitterID) references PetSitter(SitterID)
- 	ON DELETE CASCADE
-	ON UPDATE CASCADE);
+ foreign key(SitterID) references PetSitter(SitterID));
 
 CREATE TABLE CanTakeCareOf
 (Size 		CHAR(20) NOT NULL,
@@ -74,9 +72,7 @@ CREATE TABLE AccommodationRequest
  StartDate 		DATE NOT NULL, 
  EndDate 		DATE NOT NULL, 
  primary key(PetID, RequestID),
- foreign key(OwnerID, PetID) references OwnsPet(OwnerID, PetID)
- 	ON DELETE CASCADE
-	ON UPDATE CASCADE);
+ foreign key(OwnerID, PetID) references OwnsPet(OwnerID, PetID));
 
 CREATE TABLE ContractToOwner
 (OwnerID       	Char(20),

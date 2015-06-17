@@ -169,10 +169,10 @@
 	</div>
 	<div class="container">
 		<font size="4"face="verdana" color="orange">Contract with people whos pet you are scheduled to look after</font>
-		<?php CreateSitterContractTable();?>
+		<?php CreateSitteeContractTable();?>
 	</br></br>
 		<font size="4" face="verdana" color="blue">Contract with people who are scheduled to take care of your pet </font>
-		<?php CreateSitteeContractTable();?>
+		<?php CreateSitterContractTable();?>
 	</div>
 
 </body>
