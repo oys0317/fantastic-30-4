@@ -124,7 +124,7 @@
 	<div class="container">
 		<?php getAccommodationRequest(); ?>
 		<?php if(isset($_COOKIE['userID'])): ?>
-			<a href="accomodationRequest.php?From=owner" class="btn btn-primary" role="button">Add Accomodation Request</a>
+			<a href="accomodationRequest.php?From=owner" class="btn btn-primary" role="button">Add Accommodation Request</a>
 		<?php endif; ?>
 	</div>
 </body>
