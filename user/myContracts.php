@@ -81,7 +81,7 @@
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = "SELECT OwnerID, RequestID, StartDate, EndDate, Compensation	
-					FROM contracttoowner c, 
+					FROM contracttoowner c
 					WHERE '$userID' = c.SitterID and c.Status = 1";
 			$row = $db->query($sql);
 			
