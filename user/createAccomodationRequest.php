@@ -18,7 +18,7 @@
 		$row = $sql2->fetch();
 
 		if (isset($row["RequestID"])) {
-			echo "<script>alert(\"Cannot Delete Accommodation Request When There is Existing Contract!\");
+			echo "<script>alert(\"Cannot Delete Accommodation Request.\");
 			window.location.href=\"./owner.php\";
 			</script>";
 		} else {
@@ -49,12 +49,12 @@
 		$sql2->execute();
 		$row = $sql2->fetch();
 
-		if (($row["PetID"]==$_POST["PetID"]) && ($row["WithinDistance"]==$_POST["WithinDistance"]) && ($row["StartDate"]==$_POST["StartDate"]) && ($row["EndDate"]==$_POST["EndDate"])) {
+		if (($row["PetID"]==$_POST["PetID"]) && ($row["PetID"]!= NULL)) {
 			echo "<script>alert(\"Accommodation Request Updated!\");
 			window.location.href=\"./owner.php\";
 			</script>";
 		} else {
-			echo "<script>alert(\"Cannot Update Accommodation Request When There is Existing Contract!\");
+			echo "<script>alert(\"Cannot Update Accommodation Request.\");
 			window.location.href=\"./owner.php\";
 			</script>";
 		}
@@ -86,9 +86,20 @@
 		$stmt->bindParam(':EndDate', $_POST['EndDate']);
 		$stmt->execute();
 
-		echo "<script>alert(\"Accommodation Request Created!\");
+		//check if updated
+		$sql2 = $db->prepare('SELECT * FROM AccommodationRequest WHERE RequestID='.$RequestID.' and PetID='.$_POST["PetID"].';');
+		$sql2->execute();
+		$row = $sql2->fetch();
+
+		if (($row["PetID"]==$_POST["PetID"]) && ($row["PetID"]!= NULL)) {
+			echo "<script>alert(\"Accommodation Request Created!\");
 			window.location.href=\"./owner.php\";
 			</script>";
+		} else {
+			echo "<script>alert(\"Failed to create new request. Please make sure to fill in all information!\");
+			window.location.href=\"{$_SERVER['HTTP_REFERER']}\";
+			</script>";
+		}
 
 	}
 	
