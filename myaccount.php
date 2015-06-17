@@ -116,10 +116,12 @@
 				echo "<form action='./removeAvailability.php' method='post'><input type='image' name='AvailID' alt='Remove availability' src='./remove.png' width='18px' type='submit' value='";
 				echo $arow['AvailabilityID'];
 				echo "'/></form></td><td>";
-				echo "<form action='./user/editAvailability.php' method='get'>";
-				echo "<input type='image' name='AvailabilityID' alt='Edit Availability' src='./edit.png' width='18px' type='submit' value='";
-				echo $arow['AvailabilityID'];
-				echo "'/></form></td></tr>";
+				echo "<a href='./user/editAvailability.php";
+				echo "?AvailabilityID=" . $row['AvailabilityID'];
+				echo "'>";
+				echo "<img src='./edit.png' width='18px'></a>";
+	
+				echo "</form></td></tr>";
 			}
 
 			if($availExists) 
@@ -142,7 +144,7 @@
 			$dbc = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$userID = $_COOKIE['userID'];
 
-			$accomSQL = "SELECT p.PetName, r.StartDate, r.EndDate, r.RequestID
+			$accomSQL = "SELECT p.PetName, r.StartDate, r.EndDate, r.RequestID, p.PetID
 						FROM OwnsPet p INNER JOIN AccommodationRequest r
 						ON p.OwnerID = r.OwnerID
 						WHERE p.PetID = r.PetID
@@ -165,10 +167,13 @@
 				echo "<input type='image' name='reqID' alt='Remove availability' src='./remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
 				echo "'/></form></td><td>";
-				echo "<form action='./user/editAccommodationRequest.php' method='get'>";
+				echo "<a href='./user/editAccommodationRequest.php";
+				echo "?RequestID=" . $row['RequestID'];
+				echo "&PetID=" . $row['PetID'];
+				echo "' type='image' src='./edit.png' width='18px'>";
 				echo "<input type='image' name='RequestID' alt='Edit Request' src='./edit.png' width='18px' type='submit' value='";
 				echo $arow['RequestID'];
-				echo "'/></form></td></tr>";
+				echo "'/></a></form></td></tr>";
 
 			}
 		
