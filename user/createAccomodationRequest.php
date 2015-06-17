@@ -6,8 +6,8 @@
 
 
 
-	// delete requsted
-	if ($_POST["delete"]=="yes") {
+	// delete requsted (Commented out because remove already implemented in removeAccommRequest.php)
+	/*if ($_POST["delete"]=="yes") {
 		$sql1 = 'DELETE FROM AccommodationRequest WHERE RequestID='.$_POST["RequestID"].' and PetID='.$_POST["PetID"].';';
 		$db->query($sql1);
 		$RequestID = $_POST["RequestID"];
@@ -26,10 +26,10 @@
 			window.location.href=\"./owner.php\";
 			</script>";
 		}
-	}
+	}*/
 
 	// if updating then delete original first then add.
-	elseif (isset($_POST["RequestID"])) {
+	if (isset($_POST["RequestID"])) {
 		$sql1 = 'DELETE FROM AccommodationRequest WHERE RequestID='.$_POST["RequestID"].' and PetID='.$_POST["PrevPetID"].';';
 		$db->query($sql1);
 		$RequestID = $_POST["RequestID"];

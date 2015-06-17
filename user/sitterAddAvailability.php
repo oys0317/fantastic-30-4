@@ -6,8 +6,8 @@
 	<?php include '../include/header.php'; ?>
 	<div style="padding: 80px 0; background-color:5cb85c; !important" class="jumbotron">
   		<div class="container">
-  			<h1 style="color:white">Add Your Availability</h1>
-  			<p style="color:white">Please select your preferences of pet type as well as start date and end date of your service.</p>
+  			<h1 style="color:white">Add An Availability</h1>
+  			<p style="color:white">To add an availability, please enter a date range and the type of pet you'd like to look after.</p>
   		</div>
 	</div>
 	<div class="container">

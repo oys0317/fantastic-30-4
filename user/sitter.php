@@ -40,7 +40,7 @@
 
 			if (isset($_COOKIE['userID'])) {
 				echo '<th>';
-				echo "Contract";
+				echo "&nbsp;";
 				echo '</th>';
 			}
 
@@ -74,7 +74,7 @@
 				if (isset($_COOKIE['userID'])) {
 					echo '<td>';
 					if($row['SitterID']!=$_COOKIE['userID']){
-						echo '<a href="contractToSitter.php?AvailabilityID='.$row['AvailabilityID'].'&SitterID='.$row['SitterID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
+						echo '<a href="contractToSitter.php?AvailabilityID='.$row['AvailabilityID'].'&SitterID='.$row['SitterID'].'" class="btn btn-warning btn-sm" role="button">Sit my pet!</a>';
 					}
 					else {
 						echo '<a href="editAvailability.php?AvailabilityID='.$row['AvailabilityID'].'" role="button">';
@@ -102,12 +102,9 @@
   		<div class="container">
   			<h1 style="color:white">Pet Sitters</h1>
   			<p style="color:white">
-  					This is the availabilities of Pet Sitters.</br>
-  					Feel free to Contract with Pet Sitters for your pet</br>
-  					</br>
-  					Woops you want to be a Pet Sitter?!</br>
-  					Any One can be Pet Sitter!!!</br>
-  					Just Add your availability!!!</br>
+  					Where you can view all of the available pet sitters! <br>
+  					Want to ask someone to look after your pet? &nbsp;Want to list your own availability?<br>
+  					Then you've come to the right place!
   			</p>
   		</div>
 	</div>

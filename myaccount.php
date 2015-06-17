@@ -107,7 +107,7 @@
 					echo 	"<th>Size</th>";
 					echo 	"<th>Species</th>";
 					echo 	"<th>Remove</th>";
-					echo 	"<th>Edit</th></tr>';
+					echo 	"<th>Edit</th></tr>";
 					$availExists = TRUE;
 				}
 
@@ -123,7 +123,7 @@
 				echo 			"src='./remove.png' width='18px' type='submit' value='";
 				echo 			$arow['AvailabilityID'] . "'/>";
 				echo 		"</form>";
-				echo 	"</td>
+				echo 	"</td>";
 				echo 	"<td>";
 				echo 		"<a href='./user/editAvailability.php";
 				echo 		"?AvailabilityID=" . $row['AvailabilityID'] . "'>";

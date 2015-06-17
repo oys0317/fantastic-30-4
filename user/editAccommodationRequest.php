@@ -1,8 +1,10 @@
 <?php 
+	/*
 	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 	$sql = $db->prepare('SELECT * FROM AccommodationRequest WHERE RequestID = '.$_GET[RequestID].' and PetID = '.$_GET[PetID].';');
 	$sql->execute();
 	$row = $sql->fetch();
+	*/
 ?>
 
 
