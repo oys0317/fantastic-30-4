@@ -2,10 +2,12 @@
 		function CreateSitteeContractTable() {
 		try{
 			$userID = $_COOKIE['userID'];
+			date_default_timezone_set("America/Vancouver");
+			$currentDate = date("Y-m-d");
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = "SELECT Name, Address, SitterID, AvailabilityID, StartDate, EndDate, Compensation	
 					FROM contracttositter c, user u
-					WHERE '$userID' = c.OwnerID and c.Status = 1 and u.userID = c.SitterID";
+					WHERE '$userID' = c.OwnerID and c.Status = 1 and u.userID = c.SitterID and EndDate >= '$currentDate'";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
@@ -79,10 +81,12 @@
 	function CreateSitterContractTable() {
 		try{
 			$userID = $_COOKIE['userID'];
+			date_default_timezone_set("America/Vancouver");
+			$currentDate = date("Y-m-d");
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = "SELECT Name, Address, RequestID, StartDate, EndDate, Compensation	
 					FROM contracttoowner c, user u
-					WHERE '$userID' = c.SitterID and c.Status = 1 and u.UserID = c.OwnerID";
+					WHERE '$userID' = c.SitterID and c.Status = 1 and u.UserID = c.OwnerID and EndDate >= '$currentDate'";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
