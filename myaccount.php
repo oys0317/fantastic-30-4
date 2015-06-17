@@ -13,7 +13,6 @@
 
 
 			// Only 1 iteration should happen
-
 			echo '<table class="table table-striped"><tr>';
 			foreach($db->query($userSQL) as $row) {
 
@@ -55,7 +54,7 @@
 			foreach($db->query($petSQL) as $row) {
 				if(!$petExists) {
 					echo '<table class="table table-striped">';
-					echo "<th>Name</th><th>Size</th><th>Species</th><th>Remove</th></tr>";
+					echo "<th>Name</th><th>Size</th><th>Species</th><th>Remove</th><th>Edit</th></tr>";
 					$petExists = TRUE;
 				}
 
@@ -63,7 +62,8 @@
 				echo "<td>".$row['PetName']."</td>";
 				echo '<td>'.$row['Size'].'</td>';
 				echo '<td>'.$row['Species'].'</td>';
-				echo "<td><form action='./removePet.php' method='post'><input type='image' name='petid' alt='Remove pet' src='./remove.png' width='18px' type='submit' value='";
+				echo "<td><form action='./removePet.php' method='post'>";
+				echo "<input type='image' name='petid' alt='Remove pet' src='./remove.png' width='18px' type='submit' value='";
 				echo $row['PetID'];
 				echo "'/></form></td></tr>";
 			}
@@ -98,7 +98,7 @@
 
 				if(!$availExists) {
 					echo '<table class="table table-striped">';
-					echo '<tr><th>Start Date</th><th>End Date</th><th>Size</th><th>Species</th><th>Remove</th></tr>';
+					echo '<tr><th>Start Date</th><th>End Date</th><th>Size</th><th>Species</th><th>Remove</th><th>Edit</th></tr>';
 					$availExists = TRUE;
 				}
 
@@ -113,7 +113,11 @@
 				echo '</td><td>' ;
 				echo $arow['Species'];
 				echo "</td><td>";
-				echo "<td><form action='./removeAvailability.php' method='post'><input type='image' name='AvailID' alt='Remove availability' src='./remove.png' width='18px' type='submit' value='";
+				echo "<form action='./removeAvailability.php' method='post'><input type='image' name='AvailID' alt='Remove availability' src='./remove.png' width='18px' type='submit' value='";
+				echo $arow['AvailabilityID'];
+				echo "'/></form></td><td>";
+				echo "<form action='./user/editAvailability.php' method='get'>";
+				echo "<input type='image' name='AvailabilityID' alt='Edit Availability' src='./edit.png' width='18px' type='submit' value='";
 				echo $arow['AvailabilityID'];
 				echo "'/></form></td></tr>";
 			}
@@ -160,6 +164,10 @@
 				echo ".</td><td><form action='./removeAccomRequest.php' method='post'>";
 				echo "<input type='image' name='reqID' alt='Remove availability' src='./remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
+				echo "'/></form></td><td>";
+				echo "<form action='./user/editAccommodationRequest.php' method='get'>";
+				echo "<input type='image' name='RequestID' alt='Edit Request' src='./edit.png' width='18px' type='submit' value='";
+				echo $arow['RequestID'];
 				echo "'/></form></td></tr>";
 
 			}

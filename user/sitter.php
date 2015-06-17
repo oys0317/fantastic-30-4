@@ -77,7 +77,8 @@
 						echo '<a href="contractToSitter.php?AvailabilityID='.$row['AvailabilityID'].'&SitterID='.$row['SitterID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
 					}
 					else {
-						echo '<a href="editAvailability.php?AvailabilityID='.$row['AvailabilityID'].'" class="btn btn-primary btn-sm" role="button">Edit/Delete</a>';
+						echo '<a href="editAvailability.php?AvailabilityID='.$row['AvailabilityID'].'" role="button">';
+						echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../edit.png" width="18px"></a>';
 					}
 					echo '</td>';
 				}	
