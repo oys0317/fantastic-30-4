@@ -4,7 +4,7 @@
 		$stmt = $db->prepare('SELECT Name, PetName, Species, Size, Address,PhoneNum, WithinDistance, StartDate, EndDate, a.OwnerID as OwnerID, a.RequestID as RequestID, a.PetID as PetID
 				FROM AccommodationRequest a, OwnsPet op, PetOwner po, User u 
 				WHERE a.OwnerID = op.OwnerID and op.OwnerID = po.OwnerID and po.OwnerID = u.UserID and a.PetID = op.PetID and a.RequestID=:RequestID and a.PetID=:PetID');
-		$stmt->execute(array(':RequestID' => $_GET[RequestID], ':PetID' => $_GET[PetID]));
+		$stmt->execute(array(':RequestID' => $_GET['RequestID'], ':PetID' => $_GET['PetID']));
 		$row = $stmt->fetch();
 ?>
 

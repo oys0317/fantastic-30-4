@@ -3,7 +3,7 @@
 		$stmt = $db->prepare('SELECT Name, Address, Species, Size, StartDate, EndDate, PhoneNum, sa.SitterID as SitterID
 					FROM SitterAvailability sa, PetSitter ps, User u, CanTakeCareOf c 
 					WHERE sa.SitterID = ps.SitterID and ps.SitterID = u.UserID and sa.SitterID = c.SitterID and sa.AvailabilityID = c.AvailabilityID and sa.SitterID=:SitterID and sa.AvailabilityID=:AvailabilityID');
-		$stmt->execute(array(':SitterID' => $_GET[SitterID], ':AvailabilityID' => $_GET[AvailabilityID]));
+		$stmt->execute(array(':SitterID' => $_GET['SitterID'], ':AvailabilityID' => $_GET['AvailabilityID']));
 		$row = $stmt->fetch();
 ?>
 
@@ -52,8 +52,8 @@
 		  	<div class="form-group">
 			    <label for="Compensation">Compensation Per Day (CAD)</label>
 			    <input type="Integer" class="form-control" name="Compensation" placeholder="Enter Compensation">
-			    <input type="hidden" name="AvailabilityID" value="<?= $_GET[AvailabilityID] ?>">
-			    <input type="hidden" name="SitterID" value="<?= $_GET[SitterID] ?>">
+			    <input type="hidden" name="AvailabilityID" value="<?= $_GET['AvailabilityID'] ?>">
+			    <input type="hidden" name="SitterID" value="<?= $_GET['SitterID'] ?>">
 			    <input type="hidden" name="StartDate" value="<?php echo $row['StartDate'] ?>">
 			    <input type="hidden" name="EndDate" value="<?php echo $row['EndDate'] ?>">
 			    <input type="hidden" name="Where" value="ContractToSitter">
