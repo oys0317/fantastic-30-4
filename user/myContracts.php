@@ -3,9 +3,9 @@
 		try{
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = "SELECT SitterID, AvailabilityID, StartDate, EndDate, Compensation	
-					FROM contracttositter c
-					WHERE '$userID' = c.OwnerID and c.Status = 1";
+			$sql = "SELECT Name, Address, SitterID, AvailabilityID, StartDate, EndDate, Compensation	
+					FROM contracttositter c, user u
+					WHERE '$userID' = c.OwnerID and c.Status = 1 and u.userID = c.SitterID";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
@@ -16,11 +16,11 @@
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "SitterID";
+			echo "Name";
 			echo '</th>';
 
 			echo '<th>';
-			echo "Contract ID";
+			echo "Address";
 			echo '</th>';
 
 			echo '<th>';
@@ -44,11 +44,11 @@
 				echo '<tr>';
 
 				echo '<td>';
-				echo $row['SitterID'];
+				echo $row['Name'];
 				echo '</td>';
 
 				echo '<td>';
-				echo $row['AvailabilityID'];
+				echo $row['Address'];
 				echo '</td>';
 
 				echo '<td>';
@@ -80,9 +80,9 @@
 		try{
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = "SELECT OwnerID, RequestID, StartDate, EndDate, Compensation	
-					FROM contracttoowner c
-					WHERE '$userID' = c.SitterID and c.Status = 1";
+			$sql = "SELECT Name, Address, RequestID, StartDate, EndDate, Compensation	
+					FROM contracttoowner c, user u
+					WHERE '$userID' = c.SitterID and c.Status = 1 and u.UserID = c.OwnerID";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
@@ -93,11 +93,11 @@
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "OwnerID";
+			echo "Name";
 			echo '</th>';
 
 			echo '<th>';
-			echo "Contract ID";
+			echo "Address";
 			echo '</th>';
 
 			echo '<th>';
@@ -121,11 +121,11 @@
 				echo '<tr>';
 
 				echo '<td>';
-				echo $row['OwnerID'];
+				echo $row['Name'];
 				echo '</td>';
 
 				echo '<td>';
-				echo $row['RequestID'];
+				echo $row['Address'];
 				echo '</td>';
 
 				echo '<td>';
@@ -169,10 +169,10 @@
 	</div>
 	<div class="container">
 		<font size="4"face="verdana" color="orange">Contract with people whos pet you are scheduled to look after</font>
-		<?php CreateSitteeContractTable();?>
+		<?php CreateSitterContractTable();?>
 	</br></br>
 		<font size="4" face="verdana" color="blue">Contract with people who are scheduled to take care of your pet </font>
-		<?php CreateSitterContractTable();?>
+		<?php CreateSitteeContractTable();?>
 	</div>
 
 </body>
