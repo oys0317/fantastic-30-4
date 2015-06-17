@@ -48,7 +48,7 @@
 
 			if (isset($_COOKIE['userID'])) {
 				echo '<th>';
-				echo "Contract";
+				echo "&nbsp;";
 				echo '</th>';
 			}
 
@@ -93,7 +93,7 @@
 						echo '<a href="editAccommodationRequest.php?RequestID='.$row['RequestID'].'&PetID='.$row['PetID'].'" class="btn btn-primary btn-sm" role="button">Edit/Delete</a>';
 					}
 					else {
-						echo '<a href="contractToOwner.php?RequestID='.$row['RequestID'].'&PetID='.$row['PetID'].'" class="btn btn-warning btn-sm" role="button">Contract</a>';
+						echo '<a href="contractToOwner.php?RequestID='.$row['RequestID'].'&PetID='.$row['PetID'].'" class="btn btn-warning btn-sm" role="button">Sit this pet!</a>';
 					}
 
 					echo '</td>';
@@ -116,9 +116,9 @@
 	<div style="padding: 80px 0; background-color:337ab7; !important" class="jumbotron">
   		<div class="container">
   			<h1 style="color:white">Pet Owners</h1>
-  			<p style="color:white">This is an overview of current requests for accomodations by pet owners </br>
-  									If you going away for a while and need someone to take care of your pet, add an accomodation request below! </br>
-  									Once an accomodation request is placed, a contract can be made with a potensial pet sitter.</p>
+  			<p style="color:white">Where you can view all the pets who need sitters! </br>
+  									See a pet on the list you want to look after? Want to list your own pet?</br>
+  									Then you've come to the right place!</p>
   		</div>
 	</div>
 	<div class="container">
