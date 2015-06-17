@@ -1,11 +1,11 @@
 <?php 	
-		function CreateSitteeContractTable() {
+	function CreateSitteeContractTable() {
 		try{
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = "SELECT SitterID, AvailabilityID, StartDate, EndDate, Compensation	
 					FROM contracttositter c
-					WHERE '$userID' = c.OwnerID and c.Status = 1";
+					WHERE '$userID' = c.OwnerID and c.Status = 0";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
@@ -82,12 +82,13 @@
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = "SELECT OwnerID, RequestID, StartDate, EndDate, Compensation	
 					FROM contracttoowner c
-					WHERE '$userID' = c.SitterID and c.Status = 1";
+					WHERE '$userID' = c.SitterID and c.Status = 0";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
 			if($row->rowCount() < 1) {
-				echo "<p align='center' style='font-size:20'>You have no contracts in this category";
+				echo "<br></br>";
+				echo "<p align='center' style='font-size:20'>You have no pending contracts";
 				return;
 			}
 
@@ -161,18 +162,16 @@
 	<?php include '../include/header.php' ?>
 	<div style="padding: 80px 0; background-color:5cb85c; !important" class="jumbotron">
   		<div class="container">
-  			<h1 style="color:white">Pet Sitters</h1>
+  			<h1 style="color:white">Inbox</h1>
   			<p style="color:white">
-  					Here you can view your current contracts.
+  					Here you can view offered contracts.
   			</p>
   		</div>
 	</div>
 	<div class="container">
-		<font size="4"face="verdana" color="orange">Contract with people whos pet you are scheduled to look after</font>
-		<?php CreateSitteeContractTable();?>
-	</br></br>
-		<font size="4" face="verdana" color="blue">Contract with people who are scheduled to take care of your pet </font>
+		<font size="4"face="verdana" color="blue">Contracts offered to you. Here you can choose to accept or decline.</font>
 		<?php CreateSitterContractTable();?>
+		<?php CreateSitteeContractTable();?>
 	</div>
 
 </body>
