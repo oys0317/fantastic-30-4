@@ -5,7 +5,7 @@
 
 		$sql = "UPDATE contracttositter 
 				SET status = 1
-				WHERE OwnerID = '$userID' 
+				WHERE SitterID = '$userID' 
 				AND AvailabilityID = :AvailabilityID";
 
 				// UPDATE contracttoowner 
