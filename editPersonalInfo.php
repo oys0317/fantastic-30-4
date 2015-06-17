@@ -106,6 +106,6 @@
 			</table>
 			<button type="submit" class="btn btn-warning">Save Password</button>
 		</form>
-		<a href="../myaccount.php">Back to account</button>
+		<a href="../myaccount.php" class="btn btn-primary" role="button">Back</a>
 	</div>
 </body>

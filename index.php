@@ -14,14 +14,10 @@
 	<div class="jumbotron" style="padding: 80px 0">
   		<div class="container">
   			<h1>PET CARE</h1>
-  			<p>Do you like travelling?</br>
-  			What?! You worry about your pet!!</br>
-  			Don't worry about your pet!!!</br> 
-  			Find Pet Sitter Here!!!</br> 
-  			And Get travelling!!!</br>
-        </br>
-        If you want to view available times for pet sitters, or add your own sitting availabillity, click Pet Sitters! </br>
-        If you want to view accomodation requests, or add your own accomodation request, click Pet Owners! </p>
+  			<p>Do you love to travel, but never know what to do with your pet?</br></br>
+  			Never spend another day searching for pet-friendly motels or reputable doggy-day-cares.</br><br>
+        Never again force your fuzzy friends upon reluctant relatives. <br><br>
+  			Simply find a sitter withour easy website and <b>get travelling!</b><br>
   			<div class="btn-group" role="group">
  				<a href="user/sitter.php" class="btn btn-success btn-lg">Pet Sitters</a>
  				<a href="user/owner.php" class="btn btn-primary btn-lg">Pet Owners</a>
