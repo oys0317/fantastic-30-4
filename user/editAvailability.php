@@ -2,7 +2,7 @@
 	$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 	$sql = $db->prepare("SELECT Species, Size, StartDate, EndDate, s.SitterID as SitterID, s.AvailabilityID as AvailabilityID 
 		FROM SitterAvailability s, CanTakeCareOf c 
-		WHERE s.AvailabilityID = c.AvailabilityID and s.SitterID = c.SitterID and s.AvailabilityID = ".$_GET[AvailabilityID]." and s.SitterID = '".$_COOKIE[userID]."';");
+		WHERE s.AvailabilityID = c.AvailabilityID and s.SitterID = c.SitterID and s.AvailabilityID = ".$_GET['AvailabilityID']." and s.SitterID = '".$_COOKIE['userID']."';");
 	$sql->execute();
 	$row = $sql->fetch();
 ?>
@@ -71,7 +71,7 @@
 		<!--Delete Form-->
 		<form action="createSitterAvailability.php" method="post" onsubmit="return confirm('Are you sure you want to delete this Availability?')">
 			<input type="hidden" name="delete" value="yes">
-			<input type="hidden" name="AvailabilityID" value="<?= $_GET[AvailabilityID] ?>">
+			<input type="hidden" name="AvailabilityID" value="<?= $_GET['AvailabilityID'] ?>">
 			<button type="submit" class="btn btn-danger">Delete Availability</button>
 		</form>
 	</div>
