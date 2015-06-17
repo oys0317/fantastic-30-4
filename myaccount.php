@@ -181,7 +181,7 @@
 				echo 		"</form>";
 				echo 	"</td>";
 				echo 	"<td>";
-				echo 		"<a href='./user/editAccommodationRequest.php?RequestID=" . $row['RequestID'];
+				echo 		"<a href='./user/editAccommodationRequest.php?From=myaccount&RequestID=" . $row['RequestID'];
 				echo 		"&PetID=" . $row['PetID'];
 				echo 		"' type='image' src='./edit.png' width='18px'>";
 				echo 			"<input type='image' name='RequestID' alt='Edit Request'";
@@ -247,7 +247,7 @@
 		<div style="overflow:hidden" class="container">
 			<h2>My Accommodation Requests</h2>
 			<?php displayAccommodationRequestInfo() ?>
-			<a href="user/accomodationRequest.php" class="btn btn-warning" role="button" style="margin-bottom: 20px">Add Accommodation Request</a>
+			<a href="user/accomodationRequest.php?From=myaccount" class="btn btn-warning" role="button" style="margin-bottom: 20px">Add Accommodation Request</a>
 		</div>
 		<!-- Availabilities -->
 		<div style="overflow:hidden" class="container">
