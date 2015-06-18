@@ -136,6 +136,7 @@
 		
 			foreach($db->query($sql) as $row){
 				$SitterID = $row['SitterID'];
+				$RequestID = $row['RequestID'];
 				echo '<tr>';
 
 				echo '<td>';
@@ -158,7 +159,7 @@
 				echo $row['Compensation'];
 				echo '</td>';
 				
-				echo "<td><form action='./acceptContractToOwner.php?SitterID=$SitterID' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
+				echo "<td><form action='./acceptContractToOwner.php?SitterID=$SitterID&RequestID=$RequestID' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
 				echo "'/></form></td>";
 
