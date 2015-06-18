@@ -103,6 +103,7 @@ CREATE TABLE ContractToSitter
  foreign key(OwnerID) references User(UserID),
  foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
 
+
  
 -- Insert to User
 INSERT INTO User VALUES('admin','admin','Administor','Fantastic 30-4','304-304-304');
