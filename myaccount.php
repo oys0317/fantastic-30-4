@@ -221,7 +221,7 @@
 <body>
 	<?php include './include/header.php'; ?>
 
-	<div style="padding: 80px 0 40px 0; background-color:23974a; !important" class="jumbotron">
+	<div style="padding: 80px 0 40px 0; background-color:5cb85c; !important" class="jumbotron">
   		<div class="container">
   			<h1 style="color:white">
   				<?php

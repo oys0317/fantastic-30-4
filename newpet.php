@@ -12,10 +12,10 @@
 </head>
 <body>
 	<?php include './include/header.php'; ?>
-	<div style="padding: 80px 0; background-color:951152; !important" class="jumbotron">
+	<div style="padding: 80px 0; background-color:50a0ca; !important" class="jumbotron">
   		<div class="container">
   			<h1 style="color:white">Add Pet</h1>
-  			<p style="color:white">Please add your infomation</p>
+  			<p style="color:white">Please add your pet's infomation.</p>
   		</div>
 	</div>
 	<div class="container">

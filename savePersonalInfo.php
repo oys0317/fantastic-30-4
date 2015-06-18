@@ -10,7 +10,7 @@ $phoneNumber = $_POST['editPhoneNum'];
 // Update the user's name if necessary
 if($name) {
 	$stmt = $db->prepare("	UPDATE User
-							SET Name='$name';
+							SET Name='$name'
 							WHERE UserID = '$userID'");
 	$stmt->execute();
 }
@@ -18,7 +18,7 @@ if($name) {
 if($address) {
 	// Update the user's address if necessary
 	$stmt = $db->prepare("	UPDATE User
-							SET Address='$address';
+							SET Address='$address'
 							WHERE UserID = '$userID'");
 	$stmt->execute();
 }
@@ -26,7 +26,7 @@ if($address) {
 if($phoneNumber) {
 	// Update the user's phone number if necessary
 	$stmt = $db->prepare("	UPDATE User
-							SET PhoneNum='$phoneNumber';
+							SET PhoneNum='$phoneNumber'
 							WHERE UserID = '$userID'");
 	$stmt->execute();
 }
