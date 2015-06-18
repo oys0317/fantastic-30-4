@@ -6,12 +6,8 @@
 		$sql = "DELETE FROM contracttoowner 
 				WHERE RequestID = :RequestID";
 		$stmtc = $db->prepare($sql);
-		$stmtc->bindParam(':RequestID', $_POST['reqID']);
+		$stmtc->bindParam(':RequestID', $_POST['RequestID']);
 		$stmtc->execute();
 
-		header('Location: ./user.inbox.php');
-		
-		else {
-			echo "Error removing accommodation request";
-		}
+		header('Location: ./inbox.php');
 ?>

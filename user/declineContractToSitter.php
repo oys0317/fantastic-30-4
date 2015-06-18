@@ -4,14 +4,10 @@
 		$ownerID = $_COOKIE['userID'];
 
 		$sql = "DELETE FROM contracttoowner 
-				WHERE RequestID = :RequestID";
+				WHERE AvailabilityID = :AvailabilityID";
 		$stmtc = $db->prepare($sql);
-		$stmtc->bindParam(':RequestID', $_POST['reqID']);
+		$stmtc->bindParam(':AvailabilityID', $_POST['AvailabilityID']);
 		$stmtc->execute();
 
-		header('Location: ./user/inbox.php');
-		
-		else {
-			echo "Error removing accommodation request";
-		}
+		header('Location: ./inbox.php');
 ?>
