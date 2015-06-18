@@ -5,9 +5,9 @@
 			date_default_timezone_set("America/Vancouver");
 			$currentDate = date("Y-m-d");
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = "SELECT Name, Address, SitterID, AvailabilityID, StartDate, EndDate, Compensation	
-					FROM contracttositter c, user u
-					WHERE '$userID' = c.OwnerID and c.Status = 1 and u.userID = c.SitterID and EndDate >= '$currentDate'";
+			$sql = "SELECT Name, Address, c.SitterID, c.AvailabilityID, StartDate, EndDate, Compensation, Species, Size	
+					FROM contracttositter c, user u, CanTakeCareOf ca
+					WHERE '$userID' = c.OwnerID and c.Status = 1 and u.userID = c.SitterID and EndDate >= '$currentDate' and c.SitterID = ca.SitterID and c.AvailabilityID = ca.AvailabilityID";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
@@ -18,11 +18,19 @@
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "Name";
+			echo "Pet Sitter";
 			echo '</th>';
 
 			echo '<th>';
 			echo "Address";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Pet Type";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Pet Size";
 			echo '</th>';
 
 			echo '<th>';
@@ -51,6 +59,14 @@
 
 				echo '<td>';
 				echo $row['Address'];
+				echo '</td>';
+
+				echo '<td>';
+				echo $row['Species'];
+				echo '</td>';
+
+				echo '<td>';
+				echo $row['Size'];
 				echo '</td>';
 
 				echo '<td>';
@@ -84,9 +100,9 @@
 			date_default_timezone_set("America/Vancouver");
 			$currentDate = date("Y-m-d");
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = "SELECT Name, Address, RequestID, StartDate, EndDate, Compensation	
-					FROM contracttoowner c, user u
-					WHERE '$userID' = c.SitterID and c.Status = 1 and u.UserID = c.OwnerID and EndDate >= '$currentDate'";
+			$sql = "SELECT Name, Address, RequestID, StartDate, EndDate, Compensation, PetName	
+					FROM contracttoowner c, user u, ownspet o
+					WHERE '$userID' = c.SitterID and c.Status = 1 and u.UserID = c.OwnerID and EndDate >= '$currentDate' and c.OwnerID = o.OwnerID and c.petid = o.petid";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
@@ -97,11 +113,15 @@
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "Name";
+			echo "Pet Owner";
 			echo '</th>';
 
 			echo '<th>';
 			echo "Address";
+			echo '</th>';
+
+			echo '<th>';
+			echo "Pet Name";
 			echo '</th>';
 
 			echo '<th>';
@@ -130,6 +150,10 @@
 
 				echo '<td>';
 				echo $row['Address'];
+				echo '</td>';
+
+				echo '<td>';
+				echo $row['PetName'];
 				echo '</td>';
 
 				echo '<td>';
