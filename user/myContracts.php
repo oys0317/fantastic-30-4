@@ -183,7 +183,7 @@
 ?>
 <head>
 	<link rel="stylesheet" href="../bootstrap.min.css">
-	<title>Inbox</title>
+	<title>PetCare</title>
 </head>
 <body>
 	<?php include '../include/header.php' ?>
@@ -196,10 +196,11 @@
   		</div>
 	</div>
 	<div class="container">
-		<font size="4"face="verdana" color="orange">Contract with people whos pet you are scheduled to look after</font>
+		<font size="5"face="verdana" color="black"><u>Contract with people whos pet you are scheduled to look after</u></font>
 		<?php CreateSitterContractTable();?>
-	</br></br>
-		<font size="4" face="verdana" color="blue">Contract with people who are scheduled to take care of your pet </font>
+	</div>
+	<div class="container">
+		<font size="5"face="verdana" color="black"><u>Contract with people who are scheduled to take care of your pet</u></font>
 		<?php CreateSitteeContractTable();?>
 	</div>
 
