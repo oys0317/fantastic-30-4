@@ -65,6 +65,7 @@
 			    <label for="EndDate">End Date</label>
 			    <input type="date" class="form-control" name="EndDate" value="<?= $row["EndDate"]?>">
 			    <input type="hidden" name="AvailabilityID" value="<?= $row['AvailabilityID']?>">
+			    <input type="hidden" name="From" value="<?= $_GET['From'] ?>"
 		 	</div>	 		
 		  	<button type="submit" class="btn btn-warning">Submit</button>
 		</form>

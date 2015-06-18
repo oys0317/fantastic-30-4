@@ -78,7 +78,7 @@ sitter
 						echo '<a href="contractToSitter.php?AvailabilityID='.$row['AvailabilityID'].'&SitterID='.$row['SitterID'].'" class="btn btn-warning btn-sm" role="button">Sit my pet!</a>';
 					}
 					else {
-						echo '<a href="editAvailability.php?AvailabilityID='.$row['AvailabilityID'].'" class="btn btn-primary btn-sm" role="button">Edit/Delete</a>';
+						echo '<a href="editAvailability.php?From=sitter&AvailabilityID='.$row['AvailabilityID'].'" class="btn btn-primary btn-sm" role="button">Edit/Delete</a>';
 					}
 					echo '</td>';
 				}	
@@ -111,7 +111,7 @@ sitter
 	<div class="container">
 		<?php getSitterAvailability(); ?>
 		<?php if(isset($_COOKIE['userID'])): ?>
-			<a href="sitterAddAvailability.php" class="btn btn-success" role="button">Add Availability</a>
+			<a href="sitterAddAvailability.php?From=sitter" class="btn btn-success" role="button">Add Availability</a>
 		<?php endif; ?>
 	</div>
 

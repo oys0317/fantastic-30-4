@@ -92,8 +92,8 @@
 			$availSQL = "SELECT s.StartDate, s.EndDate, c.Size, c.Species, c.AvailabilityID
 						FROM SitterAvailability s, CanTakeCareOf c
 						WHERE s.SitterID = '$userID'
-						AND s.AvailabilityID = c.AvailabilityID";
-
+						AND s.AvailabilityID = c.AvailabilityID
+						AND NOT EXISTS (SELECT * FROM ContractToSitter cs WHERE Status=1 and cs.AvailabilityID = s.AvailabilityID and c.SitterID = s.SitterID);";
 
 			$availExists = FALSE;
 
@@ -125,8 +125,8 @@
 				echo 		"</form>";
 				echo 	"</td>";
 				echo 	"<td>";
-				echo 		"<a href='./user/editAvailability.php";
-				echo 		"?AvailabilityID=" . $row['AvailabilityID'] . "'>";
+				echo 		"<a href='./user/editAvailability.php?From=myaccount";
+				echo 		"&AvailabilityID=" . $arow['AvailabilityID'] . "'>";
 				echo 			"<img src='./edit.png' width='18px'>";
 				echo 		"</a>";
 				echo 	"</td>";
@@ -157,8 +157,8 @@
 						FROM OwnsPet p INNER JOIN AccommodationRequest r
 						ON p.OwnerID = r.OwnerID
 						WHERE p.PetID = r.PetID
-						AND p.OwnerID = '$userID'";
-
+						AND p.OwnerID = '$userID'
+						AND NOT EXISTS (SELECT * FROM ContractToOwner c WHERE Status=1 and c.RequestID = r.RequestID and c.PetID = r.PetID);";
 
 			$requestExists = FALSE;
 			// Display each availability
@@ -253,7 +253,7 @@
 		<div style="overflow:hidden" class="container">
 			<h2>My Availabilities</h2>
 			<?php displayAvailInfo();?>
-			<a href="user/sitterAddAvailability.php" class="btn btn-warning" role="button" style="margin-bottom: 20px">Add Availability</a>
+			<a href="user/sitterAddAvailability.php?From=myaccount" class="btn btn-warning" role="button" style="margin-bottom: 20px">Add Availability</a>
 		</div>
 		<!-- Contracts -->
 		<div style="overflow:hidden" class="container">
