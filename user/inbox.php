@@ -3,9 +3,9 @@
 		try{
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = "SELECT c.OwnerID, f.species, f.size, c.AvailabilityID, c.StartDate, c.EndDate, c.Compensation	
-					FROM contracttositter c, cantakecareof f
-					WHERE '$userID' = c.SitterID and c.Status = 0 and f.availabilityID = c.availabilityID";
+			$sql = "SELECT Name, c.OwnerID, f.species, f.size, c.AvailabilityID, c.StartDate, c.EndDate, c.Compensation	
+					FROM contracttositter c, cantakecareof f, user u
+					WHERE '$userID' = c.SitterID and c.Status = 0 and f.availabilityID = c.availabilityID and u.userID = c.OwnerID";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
@@ -48,10 +48,12 @@
 			
 
 			foreach($db->query($sql) as $row){
+				$OwnerID = $row['OwnerID'];
+				$AvailabilityID = $row['AvailabilityID'];
 				echo '<tr>';
 
 				echo '<td>';
-				echo $row['OwnerID'];
+				echo $row['Name'];
 				echo '</td>';
 
 				echo '<td>';
@@ -74,11 +76,11 @@
 				echo $row['Compensation'];
 				echo '</td>';
 
-				echo "<td><form action='./acceptContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
+				echo "<td><form action='./acceptContractToSitter.php?OwnerID=$OwnerID&AvailabilityID=$AvailabilityID' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
 				echo $row['AvailabilityID'];
 				echo "'/></form></td>";
 
-				echo "<td><form action='./declineContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
+				echo "<td><form action='./declineContractToSitter.php?OwnerID=$OwnerID&AvailabilityID=$AvailabilityID' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
 				echo $row['AvailabilityID'];
 				echo "'/></form></td></tr>";
 			
@@ -136,6 +138,7 @@
 		
 			foreach($db->query($sql) as $row){
 				$SitterID = $row['SitterID'];
+				$RequestID = $row['RequestID'];
 				echo '<tr>';
 
 				echo '<td>';
@@ -158,11 +161,11 @@
 				echo $row['Compensation'];
 				echo '</td>';
 				
-				echo "<td><form action='./acceptContractToOwner.php?SitterID=$SitterID' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
+				echo "<td><form action='./acceptContractToOwner.php?SitterID=$SitterID&RequestID=$RequestID' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
 				echo "'/></form></td>";
 
-				echo "<td><form action='./declineContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
+				echo "<td><form action='./declineContractToOwner.php?SitterID=$SitterID&RequestID=$RequestID' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
 				echo "'/></form></td></tr>";
 
