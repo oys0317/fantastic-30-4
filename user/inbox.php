@@ -15,7 +15,7 @@
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "Name Of Owner";
+			echo "Pet Owner";
 			echo '</th>';
 
 			echo '<th>';
@@ -76,7 +76,7 @@
 
 				echo "<td><form action='./acceptContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
 				echo $row['AvailabilityID'];
-				echo "'/></form></td></tr>";
+				echo "'/></form></td>";
 
 				echo "<td><form action='./declineContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
 				echo $row['AvailabilityID'];
@@ -107,7 +107,7 @@
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "Name Of Sitter";
+			echo "Pet Sitter";
 			echo '</th>';
 
 			echo '<th>';
@@ -160,7 +160,7 @@
 				
 				echo "<td><form action='./acceptContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
-				echo "'/></form></td></tr>";
+				echo "'/></form></td>";
 
 				echo "<td><form action='./declineContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
