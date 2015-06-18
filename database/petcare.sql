@@ -90,8 +90,6 @@ CREATE TABLE ContractToOwner
  primary key(OwnerID,RequestID,PetID,SitterID),
  foreign key(PetID, RequestID) references AccommodationRequest(PetID, RequestID),
  foreign key(SitterID) references User(UserID));
- foreign key(OwnerID) references User(UserID);
-
 CREATE TABLE ContractToSitter
 (OwnerID       	Char(20),
  AvailabilityID INTEGER,
@@ -103,7 +101,7 @@ CREATE TABLE ContractToSitter
  primary key(OwnerID,AvailabilityID,SitterID),
  foreign key(OwnerID) references User(UserID),
  foreign key(SitterID, AvailabilityID) references SitterAvailability(SitterID,AvailabilityID));
- foreign key(OwnerID) references User(UserID);
+
 
  
 -- Insert to User
