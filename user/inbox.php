@@ -163,7 +163,7 @@
 				echo $row['RequestID'];
 				echo "'/></form></td>";
 
-				echo "<td><form action='./declineContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
+				echo "<td><form action='./declineContractToOwner.php?SitterID=$SitterID&RequestID=$RequestID' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
 				echo "'/></form></td></tr>";
 
