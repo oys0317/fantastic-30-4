@@ -1,12 +1,12 @@
 <?php
 
 		$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-		$ownerID = $_COOKIE['userID'];
+		$OwnerID = $_GET['OwnerID'];
+		$AvailabilityID = $_GET['AvailabilityID'];
 
 		$sql = "DELETE FROM contracttositter 
-				WHERE AvailabilityID = :AvailabilityID";
+				WHERE AvailabilityID = '$AvailabilityID' AND ownerID = '$OwnerID'";
 		$stmtc = $db->prepare($sql);
-		$stmtc->bindParam(':AvailabilityID', $_POST['AvailabilityID']);
 		$stmtc->execute();
 
 		header('Location: ./inbox.php');
