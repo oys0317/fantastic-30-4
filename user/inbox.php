@@ -41,6 +41,10 @@
 			echo '<th>';
 			echo "Accept";
 			echo '</th>';
+
+			echo '<th>';
+			echo "Decline";
+			echo '</th>';
 			
 
 			foreach($db->query($sql) as $row){
@@ -71,6 +75,10 @@
 				echo '</td>';
 
 				echo "<td><form action='./acceptContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
+				echo $row['AvailabilityID'];
+				echo "'/></form></td></tr>";
+
+				echo "<td><form action='./declineContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
 				echo $row['AvailabilityID'];
 				echo "'/></form></td></tr>";
 			
@@ -121,6 +129,10 @@
 			echo '<th>';
 			echo "Accept";
 			echo '</th>';
+
+			echo '<th>';
+			echo "Decline";
+			echo '</th>';
 		
 
 			foreach($db->query($sql) as $row){
@@ -147,6 +159,10 @@
 				echo '</td>';
 				
 				echo "<td><form action='./acceptContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
+				echo $row['RequestID'];
+				echo "'/></form></td></tr>";
+
+				echo "<td><form action='./declineContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
 				echo "'/></form></td></tr>";
 
