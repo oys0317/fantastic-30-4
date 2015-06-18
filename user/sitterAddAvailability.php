@@ -35,8 +35,9 @@
 		  	<div class="form-group">
 			    <label for="EndDate">End Date</label>
 			    <input type="date" class="form-control" name="EndDate">
+			    <input type="hidden" name="From" value="<?= $_GET['From'] ?>">
 		 	</div>	 		
-		  	<button type="submit" class="btn btn-default">Submit</button>
+		  	<button type="submit" class="btn btn-warning">Submit</button>
 		</form>
 	</div>
 </body>

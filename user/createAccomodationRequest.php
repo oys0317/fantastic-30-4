@@ -32,24 +32,31 @@
 	elseif (isset($_POST["RequestID"])) {
 		$sql1 = 'DELETE FROM AccommodationRequest WHERE RequestID='.$_POST["RequestID"].' and PetID='.$_POST["PrevPetID"].';';
 		$db->query($sql1);
-		$RequestID = $_POST["RequestID"];
 
-		//create new
-		$stmt = $db->prepare("INSERT INTO AccommodationRequest (OwnerID,PetID,RequestID,WithinDistance,StartDate,EndDate) VALUES(:OwnerID,:PetID,:RequestID,:WithinDistance,:StartDate,:EndDate);");
-		$stmt->bindParam(':OwnerID', $_COOKIE['userID']);
-		$stmt->bindParam(':PetID', $_POST['PetID']);
-		$stmt->bindParam(':RequestID', $RequestID);
-		$stmt->bindParam(':WithinDistance', $_POST['WithinDistance']);
-		$stmt->bindParam(':StartDate', $_POST['StartDate']);
-		$stmt->bindParam(':EndDate', $_POST['EndDate']);
-		$stmt->execute();
+		//Check if deleted
+		$sql = $db->prepare('SELECT * FROM AccommodationRequest WHERE RequestID='.$_POST["RequestID"].' and PetID='.$_POST["PrevPetID"].';');
+		$sql->execute();
+		$row0 = $sql->fetch();
+
+		if (!isset($row0["RequestID"])) {
+
+			//create new
+			$stmt = $db->prepare("INSERT INTO AccommodationRequest (OwnerID,PetID,RequestID,WithinDistance,StartDate,EndDate) VALUES(:OwnerID,:PetID,:RequestID,:WithinDistance,:StartDate,:EndDate);");
+			$stmt->bindParam(':OwnerID', $_COOKIE['userID']);
+			$stmt->bindParam(':PetID', $_POST['PetID']);
+			$stmt->bindParam(':RequestID', $_POST["RequestID"]);
+			$stmt->bindParam(':WithinDistance', $_POST['WithinDistance']);
+			$stmt->bindParam(':StartDate', $_POST['StartDate']);
+			$stmt->bindParam(':EndDate', $_POST['EndDate']);
+			$stmt->execute();
+		}
 
 		//check if updated
 		$sql2 = $db->prepare('SELECT * FROM AccommodationRequest WHERE RequestID='.$_POST["RequestID"].' and PetID='.$_POST["PetID"].';');
 		$sql2->execute();
 		$row = $sql2->fetch();
 
-		if (($row["PetID"]==$_POST["PetID"]) && ($row["PetID"]!= NULL)) {
+		if (($row["PetID"]==$_POST["PetID"]) && ($row["PetID"]!= NULL) && ($row["WithinDistance"]==$_POST['WithinDistance']) && ($row["StartDate"]==$_POST['StartDate'] || $row["StartDate"]=='0000-00-00') && ($row["EndDate"]==$_POST['EndDate'] || $row["EndDate"]=='0000-00-00')) {
 			if ($_POST['From'] == "owner"){
 				echo "<script>alert(\"Accommodation Request Updated!\");
 				window.location.href=\"./owner.php\";  
@@ -61,9 +68,16 @@
 				</script>"; // go to my account
 			}
 		} else {
-			echo "<script>alert(\"Cannot Update Accommodation Request.\");
-			window.location.href=\"./owner.php\";
-			</script>";
+			if ($_POST['From'] == "owner"){
+				echo "<script>alert(\"Cannot Update Request if a contract exists.\");
+				window.location.href=\"./owner.php\";  
+				</script>"; // go to owner
+			}
+			else{
+				echo "<script>alert(\"Cannot Update Request if a contract exists.\");
+				window.location.href=\"../myaccount.php\";  
+				</script>"; // go to my account
+			}
 		}
 		
 

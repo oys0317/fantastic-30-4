@@ -44,20 +44,37 @@
 		$stmt->bindParam(':AvailabilityID', $_POST["AvailabilityID"]);
 		$stmt->execute();
 
-		$sql2 = $db->prepare('SELECT * FROM SitterAvailability WHERE AvailabilityID='.$_POST["AvailabilityID"].' and SitterID="'.$_COOKIE["userID"].'";');
+		//check
+
+		$sql2 = $db->prepare('SELECT s.AvailabilityID as AvailabilityID, s.SitterID as SitterID, StartDate, EndDate, Size, Species 
+			FROM SitterAvailability s, CanTakeCareOf c 
+			WHERE Species = "'.$_POST["petSpecies"].'" and Size = "'.$_POST["petSize"].'" and s.SitterID = c.SitterID and s.AvailabilityID = c.AvailabilityID and s.AvailabilityID='.$_POST["AvailabilityID"].' and s.SitterID="'.$_COOKIE["userID"].'";');
 		$sql2->execute();
 		$row = $sql2->fetch();
-	
-		if (($row["AvailabilityID"]==$_POST["AvailabilityID"]) && ($row["SitterID"]==$_COOKIE["userID"])) {
-			echo "<script>alert(\"Availability Request Updated!\");
-			window.location.href=\"./sitter.php\";
-			</script>";
-		} else {
-			echo "<script>alert(\"Cannot Update Availability Request When There is Existing Contract!\");
-			window.location.href=\"./sitter.php\";
-			</script>";
-		}
+		
 
+		if (($row["AvailabilityID"]==$_POST["AvailabilityID"]) && ($row["SitterID"]==$_COOKIE["userID"])  && ($row["StartDate"]==$_POST["StartDate"]  || $row["StartDate"]=='0000-00-00') && ($row["EndDate"]==$_POST["EndDate"]  || $row["EndDate"]=='0000-00-00')) {
+			if ($_POST['From'] == "sitter") {
+				echo "<script>alert(\"Successfully updated!\");
+				window.location.href=\"./sitter.php\";  
+				</script>"; // go to sitter
+			} else {
+				echo "<script>alert(\"Successfully updated!\");
+				window.location.href=\"../myaccount.php\";  
+				</script>"; // go to my account
+			}
+		} else {
+			if ($_POST['From'] == "sitter") {
+				echo "<script>alert(\"Cannot Update Availability Request When There is Existing Contract!\");
+				window.location.href=\"./sitter.php\";  
+				</script>"; // go to sitter
+			} else {
+				echo "<script>alert(\"Cannot Update Availability Request When There is Existing Contract!\");
+				window.location.href=\"../myaccount.php\";  
+				</script>"; // go to my account
+			}
+		}
+		
 	}
 
 	// CREATE NEW
@@ -90,9 +107,15 @@
 		$stmt->bindParam(':AvailabilityID', $AvailabilityID);
 		$stmt->execute();
 
-		echo "<script>alert(\"Availability Created!\");
-				window.location.href=\"./sitter.php\";
-				</script>";
+		if ($_POST['From'] == "sitter") {
+			echo "<script>alert(\"Availability Created!\");
+			window.location.href=\"./sitter.php\";  
+			</script>"; // go to sitter
+		} else {
+			echo "<script>alert(\"Availability Created!\");
+			window.location.href=\"../myaccount.php\";  
+			</script>"; // go to my account
+		}
 	}
 	
 
