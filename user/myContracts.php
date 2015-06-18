@@ -208,7 +208,7 @@
   		<div class="container">
   			<h1 style="color:white">Pet Sitters</h1>
   			<p style="color:white">
-  					Here you can vfiew your current contracts.
+  					Here you can view your current contracts.
   			</p>
   		</div>
 	</div>
