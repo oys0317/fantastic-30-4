@@ -16,7 +16,7 @@
   .jumbotron {
     margin-top: 65px;
     margin-bottom: 0px;
-    height: 500px;
+    height: 467px;
     color: black;
     background:transparent;
   }
@@ -24,6 +24,15 @@
   .container .abc {
     margin-left:-40px;
   }
+
+  .gifs{
+    text-align: center;
+  }
+  .gifs img{
+    width:24%; 
+    height:30%;
+  }
+
   </style>
   <title>Pet Care</title>
 </head>
@@ -44,5 +53,11 @@
         </div>
         </div>
       </div>
+  </div>
+  <div class="gifs">
+    <img src="gif/giphy1.gif">
+    <img src="gif/giphy2.gif">
+    <img src="gif/giphy3.gif">
+    <img src="gif/giphy4.gif">
   </div>
 </body>
