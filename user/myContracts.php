@@ -3,7 +3,8 @@
 		try{
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-
+			date_default_timezone_set("America/Vancouver");
+			$currentDate = date("Y-m-d");
 			$sql = "SELECT Name, Address, StartDate, EndDate, Compensation, Species, Size
 					FROM contracttositter c, user u, cantakecareof ca
 					WHERE '$userID' = c.OwnerID and c.Status = 1 and u.userID = c.SitterID and EndDate >= '$currentDate' and c.SitterID = ca.SitterID and c.AvailabilityID = ca.AvailabilityID
@@ -102,6 +103,8 @@
 	function CreateSitterContractTable() {
 		try{
 			$userID = $_COOKIE['userID'];
+			date_default_timezone_set("America/Vancouver");
+			$currentDate = date("Y-m-d");
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
 			$sql = "SELECT Name, Address, StartDate, EndDate, Compensation, Species, Size
 					FROM contracttoowner c, user u, ownspet o
