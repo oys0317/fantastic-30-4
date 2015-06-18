@@ -16,7 +16,7 @@
 				WHERE OwnerID = '$userID'  
 				AND RequestID = '$RequestID'
 				AND SitterID <> '$SitterID'";
-		$stmtc->execute();
+		$db->query($sql);
 
 		header('Location: ./inbox.php');
 ?>
