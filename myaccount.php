@@ -225,7 +225,11 @@
   		<div class="container">
   			<h1 style="color:white">
   				<?php
-  					echo $_COOKIE['userID'];
+  					$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
+  					$namesql = $db->prepare('SELECT Name FROM USER WHERE UserID="'.$_COOKIE['userID'].'";');
+  					$namesql->execute();
+  					$namerow = $namesql->fetch();
+  					echo $namerow['Name'];
   					echo "'s account";
   				?>
 
