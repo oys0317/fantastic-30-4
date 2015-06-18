@@ -15,7 +15,7 @@
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "Name Of Owner";
+			echo "Pet Owner";
 			echo '</th>';
 
 			echo '<th>';
@@ -76,7 +76,7 @@
 
 				echo "<td><form action='./acceptContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
 				echo $row['AvailabilityID'];
-				echo "'/></form></td></tr>";
+				echo "'/></form></td>";
 
 				echo "<td><form action='./declineContractToSitter.php' method='post'><input type='image' name='AvailabilityID' alt='Remove pet' src='../remove.png' width='18px' type='submit' value='";
 				echo $row['AvailabilityID'];
@@ -95,9 +95,9 @@
 		try{
 			$userID = $_COOKIE['userID'];
 			$db = new PDO("mysql:host=localhost;dbname=fantastic304;port=3306","root");
-			$sql = "SELECT c.SitterID, f.PetName, c.RequestID, c.StartDate, c.EndDate, c.Compensation	
-					FROM contracttoowner c, ownspet f
-					WHERE '$userID' = c.OwnerID and c.Status = 0 and f.OwnerID = c.OwnerID";
+			$sql = "SELECT Name, c.SitterID, f.PetName, c.RequestID, c.StartDate, c.EndDate, c.Compensation	
+					FROM contracttoowner c, ownspet f, user u
+					WHERE '$userID' = c.OwnerID and c.Status = 0 and f.petID = c.petID and f.OwnerID = c.OwnerID and u.UserID = c.SitterID";
 			$row = $db->query($sql);
 			
 			// If there are no sitters, display a different message.
@@ -107,7 +107,7 @@
 
 			echo '<table class="table table-striped">';
 			echo '<th>';
-			echo "Name Of Sitter";
+			echo "Pet Sitter";
 			echo '</th>';
 
 			echo '<th>';
@@ -134,12 +134,12 @@
 			echo "Decline";
 			echo '</th>';
 		
-
 			foreach($db->query($sql) as $row){
+				$SitterID = $row['SitterID'];
 				echo '<tr>';
 
 				echo '<td>';
-				echo $row['SitterID'];
+				echo $row['Name'];
 				echo '</td>';
 
 				echo '<td>';
@@ -158,9 +158,9 @@
 				echo $row['Compensation'];
 				echo '</td>';
 				
-				echo "<td><form action='./acceptContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
+				echo "<td><form action='./acceptContractToOwner.php?SitterID=$SitterID' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
-				echo "'/></form></td></tr>";
+				echo "'/></form></td>";
 
 				echo "<td><form action='./declineContractToOwner.php' method='post'><input type='image' name='RequestID' alt='Remove pet' src='/../remove.png' width='18px' type='submit' value='";
 				echo $row['RequestID'];
